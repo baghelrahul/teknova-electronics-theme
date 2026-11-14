@@ -1,0 +1,120 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Product Card Snippet
+  Renders a Shopify product or mock fallback item
+  Usage:
+  {% render 'product-card', product: product, badge: 'BESTSELLER', badge_class: 'bg-secondary' %}
+{%- endcomment -%}
+
+{%- liquid
+  assign card_title = title
+  assign card_subtitle = subtitle
+  assign card_price = price
+  assign card_compare_price = compare_price
+  assign card_rating = rating | default: '4.9'
+  assign card_reviews = reviews_count | default: '1,200'
+  assign card_badge = badge
+  assign card_badge_color = badge_color | default: 'bg-secondary text-on-secondary'
+  assign card_image_url = image_url
+  assign card_url = url | default: '#'
+
+  if product != blank
+    assign card_title = product.title
+    assign card_price = product.price | money
+    if product.compare_at_price > product.price
+      assign card_compare_price = product.compare_at_price | money
+      assign card_badge = 'SALE'
+      assign card_badge_color = 'bg-primary text-on-primary'
+    endif
+    assign card_image_url = product.featured_media | image_url: width: 600
+    assign card_url = product.url
+  endif
+-%}
+
+<div class="group relative rounded-2xl bg-surface-container-lowest border border-outline-variant/40 hover:border-outline-variant p-4 flex flex-col justify-between transition-all duration-300">
+  <div>
+    <!-- Media Frame & Badges -->
+    <div class="relative aspect-square rounded-xl bg-surface-container-low overflow-hidden mb-3">
+      {%- if card_badge != blank -%}
+        <span class="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full {{ card_badge_color }} text-[10px] font-bold tracking-wider">
+          {{ card_badge }}
+        </span>
+      {%- endif -%}
+
+      <button type="button" class="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" title="Add to Wishlist">
+        <span class="material-symbols-outlined text-[16px]">favorite</span>
+      </button>
+
+      <a href="{{ card_url }}" class="block w-full h-full">
+        {%- if card_image_url != blank -%}
+          <img 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+            src="{{ card_image_url }}" 
+            alt="{{ card_title | escape }}"
+            loading="lazy"
+          />
+        {%- elsif product.featured_image != blank -%}
+          <img 
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" 
+            src="{{ product.featured_image | image_url: width: 600 }}" 
+            alt="{{ card_title | escape }}"
+            loading="lazy"
+          />
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'w-full h-full object-cover group-hover:scale-105 transition-transform duration-300' }}
+        {%- endif -%}
+      </a>
+    </div>
+
+    <!-- Rating -->
+    <div class="flex items-center gap-1 text-amber-500 text-label-sm font-label-sm mb-1">
+      <span class="material-symbols-outlined text-[14px] fill-1">star</span>
+      <span class="font-bold text-on-surface">{{ card_rating }}</span>
+      <span class="text-on-surface-variant">({{ card_reviews }})</span>
+    </div>
+
+    <!-- Title & Specs -->
+    <h3 class="text-headline-sm font-headline-sm text-[16px] text-on-surface group-hover:text-primary transition-colors line-clamp-1">
+      <a href="{{ card_url }}">{{ card_title }}</a>
+    </h3>
+
+    {%- if card_subtitle != blank -%}
+      <p class="text-body-sm font-body-sm text-on-surface-variant mb-2">{{ card_subtitle }}</p>
+    {%- endif -%}
+
+    <!-- Color Swatches Mock -->
+    {%- if swatches != blank -%}
+      <div class="flex items-center gap-1.5 mb-3">
+        {%- assign swatch_list = swatches | split: ',' -%}
+        {%- for swatch in swatch_list -%}
+          <span class="w-3 h-3 rounded-full {{ swatch | strip }} {% if forloop.first %}ring-1 ring-offset-1 ring-slate-700{% endif %}"></span>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div>
+    <!-- Price Row -->
+    <div class="flex items-baseline gap-2 mb-3">
+      <span class="text-headline-sm font-headline-sm text-on-surface font-bold">{{ card_price }}</span>
+      {%- if card_compare_price != blank -%}
+        <span class="text-body-sm font-body-sm text-on-surface-variant line-through">{{ card_compare_price }}</span>
+      {%- endif -%}
+    </div>
+
+    <!-- Add To Cart Form / Button -->
+    {%- if product != blank and product.available -%}
+      {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        <button type="submit" class="w-full h-9 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-colors text-label-md font-label-md font-semibold flex items-center justify-center gap-1.5">
+          <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+          <span>Add to Cart</span>
+        </button>
+      {% endform %}
+    {%- else -%}
+      <button type="button" class="w-full h-9 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-colors text-label-md font-label-md font-semibold flex items-center justify-center gap-1.5">
+        <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+        <span>Add to Cart</span>
+      </button>
+    {%- endif -%}
+  </div>
+</div>

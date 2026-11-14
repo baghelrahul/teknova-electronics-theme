@@ -1,0 +1,234 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 4: Shop By Categories
+  Engineered categories grid with image zoom and model count pill
+{%- endcomment -%}
+
+<section class="py-20 bg-surface" id="categories">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="text-label-md font-label-md uppercase tracking-wider text-primary font-semibold">
+          {{ section.settings.eyebrow | default: 'Classification' }}
+        </span>
+        <h2 class="text-headline-lg font-headline-lg text-on-surface mt-1">
+          {{ section.settings.heading | default: 'Engineered Categories' }}
+        </h2>
+        <p class="text-body-md font-body-md text-on-surface-variant mt-1">
+          {{ section.settings.subheading | default: 'Explore hardware tailored for creators, engineers, and audiophiles.' }}
+        </p>
+      </div>
+
+      {%- if section.settings.view_all_text != blank -%}
+        <a class="mt-4 md:mt-0 text-label-md font-label-md font-semibold text-primary hover:underline flex items-center gap-1" href="{{ section.settings.view_all_link | default: routes.collections_url }}">
+          <span>{{ section.settings.view_all_text }}</span>
+          <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign cat_collection = block.settings.collection
+            assign cat_title = block.settings.title
+            if cat_title == blank and cat_collection != blank
+              assign cat_title = cat_collection.title
+            endif
+
+            assign cat_link = block.settings.link
+            if cat_link == blank and cat_collection != blank
+              assign cat_link = cat_collection.url
+            endif
+          -%}
+          <a class="group block rounded-2xl bg-surface-container-lowest border border-outline-variant/40 p-6 hover:border-primary/50 transition-all duration-300 hover:shadow-lg" href="{{ cat_link | default: '#' }}" {{ block.shopify_attributes }}>
+            <div class="aspect-[4/3] rounded-xl bg-surface-container-low overflow-hidden mb-5">
+              {%- if block.settings.image != blank -%}
+                <img 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  src="{{ block.settings.image | image_url: width: 800 }}" 
+                  alt="{{ cat_title | escape }}"
+                  loading="lazy"
+                />
+              {%- elsif block.settings.fallback_image_url != blank -%}
+                <img 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  src="{{ block.settings.fallback_image_url }}" 
+                  alt="{{ cat_title | escape }}"
+                  loading="lazy"
+                />
+              {%- elsif cat_collection.featured_image != blank -%}
+                <img 
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                  src="{{ cat_collection.featured_image | image_url: width: 800 }}" 
+                  alt="{{ cat_title | escape }}"
+                  loading="lazy"
+                />
+              {%- else -%}
+                {{ 'collection-1' | placeholder_svg_tag: 'w-full h-full object-cover' }}
+              {%- endif -%}
+            </div>
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">
+                  {{ cat_title | default: 'Category' }}
+                </h3>
+                <p class="text-body-sm font-body-sm text-on-surface-variant">
+                  {{ block.settings.subtitle }}
+                </p>
+              </div>
+              {%- if block.settings.count_badge != blank -%}
+                <span class="px-2.5 py-1 rounded-full bg-surface-container text-label-sm font-label-sm text-on-surface-variant font-medium shrink-0 ml-2">
+                  {{ block.settings.count_badge }}
+                </span>
+              {%- endif -%}
+            </div>
+          </a>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Shop By Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Classification"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Engineered Categories"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Explore hardware tailored for creators, engineers, and audiophiles."
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Text",
+      "default": "View All 18 Segments"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category_card",
+      "name": "Category Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Select Collection"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title Override"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Precision series"
+        },
+        {
+          "type": "text",
+          "id": "count_badge",
+          "label": "Models Count Badge",
+          "default": "24 Models"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image"
+        },
+        {
+          "type": "text",
+          "id": "fallback_image_url",
+          "label": "Image URL (Fallback)"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link Override"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Categories",
+      "blocks": [
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Smartphones",
+            "subtitle": "Flagship Foldables & Pro Series",
+            "count_badge": "24 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCwaPP0MeGkYyshK3dhWVPsGqum3QGaHSwz49BPvuXW3RevXJRt-4bUWadgw9b3LW5DtEpRO2-UwcCkBgI3mxC9nPTkiv2L-_tMBq6KiHNr4tJzIJcwSFrDUX8lS1ayCo79mPOzL_RO2xawxhcWrpjFy4HvvXwsBDN0XbWDbqO3kxZcNbyU6HqVelgsxDXoFrhGVumvrIxNw78wWl46Vaj80-zoW8b7wHZUnQqMfbg"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Laptops & Tablets",
+            "subtitle": "Silicon & OLED Workstations",
+            "count_badge": "18 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBjLYpCs68_yZHbZZLaBhJ-do1Dm8g_qWeamzsnlPvM0rTnq5yjo4M-4LA9k5s7mjNk1C8qy0XOCnYqceI6Fqi-kyYGU3-ERChz1QLJ_K6nv4zH3Pyd5W3ezrSzt7b7KmHluPrMaTNoQ8_NwA3Gx5qKcJIOyAjzkLDFyyP6Kqb_i_dTG2whWe9ifa7cKVBiY4YBN_lyBdt3fcVT-k29wRN6nqfMkgOYWKJKmMv5fYA"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Headphones & Audio",
+            "subtitle": "Spatial Acoustics & Monitors",
+            "count_badge": "32 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBobEPgxWoko9gpk_7c-5F-HXeCFv4WYhCtIJK4_Q6KARs8OW_u6d4IQCz4dOTCQW595y2ncdl7e41PNOCl1tmYpSP9AqJjyP_rMVVMSNv_C_kxPxNzRMY9s0CfjBBJS2ZE2L5fpLK03NhMkzWZnsMPQQj-xzCfzyHslEGbG6EdaF3bYqxz7iKC5lzRchm6tOUJrsGH3HWX2brpjilswLYcGGZhwQDwAq-bvpI6Zs4"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Smartwatches & Fitness",
+            "subtitle": "Titanium GPS & Biosensing Tech",
+            "count_badge": "15 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAtOyoOuCHwxeVRBpzdlvVINrW9bWIgGDz7lg2JuSFc43H5GGcfwkLoUKsCcJuys3nvE6K-24r-fbzmPB1l_1LrowpL_f8DhZjfEaMCBRPi5Wa6w9DqtegBQs30BUWgwa8aNyMVUegz7qtIxS3jxh8TJQZm1tatuuhUzLDSwhoTqRJR6PoSUnv1OmzjRS1BoH08iSF-9AiE-SW8Krzxk4EowZUy8Z7tXPGtXZGD4dI"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Gaming & Peripherals",
+            "subtitle": "Mechanical Keyboards & 8K Mice",
+            "count_badge": "28 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuB_9V_sQwb9DtNBcvZmvN4fD5tG1YrYgX7v-mKAOr8np9XxlUNfi57-yl1uqAuJE6Md3qSCKk0Xg4LFr-W2aa2n4N39_PRXineeHsVyDyahgZsqNHj1BBNvTozgyW-o378JmWmJnyIZzqKh0ngEvKrU-Ma1CHbvhANomeaktrhmKusVB1chH-qeVP_k_UjBolkP3hxi6dbjsjvNyHprm_hrTLRihZLQsHbI8YB4cGg"
+          }
+        },
+        {
+          "type": "category_card",
+          "settings": {
+            "title": "Smart Home & Automation",
+            "subtitle": "Matter-enabled Hubs & Light",
+            "count_badge": "19 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDozq7Z5b8ZRx0pWHEAJeUFLFThbhNCOKD0jO9Nb2GB_eYv0kuh-T-hp8ZzLFgfvbRgzvb66eKVJzVBlnO42DLeCRadjphHVjzRbslMSFzMXSSumGql7hRb_P_XiSiY_8SnNHl_8StuXdVO0ASO2vvMlBukbYqbbUObzCHj8eDy3Et2RjxCfpw2yr_3JH4RfvkTZLli8mjLYcCgfptMTSLJWc5K94RTpP5XBKJ4zGI"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

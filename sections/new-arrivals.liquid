@@ -1,0 +1,168 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 8: New Arrivals ('Fresh Tech Has Arrived' Reel)
+  Hardware releases reel with category tags and navigation controls
+{%- endcomment -%}
+
+<section class="py-20 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <span class="text-label-md font-label-md uppercase tracking-wider text-secondary font-semibold">
+          {{ section.settings.eyebrow | default: 'First Edition Releases' }}
+        </span>
+        <h2 class="text-headline-lg font-headline-lg text-on-surface mt-1">
+          {{ section.settings.heading | default: 'Fresh Tech Has Arrived' }}
+        </h2>
+      </div>
+
+      <!-- Navigation Reel Controls -->
+      <div class="flex items-center gap-2">
+        <button type="button" class="w-10 h-10 rounded-full border border-outline-variant/60 flex items-center justify-center hover:bg-surface-container transition-colors" title="Previous">
+          <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+        </button>
+        <button type="button" class="w-10 h-10 rounded-full bg-inverse-surface text-inverse-on-surface flex items-center justify-center hover:bg-primary transition-colors" title="Next">
+          <span class="material-symbols-outlined text-[20px]">chevron_right</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Cards Container -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="rounded-2xl bg-surface-container-lowest border border-outline-variant/40 p-4 flex flex-col justify-between" {{ block.shopify_attributes }}>
+            <div>
+              <div class="aspect-[4/3] rounded-xl bg-surface-container-low overflow-hidden mb-3">
+                <img 
+                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" 
+                  src="{{ block.settings.image_url }}" 
+                  alt="{{ block.settings.title | escape }}"
+                  loading="lazy"
+                />
+              </div>
+              <span class="text-label-sm font-label-sm text-primary font-bold">{{ block.settings.tag }}</span>
+              <h4 class="text-headline-sm font-headline-sm text-on-surface text-[17px] mt-1">{{ block.settings.title }}</h4>
+              <p class="text-body-sm font-body-sm text-on-surface-variant">{{ block.settings.description }}</p>
+            </div>
+            <div class="mt-4 flex items-center justify-between pt-3 border-t border-outline-variant/20">
+              <span class="font-bold text-on-surface">{{ block.settings.price }}</span>
+              <a href="{{ block.settings.link | default: '#' }}" class="text-primary font-label-md text-label-md font-semibold hover:underline">
+                Explore →
+              </a>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "New Arrivals",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "First Edition Releases"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Fresh Tech Has Arrived"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "arrival_card",
+      "name": "Arrival Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Category Tag",
+          "default": "GaN Architecture"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title",
+          "default": "VoltCore 140W Quad GaN"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Powers 2 MacBooks simultaneously."
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price",
+          "default": "₹7,499"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Image URL",
+          "default": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-0Qkq6N9DkQzpZdldf8XYqfEi663QR09uVYvIXmT_V7PWcY2XfHusctvwAF98ZLWCXHiVrUFqfzN7_dr-8GJB75pQRUysfuwA6QP1vv5-udpxvPsMqJuyiqPrUGFGhUzQi-OiNOa_d3AXMjJpkMVHxhm-iQGF5PwAZmRBWpVp8k-7iPslo8vqtQ2pwHTspJJ7DJEZZSv4-AOQnwcb8wEZNOYjzoZh7vcMo4OfuGc"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Product Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "New Arrivals",
+      "blocks": [
+        {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "GaN Architecture",
+            "title": "VoltCore 140W Quad GaN",
+            "description": "Powers 2 MacBooks simultaneously.",
+            "price": "₹7,499",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-0Qkq6N9DkQzpZdldf8XYqfEi663QR09uVYvIXmT_V7PWcY2XfHusctvwAF98ZLWCXHiVrUFqfzN7_dr-8GJB75pQRUysfuwA6QP1vv5-udpxvPsMqJuyiqPrUGFGhUzQi-OiNOa_d3AXMjJpkMVHxhm-iQGF5PwAZmRBWpVp8k-7iPslo8vqtQ2pwHTspJJ7DJEZZSv4-AOQnwcb8wEZNOYjzoZh7vcMo4OfuGc"
+          }
+        },
+        {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "Studio Connectivity",
+            "title": "OmniPort Thunderbolt 4 Hub",
+            "description": "Dual 8K 60Hz Display Output.",
+            "price": "₹24,990",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDGEpa3ZF4BninbdX9C1aYzsJfPq-dlwl94aXFkALra-DA7lhmUbCOQa33-RvhJlXFNCTFmSPyPd0oB-50Q3XCHmo48s1bdGcCl8pe_LJiF3LlK4_lFHF7GwlwegZCsWj4oR3Qhijmt1tHLuPm9BfJrcyd7v19KObkMvkXwlJ4L_DzuEg4T2MC92_NjJLxNELJRFAVZe7E7XbCOqdZROEBtRRBopm-uhvd5g-9Wv1E"
+          }
+        },
+        {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "Input Precision",
+            "title": "AeroGlide 8K Wireless",
+            "description": "38 Grams • 8000Hz Polling Rate.",
+            "price": "₹11,999",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAL2Q_3w--an2Mucj27XrLeDbmfbuWNxs_ACgRajas94_rd12L1z9ZdHr70ygzU0oIuh4maWDULQTDe24-JLXqXJvb2u31Q2utj2xYRHiftW3TdYZBY83PSaBETi45ilW_AgFGBKVZyfXcjVWHtSRXkgopa6xI5_SCM975jBYSxzpcvtlV3yoj65SYF7Iee0ZxR9_T1CvoGtc_iKdR0H4viFZK2L507NdO-z0V6EL4"
+          }
+        },
+        {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "Creator Optics",
+            "title": "Iris Pro Webcam 4K HDR",
+            "description": "Sony STARVIS 2 • AI Framing.",
+            "price": "₹16,499",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAovwz4L6X9uY9_3B9hE6hY3uX1e5k7q-9p4_1sR3nN48_0vY1aE9uY8_3B"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,244 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 9: Exclusive Flash Deal
+  Countdown timer drop with live inventory progress bar and bundle showcase
+{%- endcomment -%}
+
+<section class="py-16 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="rounded-3xl bg-inverse-surface border-2 border-primary/40 p-8 lg:p-14 text-inverse-on-surface relative overflow-hidden shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <!-- Deal Content & Countdown -->
+        <div class="lg:col-span-7">
+          {%- if section.settings.badge != blank -%}
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-error-container text-on-error-container font-label-md text-label-md mb-6 font-bold">
+              <span class="material-symbols-outlined text-[16px]">local_fire_department</span>
+              <span>{{ section.settings.badge }}</span>
+            </div>
+          {%- endif -%}
+
+          <h2 class="text-3xl lg:text-headline-lg font-headline-lg font-bold tracking-tight mb-2">
+            {{ section.settings.title | default: 'NEXORA Visionary Duo Bundle' }}
+          </h2>
+
+          <p class="text-body-md font-body-md text-inverse-on-surface/80 mb-6">
+            {{ section.settings.description | default: 'Includes Horizon Pro 5G (512GB Titanium) + Chronos Ultra Gen 3 Smartwatch with Italian Leather and Alpine Straps.' }}
+          </p>
+
+          <!-- Countdown Timer Blocks -->
+          <div 
+            class="flex items-center gap-2 sm:gap-3 mb-8" 
+            data-countdown-timer 
+            data-duration-hours="{{ section.settings.duration_hours | default: 48 }}"
+            {% if section.settings.target_end_date != blank %}data-target-date="{{ section.settings.target_end_date }}"{% endif %}
+          >
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-center min-w-[60px] sm:min-w-[70px]">
+              <span class="block text-headline-sm font-headline-sm font-bold text-inverse-primary" data-days>02</span>
+              <span class="text-label-sm font-label-sm text-inverse-on-surface/60 uppercase">Days</span>
+            </div>
+            <span class="text-xl font-bold text-inverse-primary">:</span>
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-center min-w-[60px] sm:min-w-[70px]">
+              <span class="block text-headline-sm font-headline-sm font-bold text-inverse-primary" data-hours>14</span>
+              <span class="text-label-sm font-label-sm text-inverse-on-surface/60 uppercase">Hours</span>
+            </div>
+            <span class="text-xl font-bold text-inverse-primary">:</span>
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-center min-w-[60px] sm:min-w-[70px]">
+              <span class="block text-headline-sm font-headline-sm font-bold text-inverse-primary" data-mins>38</span>
+              <span class="text-label-sm font-label-sm text-inverse-on-surface/60 uppercase">Mins</span>
+            </div>
+            <span class="text-xl font-bold text-inverse-primary">:</span>
+            <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-center min-w-[60px] sm:min-w-[70px]">
+              <span class="block text-headline-sm font-headline-sm font-bold text-inverse-primary" data-secs>45</span>
+              <span class="text-label-sm font-label-sm text-inverse-on-surface/60 uppercase">Secs</span>
+            </div>
+          </div>
+
+          <!-- Price Breakdown -->
+          <div class="flex flex-wrap items-baseline gap-4 mb-4">
+            <span class="text-3xl sm:text-display font-display leading-none font-bold text-inverse-on-surface">
+              {{ section.settings.deal_price | default: '₹89,990' }}
+            </span>
+            {%- if section.settings.original_price != blank -%}
+              <span class="text-headline-sm font-headline-sm text-inverse-on-surface/50 line-through">
+                {{ section.settings.original_price }}
+              </span>
+            {%- endif -%}
+            {%- if section.settings.savings_badge != blank -%}
+              <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 font-label-md text-label-md font-bold">
+                {{ section.settings.savings_badge }}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <!-- Inventory Meter -->
+          <div class="mb-8 max-w-md">
+            <div class="flex justify-between text-label-sm font-label-sm text-inverse-on-surface/70 mb-1.5 font-medium">
+              <span>{{ section.settings.inventory_percent | default: '78%' }} Claimed</span>
+              <span class="text-inverse-primary font-bold">{{ section.settings.inventory_remaining | default: 'Only 14 bundles remaining' }}</span>
+            </div>
+            <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+              <div class="h-full bg-gradient-to-r from-primary to-secondary rounded-full" style="width: {{ section.settings.inventory_percent_int | default: 78 }}%;"></div>
+            </div>
+          </div>
+
+          <!-- Action & Security -->
+          <div class="flex flex-wrap items-center gap-4">
+            <a 
+              class="h-12 px-8 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all duration-200 font-label-md text-label-md font-semibold shadow-lg flex items-center gap-2"
+              href="{{ section.settings.cta_link | default: '#bundle' }}"
+            >
+              <span>{{ section.settings.cta_text | default: 'Claim This Deal Now' }}</span>
+              <span class="material-symbols-outlined text-[18px]">bolt</span>
+            </a>
+
+            {%- if section.settings.guarantee_text != blank -%}
+              <div class="flex items-center gap-1.5 text-label-sm font-label-sm text-inverse-on-surface/80">
+                <span class="material-symbols-outlined text-[16px] text-emerald-400">local_shipping</span>
+                <span>{{ section.settings.guarantee_text }}</span>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+
+        <!-- Visual Bundle Stage -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="w-full aspect-square rounded-2xl bg-white/5 border border-white/10 p-4 backdrop-blur-md">
+            {%- if section.settings.image != blank -%}
+              <img 
+                class="w-full h-full object-cover rounded-xl" 
+                src="{{ section.settings.image | image_url: width: 900 }}" 
+                alt="{{ section.settings.title | escape }}"
+                loading="lazy"
+              />
+            {%- else -%}
+              <img 
+                class="w-full h-full object-cover rounded-xl" 
+                alt="Visionary Duo Bundle Stage" 
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuATzSC6hJHLEqL_zfKjiCZQd6xrSLLb6oQkvXdHZuUg3J-JXKZyovCd0cR0IfrsK4WG3GEib_5I9BSsl81tFPOs-W0ChlSra3PmuAFjQh_51zWGCn_B4tn0NU9sXGmTM_2tYgajiM72nXDx3XcY_0hLpzeuShKPsNQF8mbZ8e88dgUm2qooHJmlVPGYnhPlc077FOVyvRbL46fOnWAeSQ9GMq9lUUDkd9E3M8TdAqo"
+                loading="lazy"
+              />
+            {%- endif -%}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Flash Deal",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "LIMITED 48-HOUR FLASH DROP"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Deal Title",
+      "default": "NEXORA Visionary Duo Bundle"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Deal Description",
+      "default": "Includes Horizon Pro 5G (512GB Titanium) + Chronos Ultra Gen 3 Smartwatch with Italian Leather and Alpine Straps."
+    },
+    {
+      "type": "header",
+      "content": "Timer Settings"
+    },
+    {
+      "type": "number",
+      "id": "duration_hours",
+      "label": "Default Duration (Hours)",
+      "default": 48
+    },
+    {
+      "type": "text",
+      "id": "target_end_date",
+      "label": "Exact End Date (e.g. 2026-12-31T23:59:59)"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "deal_price",
+      "label": "Deal Price",
+      "default": "₹89,990"
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original Price",
+      "default": "₹1,08,498"
+    },
+    {
+      "type": "text",
+      "id": "savings_badge",
+      "label": "Savings Badge Text",
+      "default": "SAVE ₹18,508 (17% OFF)"
+    },
+    {
+      "type": "header",
+      "content": "Inventory Meter"
+    },
+    {
+      "type": "text",
+      "id": "inventory_percent",
+      "label": "Percentage Claimed Text",
+      "default": "78%"
+    },
+    {
+      "type": "range",
+      "id": "inventory_percent_int",
+      "label": "Progress Bar Width (%)",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "default": 78
+    },
+    {
+      "type": "text",
+      "id": "inventory_remaining",
+      "label": "Inventory Remaining Text",
+      "default": "Only 14 bundles remaining"
+    },
+    {
+      "type": "header",
+      "content": "Action & Media"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Button Text",
+      "default": "Claim This Deal Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee Text",
+      "default": "Guaranteed Delivery in 24 Hours"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bundle Showcase Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Flash Deal"
+    }
+  ]
+}
+{% endschema %}

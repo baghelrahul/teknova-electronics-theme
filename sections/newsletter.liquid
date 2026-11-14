@@ -1,0 +1,119 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 13: Newsletter Subscription
+  VIP intel drop subscription card with instant reward coupon reveal
+{%- endcomment -%}
+
+<section class="py-20 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="relative rounded-3xl bg-inverse-surface text-inverse-on-surface p-8 sm:p-10 md:p-16 border border-outline/30 overflow-hidden shadow-2xl">
+      <!-- Architectural ambient glow -->
+      <div class="absolute top-0 right-0 w-[450px] h-[450px] bg-secondary-container/20 blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-2xl relative z-10">
+        {%- if section.settings.badge != blank -%}
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-inverse-primary text-label-sm font-label-sm font-semibold mb-4">
+            <span>{{ section.settings.badge }}</span>
+          </div>
+        {%- endif -%}
+
+        <h2 class="text-3xl sm:text-headline-lg font-headline-lg font-bold tracking-tight mb-3">
+          {{ section.settings.heading | default: 'Stay Ahead of What’s Next.' }}
+        </h2>
+
+        <p class="text-body-lg font-body-lg text-inverse-on-surface/80 mb-8">
+          {{ section.settings.subheading | default: 'Receive VIP access to secret flash drops, firmware updates, and insider tech previews. No spam, ever.' }}
+        </p>
+
+        {%- form 'customer', class: 'mb-4' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+
+          {%- if form.posted_successfully? -%}
+            <div class="p-4 rounded-lg bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-body-md font-body-md mb-4">
+              🎉 {{ section.settings.success_message | default: 'Coupon unlocked! Use code NEXORA1000 at checkout for ₹1,000 off your first purchase.' }}
+            </div>
+          {%- else -%}
+            <div class="flex flex-col sm:flex-row gap-3 max-w-lg">
+              <input 
+                class="h-12 px-4 rounded-lg bg-surface-container-lowest text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:ring-2 focus:ring-primary flex-1 text-body-md font-body-md" 
+                placeholder="{{ section.settings.placeholder | default: 'Enter your email address' }}" 
+                type="email"
+                name="contact[email]"
+                value="{{ form.email }}"
+                required
+              />
+              <button 
+                class="h-12 px-6 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-semibold transition-all shadow-md shrink-0" 
+                type="submit"
+              >
+                {{ section.settings.button_text | default: 'Get VIP Access' }}
+              </button>
+            </div>
+          {%- endif -%}
+
+          {%- if form.errors -%}
+            <p class="text-rose-400 text-sm mt-2">{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}</p>
+          {%- endif -%}
+        {%- endform -%}
+
+        <p class="text-body-sm font-body-sm text-inverse-on-surface/60">
+          {{ section.settings.disclaimer | default: 'By subscribing, you agree with our Privacy Terms. Unsubscribe with one click anytime.' }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter Subscription",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Text",
+      "default": "VIP INTEL DROP"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Stay Ahead of What’s Next."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Receive VIP access to secret flash drops, firmware updates, and insider tech previews. No spam, ever."
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Input Placeholder",
+      "default": "Enter your email address"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Submit Button Text",
+      "default": "Get VIP Access"
+    },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success / Coupon Message",
+      "default": "Coupon unlocked! Use code NEXORA1000 at checkout for ₹1,000 off your first purchase."
+    },
+    {
+      "type": "text",
+      "id": "disclaimer",
+      "label": "Disclaimer Text",
+      "default": "By subscribing, you agree with our Privacy Terms. Unsubscribe with one click anytime."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Subscription"
+    }
+  ]
+}
+{% endschema %}

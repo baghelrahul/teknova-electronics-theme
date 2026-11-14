@@ -1,0 +1,194 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 12: Customer Reviews
+  Verified customer testimonials with overall ratings & buyer details
+{%- endcomment -%}
+
+<section class="py-20 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="text-label-md font-label-md uppercase tracking-wider text-primary font-semibold">
+          {{ section.settings.eyebrow | default: 'Owner Testimonials' }}
+        </span>
+        <h2 class="text-headline-lg font-headline-lg text-on-surface mt-1">
+          {{ section.settings.heading | default: 'Loved by Tech Enthusiasts' }}
+        </h2>
+        <div class="flex items-center gap-2 mt-2">
+          <div class="flex text-amber-500">
+            {%- for i in (1..5) -%}
+              <span class="material-symbols-outlined text-[18px] fill-1">star</span>
+            {%- endfor -%}
+          </div>
+          <span class="text-body-sm font-body-sm font-bold text-on-surface">{{ section.settings.overall_rating | default: '4.9 Overall Rating' }}</span>
+          <span class="text-body-sm font-body-sm text-on-surface-variant">{{ section.settings.purchasers_count | default: 'across 42,800+ verified purchasers' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 flex flex-col justify-between" {{ block.shopify_attributes }}>
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex text-amber-500">
+                  {%- assign stars_count = block.settings.stars | default: 5 -%}
+                  {%- for s in (1..stars_count) -%}
+                    <span class="material-symbols-outlined text-[16px] fill-1">star</span>
+                  {%- endfor -%}
+                </div>
+                {%- if block.settings.badge != blank -%}
+                  <span class="px-2 py-0.5 rounded-full bg-surface-container text-label-sm font-label-sm text-primary font-semibold">
+                    {{ block.settings.badge }}
+                  </span>
+                {%- endif -%}
+              </div>
+              <p class="text-body-md font-body-md text-on-surface mb-6 font-medium">
+                "{{ block.settings.review_text }}"
+              </p>
+            </div>
+            <div>
+              <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/30">
+                <div class="w-10 h-10 rounded-full {{ block.settings.avatar_bg | default: 'bg-primary/10 text-primary' }} font-bold flex items-center justify-center text-sm">
+                  {{ block.settings.initials }}
+                </div>
+                <div>
+                  <h4 class="text-label-md font-label-md font-bold text-on-surface">{{ block.settings.author_name }}</h4>
+                  <p class="text-body-sm font-body-sm text-on-surface-variant">Purchased: {{ block.settings.product_purchased }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Owner Testimonials"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Loved by Tech Enthusiasts"
+    },
+    {
+      "type": "text",
+      "id": "overall_rating",
+      "label": "Overall Rating Text",
+      "default": "4.9 Overall Rating"
+    },
+    {
+      "type": "text",
+      "id": "purchasers_count",
+      "label": "Purchaser Count Description",
+      "default": "across 42,800+ verified purchasers"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review Card",
+      "settings": [
+        {
+          "type": "range",
+          "id": "stars",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge Text",
+          "default": "Verified Buyer"
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Review Quote",
+          "default": "The delivery speed for the Horizon Pro was mind-boggling. Dispatched at 9 AM, reached Bengaluru doorstep by 4 PM. The packaging is pure gallery grade. Build quality is unmatched."
+        },
+        {
+          "type": "text",
+          "id": "initials",
+          "label": "Author Initials",
+          "default": "AK"
+        },
+        {
+          "type": "text",
+          "id": "avatar_bg",
+          "label": "Avatar Color Class",
+          "default": "bg-primary/10 text-primary"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Author Name",
+          "default": "Arjun Kapoor"
+        },
+        {
+          "type": "text",
+          "id": "product_purchased",
+          "label": "Product Purchased",
+          "default": "Horizon Pro 5G"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "badge": "Verified Buyer",
+            "review_text": "The delivery speed for the Horizon Pro was mind-boggling. Dispatched at 9 AM, reached Bengaluru doorstep by 4 PM. The packaging is pure gallery grade. Build quality is unmatched.",
+            "initials": "AK",
+            "avatar_bg": "bg-primary/10 text-primary",
+            "author_name": "Arjun Kapoor",
+            "product_purchased": "Horizon Pro 5G"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "badge": "Verified Buyer",
+            "review_text": "AuraWave Max ANC completely silences metro commutes and open office chatter. Planar drivers deliver separation on acoustic tracks that rival my ₹80k desktop studio monitors.",
+            "initials": "RM",
+            "avatar_bg": "bg-secondary/10 text-secondary",
+            "author_name": "Rohan Mehta",
+            "product_purchased": "AuraWave Max ANC"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "badge": "Verified Buyer",
+            "review_text": "AeroBook 16 is an absolute titan for 8K DaVinci Resolve rendering workflows. Thermals stay completely silent even under relentless sustained compilation loads.",
+            "initials": "PS",
+            "avatar_bg": "bg-primary/10 text-primary",
+            "author_name": "Priya Sundaram",
+            "product_purchased": "Vanguard AeroBook 16"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

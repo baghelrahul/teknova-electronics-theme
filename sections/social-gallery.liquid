@@ -1,0 +1,146 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 15: Instagram & Community Social Gallery
+  5-column aesthetic social showcase with hover likes and shop tags
+{%- endcomment -%}
+
+<section class="py-20 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+      <div>
+        <span class="text-label-md font-label-md uppercase tracking-wider text-secondary font-semibold">
+          {{ section.settings.eyebrow | default: 'Aesthetic Ecosystem' }}
+        </span>
+        <h2 class="text-headline-lg font-headline-lg text-on-surface mt-1">
+          {{ section.settings.heading | default: 'Follow the Future of Tech' }}
+        </h2>
+      </div>
+
+      {%- if section.settings.handle_text != blank -%}
+        <a class="mt-4 md:mt-0 text-label-md font-label-md font-bold text-primary hover:underline flex items-center gap-1.5" href="{{ section.settings.handle_link | default: 'https://instagram.com' }}" target="_blank" rel="noopener">
+          <span>{{ section.settings.handle_text }}</span>
+          <span class="material-symbols-outlined text-[16px]">open_in_new</span>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <div class="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container-low" {{ block.shopify_attributes }}>
+            <img 
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+              src="{{ block.settings.image_url }}" 
+              alt="{{ block.settings.likes_count | default: 'Community post' | escape }}"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-inverse-surface/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center text-inverse-on-surface">
+              <span class="material-symbols-outlined text-[28px] mb-1">photo_camera</span>
+              <span class="text-label-sm font-label-sm font-bold">{{ block.settings.likes_count }}</span>
+              <a href="{{ block.settings.link | default: '#' }}" class="mt-2 px-2.5 py-1 rounded bg-white/20 text-[10px] uppercase font-bold tracking-wider hover:bg-primary transition-colors">
+                Shop Setup
+              </a>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social Gallery",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Aesthetic Ecosystem"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Follow the Future of Tech"
+    },
+    {
+      "type": "text",
+      "id": "handle_text",
+      "label": "Social Handle Text",
+      "default": "@nexoratech on Instagram"
+    },
+    {
+      "type": "url",
+      "id": "handle_link",
+      "label": "Social Handle Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "gallery_item",
+      "name": "Gallery Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "likes_count",
+          "label": "Likes Text",
+          "default": "1,824 likes"
+        },
+        {
+          "type": "text",
+          "id": "image_url",
+          "label": "Image URL",
+          "default": "https://lh3.googleusercontent.com/aida-public/AB6AXuC27RHatjjQlI4FN83fJWiC3WhFUXYJQCNsG6LLYiK1tDLMbNjHqy0fX8KawNPZ_vGVv79T11rZeQQqKA2vHga1nKzuEVBuEaFlckfDNQwqhZ9CReoaaCuNlMzLUao8JVymfoh3bIltKm7_ltulbOrbKMgj9Z3TPZn6RfLzSdqnOfQUCWzXBUkxMgDYhd35G0B9pAyYFh7Z_pvBNY-94fuPZOwifYOEqo7evwFbNpI"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Product / Post Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Gallery",
+      "blocks": [
+        {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "1,824 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC27RHatjjQlI4FN83fJWiC3WhFUXYJQCNsG6LLYiK1tDLMbNjHqy0fX8KawNPZ_vGVv79T11rZeQQqKA2vHga1nKzuEVBuEaFlckfDNQwqhZ9CReoaaCuNlMzLUao8JVymfoh3bIltKm7_ltulbOrbKMgj9Z3TPZn6RfLzSdqnOfQUCWzXBUkxMgDYhd35G0B9pAyYFh7Z_pvBNY-94fuPZOwifYOEqo7evwFbNpI"
+          }
+        },
+        {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "2,410 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC3Ljvvn_U5jJxMQcYBKuIXxGinr7bawtYLagpby-R4_XnycN_WVIK6p9_fiBhmQwpU3xSJ642gRqF0np9LcnY6Lhzl0imBiK26yXNgfyO39NLvx4Um96HZ1y8VUos6HaUVU-pxLy8chNtTYj_W64POGIkmlp1OnRe9RzyI_Xe2F2q4VKW-O1mc1DWkCiZuY9qsBTivyD52jJtgjgd9xnbbu5yGRxv8JWGikuWZPA4"
+          }
+        },
+        {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "3,120 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBKkbP7pTqj3xivagRXNv0skP1pJ0ZxtUEQKn-Rw0K0w2K1SIZMsHHeeZDOmHBT2EwH-YnjUIN5UNUviL1vok6UjjcKM2Ykue5WYi6gqM1y-O1qQTJ_tpO-DR285X86LKf4nLXdiPmrB8Bew6-_dvXMhdhN9opg8U3SaB0LWe92do540WbF8EhuTAw_nKo1LydP9zhYvzl_71ZaaQtrTC3Lb5V5O98R5dEIroDW1pA"
+          }
+        },
+        {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "1,450 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuD93922aE8-h4nL_y8yH_yU2i-s1k6182hX3hP5W2e8t_rG8x9-X7K0qP1f"
+          }
+        },
+        {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "4,290 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,14 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Shopify CLI & Local Cache
+.shopify/
+*.zip
+stitch_screen.html
+
+# Node / Scratch
+node_modules/
+.env
+.env.local

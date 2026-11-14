@@ -1,0 +1,24 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "best-sellers",
+      "settings": {
+        "eyebrow": "Complementary Engineering",
+        "heading": "Frequently Paired With This Item"
+      }
+    },
+    "reviews": {
+      "type": "customer-reviews",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "recommendations",
+    "reviews"
+  ]
+}

@@ -1,0 +1,247 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 2: Sticky Header & Navigation
+  Logo, search bar, navigation links, trailing action cluster & mobile drawer
+{%- endcomment -%}
+
+<header class="sticky top-0 lg:top-9 z-40 w-full bg-surface/85 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-200">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-4 md:gap-6">
+    <!-- Brand Logo + Search Group -->
+    <div class="flex items-center space-x-4 lg:space-x-8">
+      <!-- Mobile Hamburger Button -->
+      <button 
+        type="button" 
+        class="md:hidden p-2 text-on-surface hover:text-primary focus:outline-none" 
+        aria-label="Toggle Navigation Menu"
+        data-mobile-menu-toggle
+      >
+        <span class="material-symbols-outlined text-[24px]">menu</span>
+      </button>
+
+      <!-- Logo -->
+      <a class="text-headline-sm font-headline-sm font-bold tracking-tight text-on-surface uppercase flex items-center gap-1.5" href="{{ routes.root_url }}">
+        {%- if section.settings.logo != blank -%}
+          <img 
+            src="{{ section.settings.logo | image_url: width: 300 }}" 
+            alt="{{ shop.name | escape }}" 
+            class="h-8 w-auto object-contain"
+          >
+        {%- else -%}
+          <span>{{ section.settings.brand_text | default: 'NEXORA' }}</span>
+          <span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+        {%- endif -%}
+      </a>
+
+      <!-- Search Bar -->
+      {%- if section.settings.show_search -%}
+        <div class="relative hidden lg:block w-72">
+          <form action="{{ routes.search_url }}" method="get" role="search">
+            <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
+              <span class="material-symbols-outlined text-[18px]">search</span>
+            </span>
+            <input 
+              class="w-full h-10 pl-9 pr-12 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
+              placeholder="{{ section.settings.search_placeholder | default: 'Search audio, flagships, OLED...' }}" 
+              type="search"
+              name="q"
+            />
+            <kbd class="absolute right-2.5 top-2.5 px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant/70 bg-surface-container-low border border-outline-variant/50 rounded pointer-events-none">⌘K</kbd>
+          </form>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex items-center space-x-5 lg:space-x-7">
+      {%- if section.settings.menu != blank -%}
+        {%- for link in linklists[section.settings.menu].links -%}
+          <a 
+            class="{% if link.active %}text-primary border-b-2 border-primary pb-1 font-semibold{% else %}text-on-surface-variant hover:text-on-surface font-medium{% endif %} text-label-md font-label-md transition-colors duration-200" 
+            href="{{ link.url }}"
+          >
+            {{ link.title }}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-md font-label-md transition-colors duration-200" href="#audio">Audio</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#visual">Visual</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#computing">Computing</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#wearables">Wearables</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#accessories">Accessories</a>
+      {%- endif -%}
+    </nav>
+
+    <!-- Trailing Action Cluster -->
+    <div class="flex items-center space-x-2 sm:space-x-4">
+      <!-- Wishlist Action -->
+      {%- if section.settings.show_wishlist -%}
+        <a href="{{ section.settings.wishlist_url | default: '#wishlist' }}" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="Wishlist">
+          <span class="material-symbols-outlined text-[22px]">favorite</span>
+          <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center">
+            {{ section.settings.wishlist_count | default: 3 }}
+          </span>
+        </a>
+      {%- endif -%}
+
+      <!-- Global Region Action -->
+      {%- if section.settings.show_region_button -%}
+        <button type="button" class="hidden sm:inline-flex p-2 text-on-surface-variant hover:text-primary transition-colors" title="Global Region">
+          <span class="material-symbols-outlined text-[22px]">public</span>
+        </button>
+      {%- endif -%}
+
+      <!-- Account Action -->
+      {%- if shop.customer_accounts_enabled or section.settings.force_show_account -%}
+        <a class="hidden sm:flex items-center gap-1.5 text-label-md font-label-md font-medium text-on-surface-variant hover:text-primary transition-colors" href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}">
+          <span class="material-symbols-outlined text-[20px]">account_circle</span>
+          <span>{% if customer %}{{ customer.first_name }}{% else %}{{ section.settings.account_label | default: 'Account' }}{% endif %}</span>
+        </a>
+      {%- endif -%}
+
+      <!-- Dynamic Cart Action -->
+      <a href="{{ routes.cart_url }}" class="flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-200 text-label-md font-label-md shadow-sm shrink-0">
+        <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+        <span>Cart ({{ cart.item_count }})</span>
+        <span class="hidden xl:inline text-inverse-on-surface/60">• {{ cart.total_price | money }}</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Menu Drawer Backdrop -->
+<div 
+  class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300"
+  data-mobile-menu-backdrop
+></div>
+
+<!-- Mobile Navigation Drawer -->
+<div 
+  class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-surface z-50 transform translate-x-full transition-transform duration-300 ease-in-out shadow-2xl flex flex-col justify-between p-6"
+  data-mobile-menu-drawer
+>
+  <div>
+    <div class="flex items-center justify-between pb-4 border-b border-outline-variant/30 mb-6">
+      <span class="text-headline-sm font-bold uppercase tracking-tight text-on-surface">{{ section.settings.brand_text | default: 'NEXORA' }}</span>
+      <button type="button" class="p-2 text-on-surface-variant hover:text-primary" data-mobile-menu-close aria-label="Close menu">
+        <span class="material-symbols-outlined text-[22px]">close</span>
+      </button>
+    </div>
+
+    <!-- Mobile Search Form -->
+    <form action="{{ routes.search_url }}" method="get" class="mb-6">
+      <div class="relative">
+        <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
+          <span class="material-symbols-outlined text-[18px]">search</span>
+        </span>
+        <input 
+          class="w-full h-10 pl-9 pr-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary" 
+          placeholder="Search catalog..." 
+          type="search"
+          name="q"
+        />
+      </div>
+    </form>
+
+    <!-- Mobile Nav Links -->
+    <nav class="flex flex-col space-y-4">
+      {%- if section.settings.menu != blank -%}
+        {%- for link in linklists[section.settings.menu].links -%}
+          <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="{{ link.url }}">
+            {{ link.title }}
+          </a>
+        {%- endfor -%}
+      {%- else -%}
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#audio">Audio</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#visual">Visual</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#computing">Computing</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#wearables">Wearables</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#accessories">Accessories</a>
+      {%- endif -%}
+    </nav>
+  </div>
+
+  <div class="pt-6 border-t border-outline-variant/30 flex flex-col gap-3">
+    <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="flex items-center gap-2 text-body-md text-on-surface hover:text-primary">
+      <span class="material-symbols-outlined text-[20px]">account_circle</span>
+      <span>{% if customer %}{{ customer.name }}{% else %}Account Login{% endif %}</span>
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Header & Navigation",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo Image"
+    },
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand Text (if no logo)",
+      "default": "NEXORA"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Main Menu"
+    },
+    {
+      "type": "header",
+      "content": "Search Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show Search Bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_placeholder",
+      "label": "Search Placeholder",
+      "default": "Search audio, flagships, OLED..."
+    },
+    {
+      "type": "header",
+      "content": "Actions & Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "label": "Show Wishlist Icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "wishlist_count",
+      "label": "Wishlist Default Count",
+      "default": "3"
+    },
+    {
+      "type": "url",
+      "id": "wishlist_url",
+      "label": "Wishlist Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_region_button",
+      "label": "Show Global Region Icon",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "force_show_account",
+      "label": "Always Show Account Link",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "account_label",
+      "label": "Account Link Text",
+      "default": "Account"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "shop-by-categories",
+      "settings": {
+        "eyebrow": "All Categories",
+        "heading": "Collections Directory"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

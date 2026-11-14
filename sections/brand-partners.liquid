@@ -1,0 +1,92 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 11: Featured Brand Partners
+  Authorized distribution ribbon with typography & logo styling
+{%- endcomment -%}
+
+<section class="py-12 bg-surface border-y border-outline-variant/30 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    {%- if section.settings.subheading != blank -%}
+      <p class="text-center text-label-sm font-label-sm uppercase tracking-widest text-on-surface-variant/70 mb-8 font-semibold">
+        {{ section.settings.subheading }}
+      </p>
+    {%- endif -%}
+
+    <div class="flex flex-wrap items-center justify-around gap-8 opacity-75">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          {%- if block.settings.image != blank -%}
+            <a href="{{ block.settings.link | default: '#' }}" class="inline-block grayscale hover:grayscale-0 transition-all" {{ block.shopify_attributes }}>
+              <img src="{{ block.settings.image | image_url: width: 240 }}" alt="{{ block.settings.brand_name | escape }}" class="h-8 w-auto object-contain">
+            </a>
+          {%- else -%}
+            <a 
+              href="{{ block.settings.link | default: '#' }}" 
+              class="text-xl sm:text-headline-sm font-headline-sm font-bold {{ block.settings.tracking_class | default: 'tracking-tight' }} text-on-surface hover:text-primary transition-colors cursor-pointer"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.brand_name }}
+            </a>
+          {%- endif -%}
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Brand Partners",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Ribbon Header Text",
+      "default": "Authorized Direct Distribution Partner for Industry Leaders"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand Partner",
+      "settings": [
+        {
+          "type": "text",
+          "id": "brand_name",
+          "label": "Brand Name",
+          "default": " Apple Authorized"
+        },
+        {
+          "type": "text",
+          "id": "tracking_class",
+          "label": "CSS Letter Spacing",
+          "default": "tracking-tighter"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Brand Logo (Optional)"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Brand Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Brand Partners",
+      "blocks": [
+        { "type": "brand", "settings": { "brand_name": " Apple Authorized", "tracking_class": "tracking-tighter" } },
+        { "type": "brand", "settings": { "brand_name": "SAMSUNG", "tracking_class": "tracking-tight" } },
+        { "type": "brand", "settings": { "brand_name": "SONY", "tracking_class": "tracking-widest" } },
+        { "type": "brand", "settings": { "brand_name": "JBL", "tracking_class": "tracking-wide" } },
+        { "type": "brand", "settings": { "brand_name": "NOTHING", "tracking_class": "tracking-widest" } },
+        { "type": "brand", "settings": { "brand_name": "BOSE", "tracking_class": "tracking-wider" } },
+        { "type": "brand", "settings": { "brand_name": "ONEPLUS", "tracking_class": "tracking-tight" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

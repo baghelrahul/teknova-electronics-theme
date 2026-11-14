@@ -1,0 +1,556 @@
+{
+  "sections": {
+    "hero_banner": {
+      "type": "hero-banner",
+      "settings": {
+        "badge": "NEXORA 2026 ARCHITECTURE",
+        "heading_line_1": "Upgrade",
+        "heading_gradient": "Your World.",
+        "description": "Discover next-generation technology designed to make everyday life smarter, faster, and remarkably seamless. Calibrated for purists and creators.",
+        "primary_cta_text": "Shop Now — Explore 2026 Fleet",
+        "primary_cta_link": "#trending",
+        "secondary_cta_text": "Explore Collections",
+        "secondary_cta_link": "#categories",
+        "spec_1": "ANC 45dB Planar",
+        "spec_2": "M4 Architecture",
+        "spec_3": "120Hz LTPO ProMotion",
+        "metric_1_val": "4.9 / 5",
+        "metric_1_label": "42k+ Verified Owners",
+        "metric_2_val": "Next-Day",
+        "metric_2_label": "Over 100+ Metro Hubs",
+        "metric_3_val": "100% Genuine",
+        "metric_3_label": "Direct Authorised Channel"
+      }
+    },
+    "shop_by_categories": {
+      "type": "shop-by-categories",
+      "blocks": {
+        "cat_1": {
+          "type": "category_card",
+          "settings": {
+            "title": "Smartphones",
+            "subtitle": "Flagship Foldables & Pro Series",
+            "count_badge": "24 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCwaPP0MeGkYyshK3dhWVPsGqum3QGaHSwz49BPvuXW3RevXJRt-4bUWadgw9b3LW5DtEpRO2-UwcCkBgI3mxC9nPTkiv2L-_tMBq6KiHNr4tJzIJcwSFrDUX8lS1ayCo79mPOzL_RO2xawxhcWrpjFy4HvvXwsBDN0XbWDbqO3kxZcNbyU6HqVelgsxDXoFrhGVumvrIxNw78wWl46Vaj80-zoW8b7wHZUnQqMfbg"
+          }
+        },
+        "cat_2": {
+          "type": "category_card",
+          "settings": {
+            "title": "Laptops & Tablets",
+            "subtitle": "Silicon & OLED Workstations",
+            "count_badge": "18 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBjLYpCs68_yZHbZZLaBhJ-do1Dm8g_qWeamzsnlPvM0rTnq5yjo4M-4LA9k5s7mjNk1C8qy0XOCnYqceI6Fqi-kyYGU3-ERChz1QLJ_K6nv4zH3Pyd5W3ezrSzt7b7KmHluPrMaTNoQ8_NwA3Gx5qKcJIOyAjzkLDFyyP6Kqb_i_dTG2whWe9ifa7cKVBiY4YBN_lyBdt3fcVT-k29wRN6nqfMkgOYWKJKmMv5fYA"
+          }
+        },
+        "cat_3": {
+          "type": "category_card",
+          "settings": {
+            "title": "Headphones & Audio",
+            "subtitle": "Spatial Acoustics & Monitors",
+            "count_badge": "32 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBobEPgxWoko9gpk_7c-5F-HXeCFv4WYhCtIJK4_Q6KARs8OW_u6d4IQCz4dOTCQW595y2ncdl7e41PNOCl1tmYpSP9AqJjyP_rMVVMSNv_C_kxPxNzRMY9s0CfjBBJS2ZE2L5fpLK03NhMkzWZnsMPQQj-xzCfzyHslEGbG6EdaF3bYqxz7iKC5lzRchm6tOUJrsGH3HWX2brpjilswLYcGGZhwQDwAq-bvpI6Zs4"
+          }
+        },
+        "cat_4": {
+          "type": "category_card",
+          "settings": {
+            "title": "Smartwatches & Fitness",
+            "subtitle": "Titanium GPS & Biosensing Tech",
+            "count_badge": "15 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAtOyoOuCHwxeVRBpzdlvVINrW9bWIgGDz7lg2JuSFc43H5GGcfwkLoUKsCcJuys3nvE6K-24r-fbzmPB1l_1LrowpL_f8DhZjfEaMCBRPi5Wa6w9DqtegBQs30BUWgwa8aNyMVUegz7qtIxS3jxh8TJQZm1tatuuhUzLDSwhoTqRJR6PoSUnv1OmzjRS1BoH08iSF-9AiE-SW8Krzxk4EowZUy8Z7tXPGtXZGD4dI"
+          }
+        },
+        "cat_5": {
+          "type": "category_card",
+          "settings": {
+            "title": "Gaming & Peripherals",
+            "subtitle": "Mechanical Keyboards & 8K Mice",
+            "count_badge": "28 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuB_9V_sQwb9DtNBcvZmvN4fD5tG1YrYgX7v-mKAOr8np9XxlUNfi57-yl1uqAuJE6Md3qSCKk0Xg4LFr-W2aa2n4N39_PRXineeHsVyDyahgZsqNHj1BBNvTozgyW-o378JmWmJnyIZzqKh0ngEvKrU-Ma1CHbvhANomeaktrhmKusVB1chH-qeVP_k_UjBolkP3hxi6dbjsjvNyHprm_hrTLRihZLQsHbI8YB4cGg"
+          }
+        },
+        "cat_6": {
+          "type": "category_card",
+          "settings": {
+            "title": "Smart Home & Automation",
+            "subtitle": "Matter-enabled Hubs & Light",
+            "count_badge": "19 Models",
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDozq7Z5b8ZRx0pWHEAJeUFLFThbhNCOKD0jO9Nb2GB_eYv0kuh-T-hp8ZzLFgfvbRgzvb66eKVJzVBlnO42DLeCRadjphHVjzRbslMSFzMXSSumGql7hRb_P_XiSiY_8SnNHl_8StuXdVO0ASO2vvMlBukbYqbbUObzCHj8eDy3Et2RjxCfpw2yr_3JH4RfvkTZLli8mjLYcCgfptMTSLJWc5K94RTpP5XBKJ4zGI"
+          }
+        }
+      },
+      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4", "cat_5", "cat_6"],
+      "settings": {
+        "eyebrow": "Classification",
+        "heading": "Engineered Categories",
+        "subheading": "Explore hardware tailored for creators, engineers, and audiophiles.",
+        "view_all_text": "View All 18 Segments"
+      }
+    },
+    "trending_products": {
+      "type": "trending-products",
+      "blocks": {
+        "trend_1": {
+          "type": "product_item",
+          "settings": {
+            "title": "NEXORA Horizon Pro 5G",
+            "subtitle": "Snapdragon 8 Gen 4 • 256GB",
+            "price": "₹79,999",
+            "compare_price": "₹89,999",
+            "rating": "4.9",
+            "reviews_count": "1,420",
+            "badge": "BESTSELLER",
+            "badge_color": "bg-secondary text-on-secondary",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU",
+            "swatches": "bg-stone-500, bg-neutral-900, bg-neutral-200",
+            "tab_category": "phones"
+          }
+        },
+        "trend_2": {
+          "type": "product_item",
+          "settings": {
+            "title": "AuraWave Max ANC",
+            "subtitle": "Spatial Audio • 65h Battery",
+            "price": "₹24,999",
+            "compare_price": "₹29,999",
+            "rating": "4.8",
+            "reviews_count": "890",
+            "badge": "NEW ARRIVAL",
+            "badge_color": "bg-emerald-600 text-white",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA",
+            "swatches": "bg-neutral-900, bg-slate-300",
+            "tab_category": "audio"
+          }
+        },
+        "trend_3": {
+          "type": "product_item",
+          "settings": {
+            "title": "Chronos Ultra Gen 3",
+            "subtitle": "Sapphire • ECG & Dual-GPS",
+            "price": "₹18,499",
+            "compare_price": "₹22,999",
+            "rating": "4.9",
+            "reviews_count": "640",
+            "badge": "15% OFF",
+            "badge_color": "bg-primary text-on-primary",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ",
+            "swatches": "bg-amber-800, bg-slate-700, bg-orange-500",
+            "tab_category": "wearables"
+          }
+        },
+        "trend_4": {
+          "type": "product_item",
+          "settings": {
+            "title": "Vanguard AeroBook 16",
+            "subtitle": "3.2K Mini-LED • 32GB RAM",
+            "price": "₹1,24,999",
+            "compare_price": "₹1,39,999",
+            "rating": "5.0",
+            "reviews_count": "310",
+            "badge": "CREATOR PICK",
+            "badge_color": "bg-secondary-container text-white",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70",
+            "swatches": "bg-stone-700, bg-stone-300",
+            "tab_category": "laptops"
+          }
+        },
+        "trend_5": {
+          "type": "product_item",
+          "settings": {
+            "title": "PulseBuds Pro 2 Spatial",
+            "subtitle": "Planar Drivers • Qi Wireless",
+            "price": "₹9,999",
+            "compare_price": "₹12,999",
+            "rating": "4.7",
+            "reviews_count": "520",
+            "badge": "TRENDING",
+            "badge_color": "bg-primary-container text-on-primary-container",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s",
+            "swatches": "bg-slate-900, bg-zinc-100",
+            "tab_category": "audio"
+          }
+        }
+      },
+      "block_order": ["trend_1", "trend_2", "trend_3", "trend_4", "trend_5"],
+      "settings": {
+        "eyebrow": "Real-Time Demand",
+        "heading": "Trending Right Now"
+      }
+    },
+    "promotional_banner": {
+      "type": "promotional-banner",
+      "settings": {
+        "tag_1": "48-bit Hi-Res DAC",
+        "tag_2": "Adaptive Hybrid ANC",
+        "tag_3": "Ultra-Low 15ms",
+        "heading_line_1": "Next-Level Audio.",
+        "heading_highlight": "Zero Distractions.",
+        "description": "Immerse yourself in acoustic perfection calibrated with precision planar magnetic transducers and custom beryllium acoustic chambers.",
+        "button_text": "Explore Audio Architecture",
+        "button_link": "#audio-architecture",
+        "perk_text": "🎁 Complimentary 6-Mo Lossless Music"
+      }
+    },
+    "best_sellers": {
+      "type": "best-sellers",
+      "blocks": {
+        "best_1": {
+          "type": "favorite_item",
+          "settings": {
+            "title": "Horizon StreamStation Pro",
+            "category": "Studio Audio",
+            "category_color": "text-primary",
+            "description": "XLR Dual-Preamp • 192kHz Broadcast Grade",
+            "price": "₹32,490",
+            "badge": "Only 4 left!",
+            "badge_color": "bg-amber-500 text-white",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCLy4Z9fK2F88t6XW0d611b_n_jX8UqL26B2p0D3gWknxN47xY4_d-2tT1kXjQ8i9E1jQ1bXw"
+          }
+        },
+        "best_2": {
+          "type": "favorite_item",
+          "settings": {
+            "title": "VividView 34\" Curved OLED",
+            "category": "Visual Displays",
+            "category_color": "text-secondary",
+            "description": "240Hz 0.03ms • 99% DCI-P3 Color Mastery",
+            "price": "₹64,990",
+            "badge": "Top Pick",
+            "badge_color": "bg-secondary text-white",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM"
+          }
+        },
+        "best_3": {
+          "type": "favorite_item",
+          "settings": {
+            "title": "AeroPad Duo MagPower",
+            "category": "Power & Charging",
+            "category_color": "text-primary",
+            "description": "Qi2 Certified • 25W Fast Simultaneous Charging",
+            "price": "₹5,499",
+            "badge": "In Stock",
+            "badge_color": "bg-emerald-600 text-white",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg"
+          }
+        },
+        "best_4": {
+          "type": "favorite_item",
+          "settings": {
+            "title": "Nexus BioRing Gen 2",
+            "category": "Smart Health",
+            "category_color": "text-secondary",
+            "description": "Continuous Circadian & Temperature Tracking",
+            "price": "₹21,490",
+            "badge": "Hot Selling",
+            "badge_color": "bg-rose-600 text-white",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAPVCLt3I9E4tSnBgX10kOfkBSCcxGkP3XxEq-wSmwD-ssKIzfx9jbd5d3T3OilHwsSeq3aNdYZzlU7YbVNmDpU49VB-vST5bnKhwUKY5P1zO4pOyyJdb0leuWmUOPzn2aJeKmIbxPE7iiLcUeL1PDeV6ci0TxaJFtdBNlZMsaBXKlN3NfxF-gJISrFhMmfwkCcH81kS7u1wTRgHqe5_vgLqOoTpVO7lw4Ew3pMiMM"
+          }
+        }
+      },
+      "block_order": ["best_1", "best_2", "best_3", "best_4"],
+      "settings": {
+        "eyebrow": "Enduring Reliability",
+        "heading": "Customer Favorites",
+        "subheading": "The gear our community relies on every single day for professional output."
+      }
+    },
+    "new_arrivals": {
+      "type": "new-arrivals",
+      "blocks": {
+        "arr_1": {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "GaN Architecture",
+            "title": "VoltCore 140W Quad GaN",
+            "description": "Powers 2 MacBooks simultaneously.",
+            "price": "₹7,499",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-0Qkq6N9DkQzpZdldf8XYqfEi663QR09uVYvIXmT_V7PWcY2XfHusctvwAF98ZLWCXHiVrUFqfzN7_dr-8GJB75pQRUysfuwA6QP1vv5-udpxvPsMqJuyiqPrUGFGhUzQi-OiNOa_d3AXMjJpkMVHxhm-iQGF5PwAZmRBWpVp8k-7iPslo8vqtQ2pwHTspJJ7DJEZZSv4-AOQnwcb8wEZNOYjzoZh7vcMo4OfuGc"
+          }
+        },
+        "arr_2": {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "Studio Connectivity",
+            "title": "OmniPort Thunderbolt 4 Hub",
+            "description": "Dual 8K 60Hz Display Output.",
+            "price": "₹24,990",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDGEpa3ZF4BninbdX9C1aYzsJfPq-dlwl94aXFkALra-DA7lhmUbCOQa33-RvhJlXFNCTFmSPyPd0oB-50Q3XCHmo48s1bdGcCl8pe_LJiF3LlK4_lFHF7GwlwegZCsWj4oR3Qhijmt1tHLuPm9BfJrcyd7v19KObkMvkXwlJ4L_DzuEg4T2MC92_NjJLxNELJRFAVZe7E7XbCOqdZROEBtRRBopm-uhvd5g-9Wv1E"
+          }
+        },
+        "arr_3": {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "Input Precision",
+            "title": "AeroGlide 8K Wireless",
+            "description": "38 Grams • 8000Hz Polling Rate.",
+            "price": "₹11,999",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAL2Q_3w--an2Mucj27XrLeDbmfbuWNxs_ACgRajas94_rd12L1z9ZdHr70ygzU0oIuh4maWDULQTDe24-JLXqXJvb2u31Q2utj2xYRHiftW3TdYZBY83PSaBETi45ilW_AgFGBKVZyfXcjVWHtSRXkgopa6xI5_SCM975jBYSxzpcvtlV3yoj65SYF7Iee0ZxR9_T1CvoGtc_iKdR0H4viFZK2L507NdO-z0V6EL4"
+          }
+        },
+        "arr_4": {
+          "type": "arrival_card",
+          "settings": {
+            "tag": "Creator Optics",
+            "title": "Iris Pro Webcam 4K HDR",
+            "description": "Sony STARVIS 2 • AI Framing.",
+            "price": "₹16,499",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s"
+          }
+        }
+      },
+      "block_order": ["arr_1", "arr_2", "arr_3", "arr_4"],
+      "settings": {
+        "eyebrow": "First Edition Releases",
+        "heading": "Fresh Tech Has Arrived"
+      }
+    },
+    "flash_deal": {
+      "type": "flash-deal",
+      "settings": {
+        "badge": "LIMITED 48-HOUR FLASH DROP",
+        "title": "NEXORA Visionary Duo Bundle",
+        "description": "Includes Horizon Pro 5G (512GB Titanium) + Chronos Ultra Gen 3 Smartwatch with Italian Leather and Alpine Straps.",
+        "duration_hours": 48,
+        "deal_price": "₹89,990",
+        "original_price": "₹1,08,498",
+        "savings_badge": "SAVE ₹18,508 (17% OFF)",
+        "inventory_percent": "78%",
+        "inventory_percent_int": 78,
+        "inventory_remaining": "Only 14 bundles remaining",
+        "cta_text": "Claim This Deal Now",
+        "guarantee_text": "Guaranteed Delivery in 24 Hours"
+      }
+    },
+    "why_shop_with_us": {
+      "type": "why-shop-with-us",
+      "blocks": {
+        "ben_1": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "verified",
+            "icon_color": "text-primary",
+            "title": "100% Genuine Products",
+            "description": "Directly sourced from authorized global brands with verified digital serial authentication on delivery."
+          }
+        },
+        "ben_2": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "lock",
+            "icon_color": "text-secondary",
+            "title": "Bank-Grade Secure Checkout",
+            "description": "256-bit encrypted transactions supporting No-Cost EMI, UPI Instant, Major Cards, and Net Banking."
+          }
+        },
+        "ben_3": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "electric_bolt",
+            "icon_color": "text-primary",
+            "title": "Fast & Insured Delivery",
+            "description": "Priority dispatch within 6 hours with tamper-proof security seals and comprehensive in-transit insurance."
+          }
+        },
+        "ben_4": {
+          "type": "benefit_card",
+          "settings": {
+            "icon": "sync",
+            "icon_color": "text-secondary",
+            "title": "7-Day Easy Replacement",
+            "description": "Zero-friction doorstep inspection and 1-Year official brand manufacturer replacement warranty assistance."
+          }
+        }
+      },
+      "block_order": ["ben_1", "ben_2", "ben_3", "ben_4"],
+      "settings": {
+        "eyebrow": "The NEXORA Guarantee",
+        "heading": "Engineered for Complete Confidence"
+      }
+    },
+    "brand_partners": {
+      "type": "brand-partners",
+      "blocks": {
+        "bp_1": { "type": "brand", "settings": { "brand_name": " Apple Authorized", "tracking_class": "tracking-tighter" } },
+        "bp_2": { "type": "brand", "settings": { "brand_name": "SAMSUNG", "tracking_class": "tracking-tight" } },
+        "bp_3": { "type": "brand", "settings": { "brand_name": "SONY", "tracking_class": "tracking-widest" } },
+        "bp_4": { "type": "brand", "settings": { "brand_name": "JBL", "tracking_class": "tracking-wide" } },
+        "bp_5": { "type": "brand", "settings": { "brand_name": "NOTHING", "tracking_class": "tracking-widest" } },
+        "bp_6": { "type": "brand", "settings": { "brand_name": "BOSE", "tracking_class": "tracking-wider" } },
+        "bp_7": { "type": "brand", "settings": { "brand_name": "ONEPLUS", "tracking_class": "tracking-tight" } }
+      },
+      "block_order": ["bp_1", "bp_2", "bp_3", "bp_4", "bp_5", "bp_6", "bp_7"],
+      "settings": {
+        "subheading": "Authorized Direct Distribution Partner for Industry Leaders"
+      }
+    },
+    "customer_reviews": {
+      "type": "customer-reviews",
+      "blocks": {
+        "rev_1": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "badge": "Verified Buyer",
+            "review_text": "The delivery speed for the Horizon Pro was mind-boggling. Dispatched at 9 AM, reached Bengaluru doorstep by 4 PM. The packaging is pure gallery grade. Build quality is unmatched.",
+            "initials": "AK",
+            "avatar_bg": "bg-primary/10 text-primary",
+            "author_name": "Arjun Kapoor",
+            "product_purchased": "Horizon Pro 5G"
+          }
+        },
+        "rev_2": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "badge": "Verified Buyer",
+            "review_text": "AuraWave Max ANC completely silences metro commutes and open office chatter. Planar drivers deliver separation on acoustic tracks that rival my ₹80k desktop studio monitors.",
+            "initials": "RM",
+            "avatar_bg": "bg-secondary/10 text-secondary",
+            "author_name": "Rohan Mehta",
+            "product_purchased": "AuraWave Max ANC"
+          }
+        },
+        "rev_3": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "badge": "Verified Buyer",
+            "review_text": "AeroBook 16 is an absolute titan for 8K DaVinci Resolve rendering workflows. Thermals stay completely silent even under relentless sustained compilation loads.",
+            "initials": "PS",
+            "avatar_bg": "bg-primary/10 text-primary",
+            "author_name": "Priya Sundaram",
+            "product_purchased": "Vanguard AeroBook 16"
+          }
+        }
+      },
+      "block_order": ["rev_1", "rev_2", "rev_3"],
+      "settings": {
+        "eyebrow": "Owner Testimonials",
+        "heading": "Loved by Tech Enthusiasts",
+        "overall_rating": "4.9 Overall Rating",
+        "purchasers_count": "across 42,800+ verified purchasers"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "badge": "VIP INTEL DROP",
+        "heading": "Stay Ahead of What’s Next.",
+        "subheading": "Receive VIP access to secret flash drops, firmware updates, and insider tech previews. No spam, ever.",
+        "placeholder": "Enter your email address",
+        "button_text": "Get VIP Access",
+        "success_message": "Coupon unlocked! Use code NEXORA1000 at checkout for ₹1,000 off your first purchase.",
+        "disclaimer": "By subscribing, you agree with our Privacy Terms. Unsubscribe with one click anytime."
+      }
+    },
+    "faq_accordion": {
+      "type": "faq-accordion",
+      "blocks": {
+        "faq_1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are all products sold on NEXORA 100% genuine and original?",
+            "answer": "Yes, unconditionally. NEXORA is an officially contracted distributor and authorized tier-1 retailer for all featured brands. Every package includes verified manufacturer serial tags and authentic warranty documentation that can be registered online."
+          }
+        },
+        "faq_2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What payment methods, EMIs, and Pay-Later options are accepted?",
+            "answer": "We support all major payment channels: UPI (Google Pay, PhonePe, Paytm), RuPay, Visa, Mastercard, American Express, Apple Pay, and Net Banking. We also offer No-Cost EMI options across leading banks for tenures up to 12 months."
+          }
+        },
+        "faq_3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does express delivery take for metropolitan cities?",
+            "answer": "Orders confirmed before 1:00 PM IST qualify for same-day dispatch. Metropolitan hubs (Bengaluru, Mumbai, Delhi NCR, Hyderabad, Chennai) receive deliveries within 24 hours. Tier 2 and Tier 3 cities are delivered within 48 to 72 hours via air priority."
+          }
+        },
+        "faq_4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is NEXORA's 7-day return and doorstep replacement policy?",
+            "answer": "If you encounter any transit damage, hardware flaw, or factory defect, initiate a doorstep exchange directly through your NEXORA account within 7 days of delivery. Our courier arranges reverse pickup with simultaneous verification."
+          }
+        },
+        "faq_5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do products come with an official manufacturer brand warranty?",
+            "answer": "Every product carries full 1-Year or 2-Year official manufacturer warranty honored at any authorized service center across India and globally. We also furnish automatic digital tax invoices with registered GST compliance."
+          }
+        }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "settings": {
+        "eyebrow": "Clarity & Support",
+        "heading": "Frequently Asked Questions",
+        "open_first": true
+      }
+    },
+    "social_gallery": {
+      "type": "social-gallery",
+      "blocks": {
+        "sg_1": {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "1,824 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC27RHatjjQlI4FN83fJWiC3WhFUXYJQCNsG6LLYiK1tDLMbNjHqy0fX8KawNPZ_vGVv79T11rZeQQqKA2vHga1nKzuEVBuEaFlckfDNQwqhZ9CReoaaCuNlMzLUao8JVymfoh3bIltKm7_ltulbOrbKMgj9Z3TPZn6RfLzSdqnOfQUCWzXBUkxMgDYhd35G0B9pAyYFh7Z_pvBNY-94fuPZOwifYOEqo7evwFbNpI"
+          }
+        },
+        "sg_2": {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "2,410 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC3Ljvvn_U5jJxMQcYBKuIXxGinr7bawtYLagpby-R4_XnycN_WVIK6p9_fiBhmQwpU3xSJ642gRqF0np9LcnY6Lhzl0imBiK26yXNgfyO39NLvx4Um96HZ1y8VUos6HaUVU-pxLy8chNtTYj_W64POGIkmlp1OnRe9RzyI_Xe2F2q4VKW-O1mc1DWkCiZuY9qsBTivyD52jJtgjgd9xnbbu5yGRxv8JWGikuWZPA4"
+          }
+        },
+        "sg_3": {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "3,120 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBKkbP7pTqj3xivagRXNv0skP1pJ0ZxtUEQKn-Rw0K0w2K1SIZMsHHeeZDOmHBT2EwH-YnjUIN5UNUviL1vok6UjjcKM2Ykue5WYi6gqM1y-O1qQTJ_tpO-DR285X86LKf4nLXdiPmrB8Bew6-_dvXMhdhN9opg8U3SaB0LWe92do540WbF8EhuTAw_nKo1LydP9zhYvzl_71ZaaQtrTC3Lb5V5O98R5dEIroDW1pA"
+          }
+        },
+        "sg_4": {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "1,450 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDo4BTEQ1tkXkypb8KGQ63ZGASVZsnV6QvrvXvkVqNXFG__5ddX2GymtPg4wutWqDbBq-j-GttmjhCxl6G6puvnxjtuKYimoWDjKu-PGzVAwZkoQ"
+          }
+        },
+        "sg_5": {
+          "type": "gallery_item",
+          "settings": {
+            "likes_count": "4,290 likes",
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU"
+          }
+        }
+      },
+      "block_order": ["sg_1", "sg_2", "sg_3", "sg_4", "sg_5"],
+      "settings": {
+        "eyebrow": "Aesthetic Ecosystem",
+        "heading": "Follow the Future of Tech",
+        "handle_text": "@nexoratech on Instagram",
+        "handle_link": "https://instagram.com"
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "shop_by_categories",
+    "trending_products",
+    "promotional_banner",
+    "best_sellers",
+    "new_arrivals",
+    "flash_deal",
+    "why_shop_with_us",
+    "brand_partners",
+    "customer_reviews",
+    "newsletter",
+    "faq_accordion",
+    "social_gallery"
+  ]
+}

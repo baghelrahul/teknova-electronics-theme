@@ -1,0 +1,254 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 3: Hero Section
+  Editorial Apple/Nothing style hero banner with spec pills and trust metrics
+{%- endcomment -%}
+
+<section class="relative overflow-hidden bg-surface-container-low border-b border-outline-variant/30 py-16 lg:py-24">
+  <!-- Subtle architectural background glow -->
+  <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[850px] h-[450px] bg-gradient-to-b from-primary-fixed-dim/30 via-secondary-fixed/20 to-transparent blur-3xl pointer-events-none rounded-full"></div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+    <!-- Left Editorial Column -->
+    <div class="lg:col-span-6 flex flex-col items-start">
+      {%- if section.settings.badge != blank -%}
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-lowest border border-outline-variant/50 text-primary font-label-md text-label-md mb-6 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+          <span>{{ section.settings.badge }}</span>
+        </div>
+      {%- endif -%}
+
+      <h1 class="text-3xl sm:text-5xl lg:text-display font-display tracking-tight text-on-surface mb-6">
+        {{ section.settings.heading_line_1 | default: 'Upgrade' }} <br/>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
+          {{ section.settings.heading_gradient | default: 'Your World.' }}
+        </span>
+      </h1>
+
+      <p class="text-body-lg font-body-lg text-on-surface-variant max-w-xl mb-8">
+        {{ section.settings.description | default: 'Discover next-generation technology designed to make everyday life smarter, faster, and remarkably seamless. Calibrated for purists and creators.' }}
+      </p>
+
+      <!-- Dual CTA Row -->
+      <div class="flex flex-wrap items-center gap-4 mb-10">
+        {%- if section.settings.primary_cta_text != blank -%}
+          <a 
+            class="h-12 px-7 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-200 flex items-center gap-2 font-label-md text-label-md tracking-wider font-semibold shadow-md hover:shadow-primary/30" 
+            href="{{ section.settings.primary_cta_link | default: '#trending' }}"
+          >
+            <span>{{ section.settings.primary_cta_text }}</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </a>
+        {%- endif -%}
+
+        {%- if section.settings.secondary_cta_text != blank -%}
+          <a 
+            class="h-12 px-6 rounded-lg bg-surface-container-lowest border border-outline-variant/60 hover:border-primary text-on-surface font-label-md text-label-md tracking-wider transition-all duration-200 flex items-center" 
+            href="{{ section.settings.secondary_cta_link | default: '#categories' }}"
+          >
+            {{ section.settings.secondary_cta_text }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      <!-- Trust Highlights Bar -->
+      <div class="pt-6 border-t border-outline-variant/40 w-full grid grid-cols-3 gap-2 sm:gap-4">
+        <div>
+          <div class="flex items-center text-primary text-label-md font-label-md">
+            <span class="material-symbols-outlined text-[16px] text-amber-500 fill-1">star</span>
+            <span class="ml-1 font-bold text-on-surface">{{ section.settings.metric_1_val | default: '4.9 / 5' }}</span>
+          </div>
+          <p class="text-body-sm font-body-sm text-on-surface-variant/80 mt-0.5">{{ section.settings.metric_1_label | default: '42k+ Verified Owners' }}</p>
+        </div>
+        <div>
+          <div class="flex items-center text-label-md font-label-md font-bold text-on-surface">
+            <span class="material-symbols-outlined text-[16px] text-secondary mr-1">bolt</span>
+            {{ section.settings.metric_2_val | default: 'Next-Day' }}
+          </div>
+          <p class="text-body-sm font-body-sm text-on-surface-variant/80 mt-0.5">{{ section.settings.metric_2_label | default: 'Over 100+ Metro Hubs' }}</p>
+        </div>
+        <div>
+          <div class="flex items-center text-label-md font-label-md font-bold text-on-surface">
+            <span class="material-symbols-outlined text-[16px] text-primary mr-1">verified_user</span>
+            {{ section.settings.metric_3_val | default: '100% Genuine' }}
+          </div>
+          <p class="text-body-sm font-body-sm text-on-surface-variant/80 mt-0.5">{{ section.settings.metric_3_label | default: 'Direct Authorised Channel' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Composite Visual Showcase with Spec Badges -->
+    <div class="lg:col-span-6 relative flex items-center justify-center">
+      <div class="w-full aspect-[4/3] rounded-2xl bg-surface-container-lowest border border-outline-variant/50 p-4 shadow-xl relative overflow-hidden flex items-center justify-center">
+        {%- if section.settings.image != blank -%}
+          <img 
+            class="w-full h-full object-cover rounded-xl" 
+            src="{{ section.settings.image | image_url: width: 1400 }}" 
+            alt="{{ section.settings.image.alt | default: 'Nexora Flagship Fleet' | escape }}"
+            loading="eager"
+          />
+        {%- else -%}
+          <img 
+            class="w-full h-full object-cover rounded-xl" 
+            alt="Flagship consumer electronics composition with headphones, phone and smartwatch" 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkxZpAHxSzfcnq16zYHgorBZZoVbm42YVyrYwclhvE15Nvda0BKKBXeipwci_yZBRkQkLEspMJOcNiDEqDRmAKtoxgABFMSnEHsDW1st0MHAri8WCfecL6llqDx_uWlhVKC2Xh_Mnfpz52PqKkTuraZA5xjN1CpNqxJ3pNF0V4eiLHL28QWmVuun_ONFHo9nVMl-P1rgo9Te2QYI7NXX4YIuBfHpVAGiNrBNae9ls"
+            loading="eager"
+          />
+        {%- endif -%}
+
+        <!-- Floating Spec Pill 1 -->
+        {%- if section.settings.spec_1 != blank -%}
+          <div class="absolute top-4 sm:top-6 left-4 sm:left-6 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md border border-outline-variant/60 shadow-md flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-primary"></span>
+            <span class="text-[11px] sm:text-label-sm font-label-sm text-on-surface font-semibold tracking-wide">{{ section.settings.spec_1 }}</span>
+          </div>
+        {%- endif -%}
+
+        <!-- Floating Spec Pill 2 -->
+        {%- if section.settings.spec_2 != blank -%}
+          <div class="absolute bottom-4 sm:bottom-6 left-4 sm:left-8 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md border border-outline-variant/60 shadow-md flex items-center gap-2">
+            <span class="material-symbols-outlined text-secondary text-[16px]">memory</span>
+            <span class="text-[11px] sm:text-label-sm font-label-sm text-on-surface font-semibold tracking-wide">{{ section.settings.spec_2 }}</span>
+          </div>
+        {%- endif -%}
+
+        <!-- Floating Spec Pill 3 -->
+        {%- if section.settings.spec_3 != blank -%}
+          <div class="absolute top-1/3 right-4 sm:right-6 px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md border border-outline-variant/60 shadow-md flex items-center gap-2">
+            <span class="material-symbols-outlined text-amber-500 text-[16px]">speed</span>
+            <span class="text-[11px] sm:text-label-sm font-label-sm text-on-surface font-semibold tracking-wide">{{ section.settings.spec_3 }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge Eyebrow",
+      "default": "NEXORA 2026 ARCHITECTURE"
+    },
+    {
+      "type": "text",
+      "id": "heading_line_1",
+      "label": "Heading Line 1",
+      "default": "Upgrade"
+    },
+    {
+      "type": "text",
+      "id": "heading_gradient",
+      "label": "Heading Gradient Line",
+      "default": "Your World."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Discover next-generation technology designed to make everyday life smarter, faster, and remarkably seamless. Calibrated for purists and creators."
+    },
+    {
+      "type": "header",
+      "content": "Call to Actions"
+    },
+    {
+      "type": "text",
+      "id": "primary_cta_text",
+      "label": "Primary CTA Label",
+      "default": "Shop Now — Explore 2026 Fleet"
+    },
+    {
+      "type": "url",
+      "id": "primary_cta_link",
+      "label": "Primary CTA Link"
+    },
+    {
+      "type": "text",
+      "id": "secondary_cta_text",
+      "label": "Secondary CTA Label",
+      "default": "Explore Collections"
+    },
+    {
+      "type": "url",
+      "id": "secondary_cta_link",
+      "label": "Secondary CTA Link"
+    },
+    {
+      "type": "header",
+      "content": "Hero Showcase Media & Badges"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "spec_1",
+      "label": "Spec Pill 1 (Top-Left)",
+      "default": "ANC 45dB Planar"
+    },
+    {
+      "type": "text",
+      "id": "spec_2",
+      "label": "Spec Pill 2 (Bottom-Left)",
+      "default": "M4 Architecture"
+    },
+    {
+      "type": "text",
+      "id": "spec_3",
+      "label": "Spec Pill 3 (Right)",
+      "default": "120Hz LTPO ProMotion"
+    },
+    {
+      "type": "header",
+      "content": "Trust Highlights"
+    },
+    {
+      "type": "text",
+      "id": "metric_1_val",
+      "label": "Metric 1 Value",
+      "default": "4.9 / 5"
+    },
+    {
+      "type": "text",
+      "id": "metric_1_label",
+      "label": "Metric 1 Label",
+      "default": "42k+ Verified Owners"
+    },
+    {
+      "type": "text",
+      "id": "metric_2_val",
+      "label": "Metric 2 Value",
+      "default": "Next-Day"
+    },
+    {
+      "type": "text",
+      "id": "metric_2_label",
+      "label": "Metric 2 Label",
+      "default": "Over 100+ Metro Hubs"
+    },
+    {
+      "type": "text",
+      "id": "metric_3_val",
+      "label": "Metric 3 Value",
+      "default": "100% Genuine"
+    },
+    {
+      "type": "text",
+      "id": "metric_3_label",
+      "label": "Metric 3 Label",
+      "default": "Direct Authorised Channel"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

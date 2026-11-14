@@ -1,0 +1,64 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Main Collection Section
+  Product listing grid with sorting, pagination & responsive layouts
+{%- endcomment -%}
+
+<section class="py-12 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Header -->
+    <div class="mb-10 pb-6 border-b border-outline-variant/30 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-2">
+          <a href="{{ routes.root_url }}" class="hover:text-primary">Home</a>
+          <span>/</span>
+          <span class="text-on-surface font-semibold">{{ collection.title }}</span>
+        </nav>
+        <h1 class="text-3xl sm:text-headline-lg font-headline-lg font-bold text-on-surface">
+          {{ collection.title }}
+        </h1>
+        {%- if collection.description != blank -%}
+          <p class="text-body-md font-body-md text-on-surface-variant mt-2 max-w-2xl">
+            {{ collection.description }}
+          </p>
+        {%- endif -%}
+      </div>
+
+      <span class="text-label-md font-label-md text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full shrink-0">
+        {{ collection.products_count }} Products
+      </span>
+    </div>
+
+    <!-- Product Grid -->
+    {%- paginate collection.products by 12 -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        </div>
+
+        {%- if paginate.pages > 1 -%}
+          <div class="mt-12 flex justify-center items-center gap-2">
+            {{ paginate | default_pagination: next: '→', previous: '←' }}
+          </div>
+        {%- endif -%}
+      {%- else -%}
+        <div class="text-center py-20 bg-surface-container-lowest rounded-2xl border border-outline-variant/30">
+          <span class="material-symbols-outlined text-[48px] text-on-surface-variant/40 mb-3">inventory_2</span>
+          <p class="text-headline-sm font-semibold text-on-surface mb-2">No products found</p>
+          <p class="text-body-sm text-on-surface-variant mb-6">Explore other engineered categories or check back soon.</p>
+          <a href="{{ routes.all_products_collection_url }}" class="inline-flex px-6 py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold">
+            Browse All Hardware
+          </a>
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "settings": []
+}
+{% endschema %}

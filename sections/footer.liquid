@@ -1,0 +1,268 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 16: Mega Footer
+  Multi-column navigation, brand mission, secured payments, and compliance notes
+{%- endcomment -%}
+
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm">
+  <div class="max-w-7xl mx-auto px-6 py-16 flex flex-col gap-12">
+    <!-- Main Footer Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+      <!-- Brand Column -->
+      <div class="lg:col-span-2 flex flex-col justify-between">
+        <div>
+          <a class="text-headline-sm font-headline-sm font-bold tracking-tight text-on-surface uppercase flex items-center gap-1 mb-4" href="{{ routes.root_url }}">
+            {%- if section.settings.logo != blank -%}
+              <img src="{{ section.settings.logo | image_url: width: 260 }}" alt="{{ shop.name | escape }}" class="h-7 w-auto object-contain">
+            {%- else -%}
+              <span>{{ section.settings.brand_text | default: 'NEXORA' }}</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+            {%- endif -%}
+          </a>
+          <p class="text-on-surface-variant/80 text-body-sm max-w-sm mb-6 leading-relaxed">
+            {{ section.settings.brand_bio | default: 'Curating the apex tier of personal hardware, studio acoustics, and ambient computing for high-output individuals.' }}
+          </p>
+        </div>
+
+        <!-- Social Icons -->
+        <div class="flex items-center space-x-3 text-on-surface-variant">
+          {%- if settings.social_website_link != blank or section.settings.show_social_icons -%}
+            <a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="{{ section.settings.social_link_1 | default: '#' }}" aria-label="Global Web">
+              <span class="material-symbols-outlined text-[18px]">public</span>
+            </a>
+            <a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="{{ section.settings.social_link_2 | default: '#' }}" aria-label="Share">
+              <span class="material-symbols-outlined text-[18px]">share</span>
+            </a>
+            <a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="{{ section.settings.social_link_3 | default: '#' }}" aria-label="RSS Feed">
+              <span class="material-symbols-outlined text-[18px]">rss_feed</span>
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <!-- Col 1: Shop & Collections -->
+      <div>
+        <h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">
+          {{ section.settings.col_1_title | default: 'Shop & Collections' }}
+        </h4>
+        <ul class="space-y-2.5">
+          {%- if section.settings.menu_1 != blank -%}
+            {%- for link in linklists[section.settings.menu_1].links -%}
+              <li><a class="hover:text-primary transition-colors" href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a class="hover:text-primary transition-colors" href="#smartphones">Smartphones</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#computing">Laptops &amp; Computing</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#audio">Audio Architecture</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#wearables">Wearables</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#accessories">Accessories</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#refurbished">Refurbished Certified</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <!-- Col 2: Customer Care -->
+      <div>
+        <h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">
+          {{ section.settings.col_2_title | default: 'Customer Care' }}
+        </h4>
+        <ul class="space-y-2.5">
+          {%- if section.settings.menu_2 != blank -%}
+            {%- for link in linklists[section.settings.menu_2].links -%}
+              <li><a class="hover:text-primary transition-colors" href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a class="hover:text-primary transition-colors" href="#track-order">Track Order Status</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#shipping">Global Shipping</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#returns">Returns &amp; Exchanges</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#warranty">Warranty &amp; Care</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#authenticity">Authenticity Guarantee</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#contact">Contact Concierge</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <!-- Col 3: Company -->
+      <div>
+        <h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">
+          {{ section.settings.col_3_title | default: 'Company' }}
+        </h4>
+        <ul class="space-y-2.5">
+          {%- if section.settings.menu_3 != blank -%}
+            {%- for link in linklists[section.settings.menu_3].links -%}
+              <li><a class="hover:text-primary transition-colors" href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a class="hover:text-primary transition-colors" href="#about">About NEXORA</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#stores">Store Locator</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#press">Press &amp; Media</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#careers">Careers (We're Hiring)</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#sustainability">Eco &amp; Circularity</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+
+      <!-- Col 4: Legal & Policy -->
+      <div>
+        <h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">
+          {{ section.settings.col_4_title | default: 'Legal & Policy' }}
+        </h4>
+        <ul class="space-y-2.5">
+          {%- if section.settings.menu_4 != blank -%}
+            {%- for link in linklists[section.settings.menu_4].links -%}
+              <li><a class="hover:text-primary transition-colors" href="{{ link.url }}">{{ link.title }}</a></li>
+            {%- endfor -%}
+          {%- else -%}
+            <li><a class="hover:text-primary transition-colors" href="#privacy">Privacy Policy</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#terms">Terms of Service</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#cookies">Cookie Preferences</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#compliance">Compliance &amp; GST</a></li>
+            <li><a class="hover:text-primary transition-colors" href="#security">Security Disclosure</a></li>
+          {%- endif -%}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Payment Icons & Mission Row -->
+    <div class="pt-8 border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-4">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span class="text-label-sm font-label-sm uppercase font-semibold text-on-surface-variant/80">Secured Payments By:</span>
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">VISA</span>
+          <span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Mastercard</span>
+          <span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">RuPay</span>
+          <span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">UPI</span>
+          <span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Apple Pay</span>
+          <span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Razorpay</span>
+          <span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">COD</span>
+        </div>
+      </div>
+      <div class="text-label-sm font-label-sm text-on-surface-variant/80">
+        {{ section.settings.craft_tagline | default: 'Crafted for peak acoustic & visual mastery.' }}
+      </div>
+    </div>
+
+    <!-- Bottom Copyright & Architecture Notice -->
+    <div class="pt-4 border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-label-sm font-label-sm text-on-surface-variant/70">
+      <div>
+        &copy; {{ 'now' | date: '%Y' }} {{ section.settings.copyright_text | default: 'NEXORA Technologies Inc. All rights reserved.' }}
+      </div>
+      <div>
+        Powered by Shopify OS 2.0 architecture &bull; Fast Edge Delivery
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Mega Footer",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand Name",
+      "default": "NEXORA"
+    },
+    {
+      "type": "textarea",
+      "id": "brand_bio",
+      "label": "Brand Mission Text",
+      "default": "Curating the apex tier of personal hardware, studio acoustics, and ambient computing for high-output individuals."
+    },
+    {
+      "type": "header",
+      "content": "Navigation Columns"
+    },
+    {
+      "type": "text",
+      "id": "col_1_title",
+      "label": "Column 1 Title",
+      "default": "Shop & Collections"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "Column 1 Menu"
+    },
+    {
+      "type": "text",
+      "id": "col_2_title",
+      "label": "Column 2 Title",
+      "default": "Customer Care"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Column 2 Menu"
+    },
+    {
+      "type": "text",
+      "id": "col_3_title",
+      "label": "Column 3 Title",
+      "default": "Company"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_3",
+      "label": "Column 3 Menu"
+    },
+    {
+      "type": "text",
+      "id": "col_4_title",
+      "label": "Column 4 Title",
+      "default": "Legal & Policy"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_4",
+      "label": "Column 4 Menu"
+    },
+    {
+      "type": "header",
+      "content": "Social Media Links"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show Social Icons",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "social_link_1",
+      "label": "Social Link 1"
+    },
+    {
+      "type": "url",
+      "id": "social_link_2",
+      "label": "Social Link 2"
+    },
+    {
+      "type": "url",
+      "id": "social_link_3",
+      "label": "Social Link 3"
+    },
+    {
+      "type": "header",
+      "content": "Footer Bottom"
+    },
+    {
+      "type": "text",
+      "id": "craft_tagline",
+      "label": "Craftsmanship Tagline",
+      "default": "Crafted for peak acoustic & visual mastery."
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "NEXORA Technologies Inc. All rights reserved."
+    }
+  ]
+}
+{% endschema %}

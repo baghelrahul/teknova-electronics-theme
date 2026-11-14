@@ -1,0 +1,73 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Main Search Section
+  Live search results grid with query feedback and pagination
+{%- endcomment -%}
+
+<section class="py-12 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-10 text-center max-w-2xl mx-auto">
+      <h1 class="text-3xl sm:text-headline-lg font-headline-lg font-bold text-on-surface mb-4">
+        {%- if search.performed -%}
+          Results for "{{ search.terms }}" ({{ search.results_count }})
+        {%- else -%}
+          Search Our Catalog
+        {%- endif -%}
+      </h1>
+
+      <form action="{{ routes.search_url }}" method="get" class="flex gap-2">
+        <input 
+          type="search" 
+          name="q" 
+          value="{{ search.terms | escape }}" 
+          placeholder="Search headphones, flagships, OLED..." 
+          class="flex-1 h-12 px-4 rounded-lg bg-surface-container-lowest border border-outline-variant/60 text-body-md text-on-surface focus:outline-none focus:border-primary"
+        >
+        <button type="submit" class="px-6 h-12 rounded-lg bg-primary text-on-primary font-semibold hover:bg-primary-container transition-colors">
+          Search
+        </button>
+      </form>
+    </div>
+
+    {%- if search.performed -%}
+      {%- paginate search.results by 12 -%}
+        {%- if search.results.size > 0 -%}
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                {% render 'product-card', product: item %}
+              {%- else -%}
+                <div class="p-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 flex flex-col justify-between">
+                  <div>
+                    <span class="text-label-sm uppercase font-bold text-secondary">{{ item.object_type }}</span>
+                    <h3 class="text-headline-sm font-semibold text-on-surface mt-1 mb-2"><a href="{{ item.url }}">{{ item.title }}</a></h3>
+                    <p class="text-body-sm text-on-surface-variant line-clamp-3">{{ item.content | strip_html | truncate: 120 }}</p>
+                  </div>
+                  <a href="{{ item.url }}" class="text-primary font-semibold hover:underline mt-4 block">Read more →</a>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if paginate.pages > 1 -%}
+            <div class="mt-12 flex justify-center items-center gap-2">
+              {{ paginate | default_pagination: next: '→', previous: '←' }}
+            </div>
+          {%- endif -%}
+        {%- else -%}
+          <div class="text-center py-16 bg-surface-container-lowest rounded-2xl border border-outline-variant/30">
+            <span class="material-symbols-outlined text-[48px] text-on-surface-variant/40 mb-3">search_off</span>
+            <p class="text-headline-sm font-semibold text-on-surface mb-2">No results matched your query</p>
+            <p class="text-body-sm text-on-surface-variant">Check your spelling or try different keywords.</p>
+          </div>
+        {%- endif -%}
+      {%- endpaginate -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Search Results",
+  "settings": []
+}
+{% endschema %}

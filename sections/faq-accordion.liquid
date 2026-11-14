@@ -1,0 +1,125 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Section 14: FAQ Accordion
+  Semantic details/summary accordion for customer clarity and support
+{%- endcomment -%}
+
+<section class="py-20 bg-surface-container-lowest border-t border-outline-variant/30">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <span class="text-label-md font-label-md uppercase tracking-wider text-primary font-semibold">
+        {{ section.settings.eyebrow | default: 'Clarity & Support' }}
+      </span>
+      <h2 class="text-headline-lg font-headline-lg text-on-surface mt-1">
+        {{ section.settings.heading | default: 'Frequently Asked Questions' }}
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      {%- if section.blocks.size > 0 -%}
+        {%- for block in section.blocks -%}
+          <details 
+            class="group rounded-2xl bg-surface-container-low border border-outline-variant/40 p-5 [&_summary::-webkit-details-marker]:hidden" 
+            {% if forloop.first and section.settings.open_first %}open{% endif %}
+            {{ block.shopify_attributes }}
+          >
+            <summary class="flex items-center justify-between cursor-pointer text-headline-sm font-headline-sm text-[18px] text-on-surface">
+              <span>{{ block.settings.question }}</span>
+              <span class="material-symbols-outlined text-[20px] transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+            </summary>
+            <p class="text-body-md font-body-md text-on-surface-variant mt-4 pt-3 border-t border-outline-variant/30">
+              {{ block.settings.answer }}
+            </p>
+          </details>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ Accordion",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Clarity & Support"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "checkbox",
+      "id": "open_first",
+      "label": "Keep First Question Open by Default",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Are all products sold on NEXORA 100% genuine and original?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Yes, unconditionally. NEXORA is an officially contracted distributor and authorized tier-1 retailer for all featured brands. Every package includes verified manufacturer serial tags and authentic warranty documentation that can be registered online."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Accordion",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are all products sold on NEXORA 100% genuine and original?",
+            "answer": "Yes, unconditionally. NEXORA is an officially contracted distributor and authorized tier-1 retailer for all featured brands. Every package includes verified manufacturer serial tags and authentic warranty documentation that can be registered online."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What payment methods, EMIs, and Pay-Later options are accepted?",
+            "answer": "We support all major payment channels: UPI (Google Pay, PhonePe, Paytm), RuPay, Visa, Mastercard, American Express, Apple Pay, and Net Banking. We also offer No-Cost EMI options across leading banks for tenures up to 12 months."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long does express delivery take for metropolitan cities?",
+            "answer": "Orders confirmed before 1:00 PM IST qualify for same-day dispatch. Metropolitan hubs (Bengaluru, Mumbai, Delhi NCR, Hyderabad, Chennai) receive deliveries within 24 hours. Tier 2 and Tier 3 cities are delivered within 48 to 72 hours via air priority."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is NEXORA's 7-day return and doorstep replacement policy?",
+            "answer": "If you encounter any transit damage, hardware flaw, or factory defect, initiate a doorstep exchange directly through your NEXORA account within 7 days of delivery. Our courier arranges reverse pickup with simultaneous verification."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Do products come with an official manufacturer brand warranty?",
+            "answer": "Every product carries full 1-Year or 2-Year official manufacturer warranty honored at any authorized service center across India and globally. We also furnish automatic digital tax invoices with registered GST compliance."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
