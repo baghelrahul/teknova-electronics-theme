@@ -17,11 +17,25 @@
   assign card_image_url = image_url
   assign card_url = url | default: '#'
   assign card_id = id
+  assign card_price_raw = 0
+  assign card_tags = ''
+  assign card_type = ''
+  assign card_vendor = ''
+  assign card_available = 'true'
 
   if product != blank
     assign card_id = product.id
     assign card_title = product.title
     assign card_price = product.price | money
+    assign card_price_raw = product.price | divided_by: 100.0
+    assign card_tags = product.tags | join: ',' | downcase
+    assign card_type = product.type | downcase
+    assign card_vendor = product.vendor | downcase
+    if product.available
+      assign card_available = 'true'
+    else
+      assign card_available = 'false'
+    endif
     if product.compare_at_price > product.price
       assign card_compare_price = product.compare_at_price | money
       assign card_badge = 'SALE'
@@ -29,6 +43,33 @@
     endif
     assign card_image_url = product.featured_media | image_url: width: 600
     assign card_url = product.url
+  else
+    # Parse mock price if raw number
+    if card_price contains '79,999'
+      assign card_price_raw = 79999
+      assign card_tags = 'bestseller,flagship,5g,titanium,phones'
+      assign card_type = 'smartphones'
+    elsif card_price contains '24,999'
+      assign card_price_raw = 24999
+      assign card_tags = 'audio,anc,planar,hi-fi,headphones'
+      assign card_type = 'headphones & audio'
+    elsif card_price contains '18,499'
+      assign card_price_raw = 18499
+      assign card_tags = 'wearables,smartwatch,titanium,gps,health'
+      assign card_type = 'smartwatches & fitness'
+    elsif card_price contains '1,24,999'
+      assign card_price_raw = 124999
+      assign card_tags = 'computing,laptops,creator,workstation,mini-led'
+      assign card_type = 'laptops & tablets'
+    elsif card_price contains '9,999'
+      assign card_price_raw = 9999
+      assign card_tags = 'audio,earbuds,spatial,wireless,anc'
+      assign card_type = 'headphones & audio'
+    elsif card_price contains '64,990'
+      assign card_price_raw = 64990
+      assign card_tags = 'monitors,oled,curved,240hz,visual'
+      assign card_type = 'visual displays'
+    endif
   endif
 
   if card_id == blank
@@ -42,6 +83,11 @@
   data-product-id="{{ card_id }}"
   data-product-title="{{ card_title | escape }}"
   data-product-price="{{ card_price }}"
+  data-product-price-raw="{{ card_price_raw }}"
+  data-product-tags="{{ card_tags }}"
+  data-product-type="{{ card_type }}"
+  data-product-vendor="{{ card_vendor }}"
+  data-product-available="{{ card_available }}"
   data-product-image="{{ card_image_url }}"
   data-product-url="{{ card_url }}"
 >
