@@ -1,0 +1,747 @@
+﻿<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXORA — Ultra-Premium Electronics &amp; Hardware Flagship</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Manrope & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim as specified -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#fefcff",
+            "primary": "#630ed4",
+            "tertiary-fixed": "#dfe2f1",
+            "secondary-fixed-dim": "#b4c5ff",
+            "tertiary-container": "#636673",
+            "inverse-primary": "#d2bbff",
+            "on-background": "#111c2d",
+            "surface-container-highest": "#d8e3fb",
+            "on-tertiary-fixed": "#171b26",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "primary-container": "#7c3aed",
+            "on-primary-container": "#ede0ff",
+            "primary-fixed-dim": "#d2bbff",
+            "outline-variant": "#ccc3d8",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#ecf1ff",
+            "surface-variant": "#d8e3fb",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#dbe1ff",
+            "tertiary-fixed-dim": "#c3c6d4",
+            "on-secondary-fixed": "#00174b",
+            "surface-bright": "#f9f9ff",
+            "surface-container-low": "#f0f3ff",
+            "on-error-container": "#93000a",
+            "surface-tint": "#732ee4",
+            "tertiary": "#4b4e5a",
+            "surface-container": "#e7eeff",
+            "on-tertiary-fixed-variant": "#434652",
+            "error": "#ba1a1a",
+            "outline": "#7b7487",
+            "surface": "#f9f9ff",
+            "secondary-container": "#316bf3",
+            "background": "#f9f9ff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#25005a",
+            "surface-container-high": "#dee8ff",
+            "on-surface": "#111c2d",
+            "on-secondary-fixed-variant": "#003ea8",
+            "inverse-surface": "#263143",
+            "on-tertiary-container": "#e2e5f4",
+            "secondary": "#0051d5",
+            "on-surface-variant": "#4a4455",
+            "surface-dim": "#cfdaf2",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#5a00c6",
+            "primary-fixed": "#eaddff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1.5rem",
+            "margin": "3rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1.25rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem"
+          },
+          "fontFamily": {
+            "body-lg": [
+              "Hanken Grotesk"
+            ],
+            "headline-lg-mobile": [
+              "Manrope"
+            ],
+            "body-md": [
+              "Hanken Grotesk"
+            ],
+            "headline-md": [
+              "Manrope"
+            ],
+            "headline-sm": [
+              "Manrope"
+            ],
+            "label-sm": [
+              "Hanken Grotesk"
+            ],
+            "label-md": [
+              "Hanken Grotesk"
+            ],
+            "display": [
+              "Manrope"
+            ],
+            "headline-lg": [
+              "Manrope"
+            ],
+            "body-sm": [
+              "Hanken Grotesk"
+            ]
+          },
+          "fontSize": {
+            "body-lg": [
+              "1.125rem",
+              {
+                "lineHeight": "1.6",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg-mobile": [
+              "2.25rem",
+              {
+                "lineHeight": "1.15",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-md": [
+              "0.9375rem",
+              {
+                "lineHeight": "1.5",
+                "letterSpacing": "-0.005em",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-md": [
+              "2rem",
+              {
+                "lineHeight": "1.2",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-sm": [
+              "1.375rem",
+              {
+                "lineHeight": "1.3",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "600"
+              }
+            ],
+            "label-sm": [
+              "0.6875rem",
+              {
+                "lineHeight": "1",
+                "letterSpacing": "0.08em",
+                "fontWeight": "500"
+              }
+            ],
+            "label-md": [
+              "0.75rem",
+              {
+                "lineHeight": "1",
+                "letterSpacing": "0.06em",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "4.5rem",
+              {
+                "lineHeight": "1.05",
+                "letterSpacing": "-0.035em",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-lg": [
+              "3rem",
+              {
+                "lineHeight": "1.1",
+                "letterSpacing": "-0.025em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-sm": [
+              "0.8125rem",
+              {
+                "lineHeight": "1.45",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #ccc3d8;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- ========================================================================= -->
+<!-- 1. TOP ANNOUNCEMENT BAR (Multi-message ticker + Selectors) -->
+<!-- ========================================================================= -->
+<aside class="bg-inverse-surface text-inverse-on-surface text-label-sm font-label-sm border-b border-outline/20 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
+<!-- Left & Center Ticker -->
+<div class="flex items-center space-x-6 overflow-hidden">
+<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/20 text-inverse-primary border border-primary/30 uppercase tracking-widest text-[9px] font-bold">
+          LIVE DIRECT
+        </span>
+<div class="transition-opacity duration-300 flex items-center gap-2" id="announcement-track">
+<span class="material-symbols-outlined text-[14px] text-secondary-fixed">local_shipping</span>
+<span class="tracking-wide" id="announcement-text">Free Express Shipping on orders above ₹999</span>
+</div>
+</div>
+<!-- Right Utility Actions -->
+<div class="flex items-center space-x-5 text-inverse-on-surface/80">
+<div class="flex items-center space-x-1 hover:text-inverse-on-surface cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[15px]">currency_rupee</span>
+<span>INR (₹)</span>
+<span class="material-symbols-outlined text-[14px]">expand_more</span>
+</div>
+<span class="text-outline/40">|</span>
+<a class="flex items-center space-x-1 hover:text-inverse-on-surface transition-colors" href="#store-locator">
+<span class="material-symbols-outlined text-[15px]">storefront</span>
+<span class="hidden sm:inline">Store Locator</span>
+</a>
+<span class="text-outline/40">|</span>
+<a class="flex items-center space-x-1 hover:text-inverse-on-surface transition-colors" href="#support">
+<span class="material-symbols-outlined text-[15px]">headset_mic</span>
+<span class="hidden sm:inline">24/7 Support</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ========================================================================= -->
+<!-- 2. STICKY HEADER & NAVIGATION (Shared Component: TopNavBar Anchor) -->
+<!-- ========================================================================= -->
+<header class="sticky top-9 z-40 w-full bg-surface/85 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-200">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+<!-- Brand Logo + Casing & Dot Anchor -->
+<div class="flex items-center space-x-8">
+<a class="text-headline-sm font-headline-sm font-bold tracking-tight text-on-surface uppercase flex items-center gap-1" href="index.html">
+<span>NEXORA</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+</a>
+<!-- Search Bar Integrated On-Left as dictated by JSON -->
+<div class="relative hidden lg:block w-72">
+<span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="w-full h-10 pl-9 pr-12 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search audio, flagships, OLED..." type="text"/>
+<kbd class="absolute right-2.5 top-2.5 px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant/70 bg-surface-container-low border border-outline-variant/50 rounded">⌘K</kbd>
+</div>
+</div>
+<!-- Navigation Links from Shared Components JSON with Semantic Active State mapping -->
+<nav class="hidden md:flex items-center space-x-7">
+  <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="index.html">Home</a>
+  <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="catalog.html">Catalog</a>
+  <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="about.html">About</a>
+  <a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-md font-label-md transition-colors duration-200" href="contact.html">Contact</a>
+</nav>
+<!-- Trailing Action Cluster: Actions & Icons from JSON -->
+<div class="flex items-center space-x-4">
+<!-- JSON Trailing Icon Action: favorite -->
+<button class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="Wishlist">
+<span class="material-symbols-outlined text-[22px]">favorite</span>
+<span id="demo-wishlist-badge" class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center transition-all duration-200" style="display: none;">0</span>
+</button>
+<!-- JSON Trailing Icon Action: public -->
+<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Global Region">
+<span class="material-symbols-outlined text-[22px]">public</span>
+</button>
+<!-- JSON Trailing Secondary Action: Account -->
+<a class="hidden sm:flex items-center gap-1.5 text-label-md font-label-md font-medium text-on-surface-variant hover:text-primary transition-colors" href="#account">
+<span class="material-symbols-outlined text-[20px]">account_circle</span>
+<span>Account</span>
+</a>
+<!-- JSON Trailing Primary Action: Cart (0) / Dynamic Cart Badge -->
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-200 text-label-md font-label-md shadow-sm">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+<span id="demo-cart-text">Cart (0)</span>
+<span id="demo-cart-subtotal" class="hidden xl:inline text-inverse-on-surface/60">• ₹0</span>
+</button>
+</div>
+</div>
+</header>
+<!-- ========================================================================= -->
+
+<!-- ========================================================================= -->
+<!-- CONTACT & HARDWARE CONCIERGE -->
+<!-- ========================================================================= -->
+<section class="py-16 lg:py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-8">
+      <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-on-surface font-semibold">Contact Concierge</span>
+    </nav>
+
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 text-label-sm font-bold mb-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>DESK ACTIVE • AVG. RESPONSE &lt; 15 MINS</span>
+      </div>
+      <h1 class="text-4xl sm:text-headline-lg font-headline-lg font-bold text-on-surface mb-4">
+        Hardware Concierge &amp; Support
+      </h1>
+      <p class="text-body-lg text-on-surface-variant">
+        Have questions regarding firmware compatibility, warranty registration, or metro express dispatch? Our dedicated hardware team is available 24/7.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-20">
+      <!-- Contact Form -->
+      <div class="lg:col-span-7">
+        <div class="p-8 sm:p-10 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-xl">
+          <h2 class="text-headline-sm font-bold text-on-surface mb-6">Send an Inquiry</h2>
+
+          <form id="demo-contact-form" class="space-y-5" onsubmit="event.preventDefault(); showDemoToast('Inquiry dispatched! Concierge will reply in 15 mins.', 'send'); this.reset();">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="contact-name">
+                  Full Name *
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-name" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                  placeholder="Rahul Singh"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="contact-email">
+                  Email Address *
+                </label>
+                <input 
+                  type="email" 
+                  id="contact-email" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                  placeholder="rahul@example.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="contact-dept">
+                  Department
+                </label>
+                <select 
+                  id="contact-dept" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                >
+                  <option>Order Tracking &amp; Delivery</option>
+                  <option>Hardware Technical Support</option>
+                  <option>Warranty &amp; Replacement</option>
+                  <option>Corporate Fleet Procurement</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="contact-order">
+                  Order / Serial # (Optional)
+                </label>
+                <input 
+                  type="text" 
+                  id="contact-order" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                  placeholder="NX-2026-8812"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="contact-msg">
+                Message *
+              </label>
+              <textarea 
+                id="contact-msg" 
+                rows="5"
+                class="w-full p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                placeholder="Describe your inquiry, device serial number, or consultation question..."
+                required
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full h-13 py-3.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-bold text-label-md font-label-md transition-all shadow-md flex items-center justify-center gap-2"
+            >
+              <span>Transmit to Concierge</span>
+              <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Channel Details -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex items-start gap-5">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">support_agent</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm font-bold text-on-surface mb-1">Direct Live Concierge</h3>
+            <p class="text-body-sm text-on-surface-variant mb-3">Live chat assistance available 24 hours a day, 7 days a week.</p>
+            <span class="text-label-md font-bold text-primary">support@nexora.tech</span>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex items-start gap-5">
+          <div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">send</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm font-bold text-on-surface mb-1">Telegram Priority Desk</h3>
+            <p class="text-body-sm text-on-surface-variant mb-3">Instant firmware updates and engineer support for hardware owners.</p>
+            <span class="text-label-md font-bold text-secondary">@NexoraConciergeBot</span>
+          </div>
+        </div>
+
+        <div class="p-8 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex items-start gap-5">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">storefront</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm font-bold text-on-surface mb-1">Bengaluru Flagship Studio</h3>
+            <p class="text-body-sm text-on-surface-variant mb-3">100-Ft Road, Indiranagar, Bengaluru, KA 560038</p>
+            <span class="text-label-sm font-bold text-on-surface-variant">Mon – Sat: 10:00 AM – 9:00 PM IST</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="border-t border-outline-variant/30 pt-16">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-label-md font-label-md uppercase tracking-wider text-primary font-semibold">Immediate Answers</span>
+        <h2 class="text-headline-lg font-headline-lg font-bold text-on-surface mt-1">Frequently Asked Support Questions</h2>
+      </div>
+
+      <div class="max-w-3xl mx-auto space-y-4">
+        <div class="border border-outline-variant/40 rounded-2xl bg-surface-container-lowest overflow-hidden transition-all">
+          <button type="button" class="w-full p-6 text-left flex items-center justify-between font-semibold text-on-surface hover:text-primary transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden');">
+            <span>What is the standard delivery timeframe for metro cities?</span>
+            <span class="material-symbols-outlined text-[20px]">expand_more</span>
+          </button>
+          <div class="px-6 pb-6 text-body-md text-on-surface-variant border-t border-outline-variant/20 pt-4">
+            Orders placed before 2:00 PM IST are dispatched the same day. Metro deliveries (Bengaluru, Mumbai, Delhi NCR, Hyderabad) arrive within 24 to 48 hours via premium express insured logistics.
+          </div>
+        </div>
+
+        <div class="border border-outline-variant/40 rounded-2xl bg-surface-container-lowest overflow-hidden transition-all">
+          <button type="button" class="w-full p-6 text-left flex items-center justify-between font-semibold text-on-surface hover:text-primary transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden');">
+            <span>How does the 1-Year Comprehensive Warranty work?</span>
+            <span class="material-symbols-outlined text-[20px]">expand_more</span>
+          </button>
+          <div class="px-6 pb-6 text-body-md text-on-surface-variant border-t border-outline-variant/20 pt-4 hidden">
+            All devices come with genuine manufacturer warranty and NEXORA Doorstep Care. If any technical defect occurs, our concierge schedules a priority doorstep pickup and provides a certified replacement unit.
+          </div>
+        </div>
+
+        <div class="border border-outline-variant/40 rounded-2xl bg-surface-container-lowest overflow-hidden transition-all">
+          <button type="button" class="w-full p-6 text-left flex items-center justify-between font-semibold text-on-surface hover:text-primary transition-colors" onclick="this.nextElementSibling.classList.toggle('hidden');">
+            <span>Are all listed products authentic and officially imported?</span>
+            <span class="material-symbols-outlined text-[20px]">expand_more</span>
+          </button>
+          <div class="px-6 pb-6 text-body-md text-on-surface-variant border-t border-outline-variant/20 pt-4 hidden">
+            Yes. Every device ships with official BIS certification, digital GST tax invoice, and verified serial numbers directly recognized by authorized global service centers.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm">
+<div class="max-w-7xl mx-auto px-6 py-16 flex flex-col gap-12">
+<!-- Top Grid: Brand Statement & Columns -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+<!-- Brand Info (2 columns) -->
+<div class="lg:col-span-2">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface uppercase flex items-center gap-1 mb-4" href="#">
+<span>NEXORA</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+</a>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm mb-6">
+            Pioneering precision electronics, spatial acoustic architecture, and tactile luxury hardware. Calibrated for creators, engineers, and discerning audiophiles worldwide.
+          </p>
+<div class="flex items-center space-x-3 text-on-surface-variant">
+<a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">public</span>
+</a>
+<a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</a>
+<a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">rss_feed</span>
+</a>
+</div>
+</div>
+<!-- Col 1: Shop & Collections -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Shop &amp; Collections</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#smartphones">Smartphones</a></li>
+<li><a class="hover:text-primary transition-colors" href="#computing">Laptops &amp; Computing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#audio">Audio Architecture</a></li>
+<li><a class="hover:text-primary transition-colors" href="#wearables">Wearables</a></li>
+<li><a class="hover:text-primary transition-colors" href="#accessories">Accessories</a></li>
+<li><a class="hover:text-primary transition-colors" href="#refurbished">Refurbished Certified</a></li>
+</ul>
+</div>
+<!-- Col 2: Customer Care -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Customer Care</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#track-order">Track Order Status</a></li>
+<li><a class="hover:text-primary transition-colors" href="#shipping">Global Shipping</a></li>
+<li><a class="hover:text-primary transition-colors" href="#returns">Returns &amp; Exchanges</a></li>
+<li><a class="hover:text-primary transition-colors" href="#warranty">Warranty &amp; Care</a></li>
+<li><a class="hover:text-primary transition-colors" href="#authenticity">Authenticity Guarantee</a></li>
+<li><a class="hover:text-primary transition-colors" href="#contact">Contact Concierge</a></li>
+</ul>
+</div>
+<!-- Col 3: Company -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Company</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#about">About NEXORA</a></li>
+<li><a class="hover:text-primary transition-colors" href="#stores">Store Locator</a></li>
+<li><a class="hover:text-primary transition-colors" href="#press">Press &amp; Media</a></li>
+<li><a class="hover:text-primary transition-colors" href="#careers">Careers (We're Hiring)</a></li>
+<li><a class="hover:text-primary transition-colors" href="#sustainability">Eco &amp; Circularity</a></li>
+</ul>
+</div>
+<!-- Col 4: Legal & Architecture -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Legal &amp; Policy</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#privacy">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#terms">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#cookies">Cookie Preferences</a></li>
+<li><a class="hover:text-primary transition-colors" href="#compliance">Compliance &amp; GST</a></li>
+<li><a class="hover:text-primary transition-colors" href="#security">Security Disclosure</a></li>
+</ul>
+</div>
+</div>
+<!-- Payment Icons Row -->
+<div class="pt-8 border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm uppercase font-semibold text-on-surface-variant/80">Secured Payments By:</span>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">VISA</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Mastercard</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">RuPay</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">UPI</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Apple Pay</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Razorpay</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">COD</span>
+</div>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant/80">
+          Crafted for peak acoustic &amp; visual mastery.
+        </div>
+</div>
+<!-- Bottom Copyright & Architecture Notice -->
+<div class="pt-4 border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-label-sm font-label-sm text-on-surface-variant/70">
+<div>
+          © 2026 NEXORA Technologies Inc. All rights reserved.
+        </div>
+<div>
+          Powered by Shopify OS 2.0 architecture • Fast Edge Delivery
+        </div>
+</div>
+</div>
+</footer>
+<!-- Light interactive script for Announcement marquee & Countdown timer -->
+<script>
+    // 1. Cycling Top Announcement Ticker
+    const announcements = [
+      { text: "Free Express Shipping on orders above ₹999", icon: "local_shipping" },
+      { text: "Limited-Time Festive Offer: Get 10% instant cashback with premium cards", icon: "bolt" },
+      { text: "Hassle-free 7-Day Replacement & 1-Year Official Warranty", icon: "verified_user" }
+    ];
+    let currentAnnounce = 0;
+    const announceEl = document.getElementById('announcement-text');
+    
+    if (announceEl) {
+      setInterval(() => {
+        currentAnnounce = (currentAnnounce + 1) % announcements.length;
+        announceEl.parentElement.style.opacity = '0';
+        setTimeout(() => {
+          announceEl.textContent = announcements[currentAnnounce].text;
+          announceEl.parentElement.style.opacity = '1';
+        }, 200);
+      }, 4000);
+    }
+
+    // 2. Countdown Timer simulation
+    let seconds = 45;
+    let minutes = 38;
+    const secEl = document.getElementById('countdown-secs');
+    const minEl = document.getElementById('countdown-mins');
+
+    if (secEl && minEl) {
+      setInterval(() => {
+        if (seconds > 0) {
+          seconds--;
+        } else {
+          seconds = 59;
+          if (minutes > 0) minutes--;
+        }
+        secEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+        minEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+      }, 1000);
+    }
+  </script>
+
+  <!-- Interactive Demo Script for Netlify Live Preview -->
+  <div id="demo-toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-2xl border border-outline-variant/30 text-label-md font-label-md pointer-events-none transform translate-y-6 opacity-0 transition-all duration-300">
+    <span class="material-symbols-outlined text-[20px] text-primary shrink-0" id="demo-toast-icon">check_circle</span>
+    <span class="font-medium" id="demo-toast-msg">Action confirmed</span>
+  </div>
+
+  <script>
+    // Toast Notification System
+    function showDemoToast(msg, icon) {
+      icon = icon || 'check_circle';
+      const toast = document.getElementById('demo-toast');
+      const msgEl = document.getElementById('demo-toast-msg');
+      const iconEl = document.getElementById('demo-toast-icon');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      if (iconEl) iconEl.textContent = icon;
+      toast.classList.remove('translate-y-6', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(function() {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-6', 'opacity-0');
+      }, 2600);
+    }
+
+    // Reactive Wishlist State
+    var wishlistItems = new Set();
+    var wishlistBadge = document.getElementById('demo-wishlist-badge');
+
+    function updateWishlistBadge() {
+      if (!wishlistBadge) return;
+      var count = wishlistItems.size;
+      wishlistBadge.textContent = count;
+      wishlistBadge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    // Delegate all heart / wishlist buttons
+    document.querySelectorAll('button, a').forEach(function(el) {
+      var icon = el.querySelector('.material-symbols-outlined');
+      if (icon && icon.textContent.trim() === 'favorite' && !el.closest('footer') && !(el.getAttribute('title') || '').includes('Wishlist')) {
+        el.setAttribute('data-wishlist-toggle', 'true');
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          var card = el.closest('div');
+          var title = card ? (card.querySelector('h3, h4')?.textContent?.trim() || 'Item') : 'Product';
+          var id = title.toLowerCase().replace(/\s+/g, '-');
+          if (wishlistItems.has(id)) {
+            wishlistItems.delete(id);
+            icon.classList.remove('text-rose-500', 'fill-1');
+            el.classList.remove('text-rose-500');
+            showDemoToast('Removed "' + title + '" from Wishlist', 'heart_minus');
+          } else {
+            wishlistItems.add(id);
+            icon.classList.add('text-rose-500', 'fill-1');
+            el.classList.add('text-rose-500');
+            showDemoToast('Added "' + title + '" to Wishlist!', 'favorite');
+          }
+          updateWishlistBadge();
+        });
+      }
+    });
+
+    // Reactive Cart State
+    var cartCount = 0;
+    var cartTotal = 0;
+    var cartText = document.getElementById('demo-cart-text');
+    var cartSubtotal = document.getElementById('demo-cart-subtotal');
+
+    document.querySelectorAll('button').forEach(function(btn) {
+      var txt = btn.textContent.toLowerCase();
+      if ((txt.includes('add to cart') || txt.includes('pre-order') || txt.includes('order now') || txt.includes('buy now')) && !btn.closest('footer')) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          cartCount++;
+          var card = btn.closest('div');
+          var title = card ? (card.querySelector('h3, h4')?.textContent?.trim() || 'Hardware') : 'Flagship Device';
+          var priceStr = card ? (card.querySelector('.font-bold, .text-headline-sm')?.textContent || '₹4,990') : '₹4,990';
+          var priceNum = parseInt(priceStr.replace(/[^0-9]/g, '')) || 4990;
+          cartTotal += priceNum;
+
+          if (cartText) cartText.textContent = 'Cart (' + cartCount + ')';
+          if (cartSubtotal) cartSubtotal.textContent = '• ₹' + cartTotal.toLocaleString('en-IN');
+          showDemoToast('Added "' + title + '" to active cart!', 'shopping_bag');
+        });
+      }
+    });
+
+    // Smooth navigation anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var targetId = this.getAttribute('href').slice(1);
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body></html>
