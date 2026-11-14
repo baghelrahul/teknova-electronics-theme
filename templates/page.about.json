@@ -58,7 +58,69 @@
     },
     "partners": {
       "type": "brand-partners",
-      "settings": {}
+      "blocks": {
+        "partner-1": {
+          "type": "brand",
+          "settings": {
+            "brand_name": " Apple Authorized",
+            "tracking_class": "tracking-tighter"
+          }
+        },
+        "partner-2": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "SAMSUNG",
+            "tracking_class": "tracking-tight"
+          }
+        },
+        "partner-3": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "SONY",
+            "tracking_class": "tracking-widest"
+          }
+        },
+        "partner-4": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "JBL Harman",
+            "tracking_class": "tracking-wide"
+          }
+        },
+        "partner-5": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "NOTHING (R)",
+            "tracking_class": "tracking-widest"
+          }
+        },
+        "partner-6": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "BOSE",
+            "tracking_class": "tracking-wider"
+          }
+        },
+        "partner-7": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "ONEPLUS",
+            "tracking_class": "tracking-tight"
+          }
+        }
+      },
+      "block_order": [
+        "partner-1",
+        "partner-2",
+        "partner-3",
+        "partner-4",
+        "partner-5",
+        "partner-6",
+        "partner-7"
+      ],
+      "settings": {
+        "subheading": "Authorized Direct Distribution Partner for Industry Leaders"
+      }
     }
   },
   "order": [
