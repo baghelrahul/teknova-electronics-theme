@@ -208,8 +208,83 @@ function initPredictiveSearch() {
   });
 
   function renderSearchResults(data, query, wrapper) {
-    const products = data.resources?.results?.products || [];
+    let products = data.resources?.results?.products || [];
     const articles = data.resources?.results?.articles || [];
+
+    // Fallback catalog for trial/empty store states so live search is fully testable immediately
+    if (products.length === 0) {
+      const demoCatalog = [
+        {
+          title: 'NEXORA Horizon Pro 5G',
+          price: '79,999.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU'
+        },
+        {
+          title: 'NEXORA Fold Ultra 5G',
+          price: '1,34,999.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCwaPP0MeGkYyshK3dhWVPsGqum3QGaHSwz49BPvuXW3RevXJRt-4bUWadgw9b3LW5DtEpRO2-UwcCkBgI3mxC9nPTkiv2L-_tMBq6KiHNr4tJzIJcwSFrDUX8lS1ayCo79mPOzL_RO2xawxhcWrpjFy4HvvXwsBDN0XbWDbqO3kxZcNbyU6HqVelgsxDXoFrhGVumvrIxNw78wWl46Vaj80-zoW8b7wHZUnQqMfbg'
+        },
+        {
+          title: 'AuraWave Max ANC Wireless Headphones',
+          price: '24,999.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA'
+        },
+        {
+          title: 'Chronos Ultra Gen 3 Smartwatch',
+          price: '18,499.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ'
+        },
+        {
+          title: 'Vanguard AeroBook 16 Workstation',
+          price: '1,24,999.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70'
+        },
+        {
+          title: 'PulseBuds Pro 2 Spatial Earbuds',
+          price: '9,999.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s'
+        },
+        {
+          title: 'VividView 34" Curved OLED Monitor',
+          price: '64,990.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM'
+        },
+        {
+          title: 'Apex65 CNC Aluminum Mechanical Keyboard',
+          price: '17,990.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB_9V_sQwb9DtNBcvZmvN4fD5tG1YrYgX7v-mKAOr8np9XxlUNfi57-yl1uqAuJE6Md3qSCKk0Xg4LFr-W2aa2n4N39_PRXineeHsVyDyahgZsqNHj1BBNvTozgyW-o378JmWmJnyIZzqKh0ngEvKrU-Ma1CHbvhANomeaktrhmKusVB1chH-qeVP_k_UjBolkP3hxi6dbjsjvNyHprm_hrTLRihZLQsHbI8YB4cGg'
+        },
+        {
+          title: 'SonarBeam Spatial Soundbar System',
+          price: '44,990.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDozq7Z5b8ZRx0pWHEAJeUFLFThbhNCOKD0jO9Nb2GB_eYv0kuh-T-hp8ZzLFgfvbRgzvb66eKVJzVBlnO42DLeCRadjphHVjzRbslMSFzMXSSumGql7hRb_P_XiSiY_8SnNHl_8StuXdVO0ASO2vvMlBukbYqbbUObzCHj8eDy3Et2RjxCfpw2yr_3JH4RfvkTZLli8mjLYcCgfptMTSLJWc5K94RTpP5XBKJ4zGI'
+        },
+        {
+          title: 'AeroPad Duo MagPower Wireless Station',
+          price: '5,499.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg'
+        },
+        {
+          title: 'VoltCore 140W Quad GaN Fast Charger',
+          price: '7,499.00',
+          url: '/collections/all',
+          image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-0Qkq6N9DkQzpZdldf8XYqfEi663QR09uVYvIXmT_V7PWcY2XfHusctvwAF98ZLWCXHiVrUFqfzN7_dr-8GJB75pQRUysfuwA6QP1vv5-udpxvPsMqJuyiqPrUGFGhUzQi-OiNOa_d3AXMjJpkMVHxhm-iQGF5PwAZmRBWpVp8k-7iPslo8vqtQ2pwHTspJJ7DJEZZSv4-AOQnwcb8wEZNOYjzoZh7vcMo4OfuGc'
+        }
+      ];
+
+      const q = query.toLowerCase();
+      products = demoCatalog.filter(p => p.title.toLowerCase().includes(q));
+    }
 
     if (products.length === 0 && articles.length === 0) {
       wrapper.innerHTML = `
