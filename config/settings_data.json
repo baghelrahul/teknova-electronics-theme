@@ -40,8 +40,8 @@
           "show_search": true,
           "search_placeholder": "Search audio, flagships, OLED...",
           "show_wishlist": true,
-          "wishlist_count": "3",
-          "wishlist_url": "shopify://pages/wishlist",
+          "wishlist_count": "",
+          "wishlist_url": "",
           "show_region_button": true,
           "force_show_account": true,
           "account_label": "Account"
