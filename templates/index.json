@@ -1,10 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_banner": {
       "type": "hero-banner",
       "settings": {
         "badge": "NEXORA 2026 ARCHITECTURE",
-        "heading_line_1": "Elevate",
+        "heading_line_1": "Elevate Now",
         "heading_gradient": "Your Future.",
         "description": "Discover next-generation technology designed to make everyday life smarter, faster, and remarkably seamless. Calibrated for purists and creators.",
         "primary_cta_text": "Shop Now — Explore 2026 Fleet",
@@ -28,64 +37,84 @@
         "cat_1": {
           "type": "category_card",
           "settings": {
+            "collection": "",
             "title": "Smartphones",
             "subtitle": "Flagship Foldables & Pro Series",
             "count_badge": "24 Models",
-            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCwaPP0MeGkYyshK3dhWVPsGqum3QGaHSwz49BPvuXW3RevXJRt-4bUWadgw9b3LW5DtEpRO2-UwcCkBgI3mxC9nPTkiv2L-_tMBq6KiHNr4tJzIJcwSFrDUX8lS1ayCo79mPOzL_RO2xawxhcWrpjFy4HvvXwsBDN0XbWDbqO3kxZcNbyU6HqVelgsxDXoFrhGVumvrIxNw78wWl46Vaj80-zoW8b7wHZUnQqMfbg"
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCwaPP0MeGkYyshK3dhWVPsGqum3QGaHSwz49BPvuXW3RevXJRt-4bUWadgw9b3LW5DtEpRO2-UwcCkBgI3mxC9nPTkiv2L-_tMBq6KiHNr4tJzIJcwSFrDUX8lS1ayCo79mPOzL_RO2xawxhcWrpjFy4HvvXwsBDN0XbWDbqO3kxZcNbyU6HqVelgsxDXoFrhGVumvrIxNw78wWl46Vaj80-zoW8b7wHZUnQqMfbg",
+            "link": ""
           }
         },
         "cat_2": {
           "type": "category_card",
           "settings": {
+            "collection": "",
             "title": "Laptops & Tablets",
             "subtitle": "Silicon & OLED Workstations",
             "count_badge": "18 Models",
-            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBjLYpCs68_yZHbZZLaBhJ-do1Dm8g_qWeamzsnlPvM0rTnq5yjo4M-4LA9k5s7mjNk1C8qy0XOCnYqceI6Fqi-kyYGU3-ERChz1QLJ_K6nv4zH3Pyd5W3ezrSzt7b7KmHluPrMaTNoQ8_NwA3Gx5qKcJIOyAjzkLDFyyP6Kqb_i_dTG2whWe9ifa7cKVBiY4YBN_lyBdt3fcVT-k29wRN6nqfMkgOYWKJKmMv5fYA"
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBjLYpCs68_yZHbZZLaBhJ-do1Dm8g_qWeamzsnlPvM0rTnq5yjo4M-4LA9k5s7mjNk1C8qy0XOCnYqceI6Fqi-kyYGU3-ERChz1QLJ_K6nv4zH3Pyd5W3ezrSzt7b7KmHluPrMaTNoQ8_NwA3Gx5qKcJIOyAjzkLDFyyP6Kqb_i_dTG2whWe9ifa7cKVBiY4YBN_lyBdt3fcVT-k29wRN6nqfMkgOYWKJKmMv5fYA",
+            "link": ""
           }
         },
         "cat_3": {
           "type": "category_card",
           "settings": {
+            "collection": "",
             "title": "Headphones & Audio",
             "subtitle": "Spatial Acoustics & Monitors",
             "count_badge": "32 Models",
-            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBobEPgxWoko9gpk_7c-5F-HXeCFv4WYhCtIJK4_Q6KARs8OW_u6d4IQCz4dOTCQW595y2ncdl7e41PNOCl1tmYpSP9AqJjyP_rMVVMSNv_C_kxPxNzRMY9s0CfjBBJS2ZE2L5fpLK03NhMkzWZnsMPQQj-xzCfzyHslEGbG6EdaF3bYqxz7iKC5lzRchm6tOUJrsGH3HWX2brpjilswLYcGGZhwQDwAq-bvpI6Zs4"
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBobEPgxWoko9gpk_7c-5F-HXeCFv4WYhCtIJK4_Q6KARs8OW_u6d4IQCz4dOTCQW595y2ncdl7e41PNOCl1tmYpSP9AqJjyP_rMVVMSNv_C_kxPxNzRMY9s0CfjBBJS2ZE2L5fpLK03NhMkzWZnsMPQQj-xzCfzyHslEGbG6EdaF3bYqxz7iKC5lzRchm6tOUJrsGH3HWX2brpjilswLYcGGZhwQDwAq-bvpI6Zs4",
+            "link": ""
           }
         },
         "cat_4": {
           "type": "category_card",
           "settings": {
+            "collection": "",
             "title": "Smartwatches & Fitness",
             "subtitle": "Titanium GPS & Biosensing Tech",
             "count_badge": "15 Models",
-            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAtOyoOuCHwxeVRBpzdlvVINrW9bWIgGDz7lg2JuSFc43H5GGcfwkLoUKsCcJuys3nvE6K-24r-fbzmPB1l_1LrowpL_f8DhZjfEaMCBRPi5Wa6w9DqtegBQs30BUWgwa8aNyMVUegz7qtIxS3jxh8TJQZm1tatuuhUzLDSwhoTqRJR6PoSUnv1OmzjRS1BoH08iSF-9AiE-SW8Krzxk4EowZUy8Z7tXPGtXZGD4dI"
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAtOyoOuCHwxeVRBpzdlvVINrW9bWIgGDz7lg2JuSFc43H5GGcfwkLoUKsCcJuys3nvE6K-24r-fbzmPB1l_1LrowpL_f8DhZjfEaMCBRPi5Wa6w9DqtegBQs30BUWgwa8aNyMVUegz7qtIxS3jxh8TJQZm1tatuuhUzLDSwhoTqRJR6PoSUnv1OmzjRS1BoH08iSF-9AiE-SW8Krzxk4EowZUy8Z7tXPGtXZGD4dI",
+            "link": ""
           }
         },
         "cat_5": {
           "type": "category_card",
           "settings": {
+            "collection": "",
             "title": "Gaming & Peripherals",
             "subtitle": "Mechanical Keyboards & 8K Mice",
             "count_badge": "28 Models",
-            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuB_9V_sQwb9DtNBcvZmvN4fD5tG1YrYgX7v-mKAOr8np9XxlUNfi57-yl1uqAuJE6Md3qSCKk0Xg4LFr-W2aa2n4N39_PRXineeHsVyDyahgZsqNHj1BBNvTozgyW-o378JmWmJnyIZzqKh0ngEvKrU-Ma1CHbvhANomeaktrhmKusVB1chH-qeVP_k_UjBolkP3hxi6dbjsjvNyHprm_hrTLRihZLQsHbI8YB4cGg"
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuB_9V_sQwb9DtNBcvZmvN4fD5tG1YrYgX7v-mKAOr8np9XxlUNfi57-yl1uqAuJE6Md3qSCKk0Xg4LFr-W2aa2n4N39_PRXineeHsVyDyahgZsqNHj1BBNvTozgyW-o378JmWmJnyIZzqKh0ngEvKrU-Ma1CHbvhANomeaktrhmKusVB1chH-qeVP_k_UjBolkP3hxi6dbjsjvNyHprm_hrTLRihZLQsHbI8YB4cGg",
+            "link": ""
           }
         },
         "cat_6": {
           "type": "category_card",
           "settings": {
+            "collection": "",
             "title": "Smart Home & Automation",
             "subtitle": "Matter-enabled Hubs & Light",
             "count_badge": "19 Models",
-            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDozq7Z5b8ZRx0pWHEAJeUFLFThbhNCOKD0jO9Nb2GB_eYv0kuh-T-hp8ZzLFgfvbRgzvb66eKVJzVBlnO42DLeCRadjphHVjzRbslMSFzMXSSumGql7hRb_P_XiSiY_8SnNHl_8StuXdVO0ASO2vvMlBukbYqbbUObzCHj8eDy3Et2RjxCfpw2yr_3JH4RfvkTZLli8mjLYcCgfptMTSLJWc5K94RTpP5XBKJ4zGI"
+            "fallback_image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDozq7Z5b8ZRx0pWHEAJeUFLFThbhNCOKD0jO9Nb2GB_eYv0kuh-T-hp8ZzLFgfvbRgzvb66eKVJzVBlnO42DLeCRadjphHVjzRbslMSFzMXSSumGql7hRb_P_XiSiY_8SnNHl_8StuXdVO0ASO2vvMlBukbYqbbUObzCHj8eDy3Et2RjxCfpw2yr_3JH4RfvkTZLli8mjLYcCgfptMTSLJWc5K94RTpP5XBKJ4zGI",
+            "link": ""
           }
         }
       },
-      "block_order": ["cat_1", "cat_2", "cat_3", "cat_4", "cat_5", "cat_6"],
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6"
+      ],
       "settings": {
         "eyebrow": "Classification",
         "heading": "Engineered Categories",
         "subheading": "Explore hardware tailored for creators, engineers, and audiophiles.",
-        "view_all_text": "View All 18 Segments"
+        "view_all_text": "View All 18 Segments",
+        "view_all_link": ""
       }
     },
     "trending_products": {
@@ -104,7 +133,8 @@
             "badge_color": "bg-secondary text-on-secondary",
             "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU",
             "swatches": "bg-stone-500, bg-neutral-900, bg-neutral-200",
-            "tab_category": "phones"
+            "tab_category": "phones",
+            "url": ""
           }
         },
         "trend_2": {
@@ -120,7 +150,8 @@
             "badge_color": "bg-emerald-600 text-white",
             "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA",
             "swatches": "bg-neutral-900, bg-slate-300",
-            "tab_category": "audio"
+            "tab_category": "audio",
+            "url": ""
           }
         },
         "trend_3": {
@@ -136,7 +167,8 @@
             "badge_color": "bg-primary text-on-primary",
             "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ",
             "swatches": "bg-amber-800, bg-slate-700, bg-orange-500",
-            "tab_category": "wearables"
+            "tab_category": "wearables",
+            "url": ""
           }
         },
         "trend_4": {
@@ -152,7 +184,8 @@
             "badge_color": "bg-secondary-container text-white",
             "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70",
             "swatches": "bg-stone-700, bg-stone-300",
-            "tab_category": "laptops"
+            "tab_category": "laptops",
+            "url": ""
           }
         },
         "trend_5": {
@@ -168,14 +201,23 @@
             "badge_color": "bg-primary-container text-on-primary-container",
             "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s",
             "swatches": "bg-slate-900, bg-zinc-100",
-            "tab_category": "audio"
+            "tab_category": "audio",
+            "url": ""
           }
         }
       },
-      "block_order": ["trend_1", "trend_2", "trend_3", "trend_4", "trend_5"],
+      "block_order": [
+        "trend_1",
+        "trend_2",
+        "trend_3",
+        "trend_4",
+        "trend_5"
+      ],
       "settings": {
         "eyebrow": "Real-Time Demand",
-        "heading": "Trending Right Now"
+        "heading": "Trending Right Now",
+        "collection": "",
+        "products_to_show": 5
       }
     },
     "promotional_banner": {
@@ -205,7 +247,8 @@
             "price": "₹32,490",
             "badge": "Only 4 left!",
             "badge_color": "bg-amber-500 text-white",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCLy4Z9fK2F88t6XW0d611b_n_jX8UqL26B2p0D3gWknxN47xY4_d-2tT1kXjQ8i9E1jQ1bXw"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCLy4Z9fK2F88t6XW0d611b_n_jX8UqL26B2p0D3gWknxN47xY4_d-2tT1kXjQ8i9E1jQ1bXw",
+            "link": ""
           }
         },
         "best_2": {
@@ -218,7 +261,8 @@
             "price": "₹64,990",
             "badge": "Top Pick",
             "badge_color": "bg-secondary text-white",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM",
+            "link": ""
           }
         },
         "best_3": {
@@ -231,7 +275,8 @@
             "price": "₹5,499",
             "badge": "In Stock",
             "badge_color": "bg-emerald-600 text-white",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg",
+            "link": ""
           }
         },
         "best_4": {
@@ -244,15 +289,23 @@
             "price": "₹21,490",
             "badge": "Hot Selling",
             "badge_color": "bg-rose-600 text-white",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAPVCLt3I9E4tSnBgX10kOfkBSCcxGkP3XxEq-wSmwD-ssKIzfx9jbd5d3T3OilHwsSeq3aNdYZzlU7YbVNmDpU49VB-vST5bnKhwUKY5P1zO4pOyyJdb0leuWmUOPzn2aJeKmIbxPE7iiLcUeL1PDeV6ci0TxaJFtdBNlZMsaBXKlN3NfxF-gJISrFhMmfwkCcH81kS7u1wTRgHqe5_vgLqOoTpVO7lw4Ew3pMiMM"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAPVCLt3I9E4tSnBgX10kOfkBSCcxGkP3XxEq-wSmwD-ssKIzfx9jbd5d3T3OilHwsSeq3aNdYZzlU7YbVNmDpU49VB-vST5bnKhwUKY5P1zO4pOyyJdb0leuWmUOPzn2aJeKmIbxPE7iiLcUeL1PDeV6ci0TxaJFtdBNlZMsaBXKlN3NfxF-gJISrFhMmfwkCcH81kS7u1wTRgHqe5_vgLqOoTpVO7lw4Ew3pMiMM",
+            "link": ""
           }
         }
       },
-      "block_order": ["best_1", "best_2", "best_3", "best_4"],
+      "block_order": [
+        "best_1",
+        "best_2",
+        "best_3",
+        "best_4"
+      ],
       "settings": {
         "eyebrow": "Enduring Reliability",
         "heading": "Customer Favorites",
-        "subheading": "The gear our community relies on every single day for professional output."
+        "subheading": "The gear our community relies on every single day for professional output.",
+        "comparison_button_text": "Open Quick-Spec Comparison",
+        "collection": ""
       }
     },
     "new_arrivals": {
@@ -265,7 +318,8 @@
             "title": "VoltCore 140W Quad GaN",
             "description": "Powers 2 MacBooks simultaneously.",
             "price": "₹7,499",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-0Qkq6N9DkQzpZdldf8XYqfEi663QR09uVYvIXmT_V7PWcY2XfHusctvwAF98ZLWCXHiVrUFqfzN7_dr-8GJB75pQRUysfuwA6QP1vv5-udpxvPsMqJuyiqPrUGFGhUzQi-OiNOa_d3AXMjJpkMVHxhm-iQGF5PwAZmRBWpVp8k-7iPslo8vqtQ2pwHTspJJ7DJEZZSv4-AOQnwcb8wEZNOYjzoZh7vcMo4OfuGc"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuD-0Qkq6N9DkQzpZdldf8XYqfEi663QR09uVYvIXmT_V7PWcY2XfHusctvwAF98ZLWCXHiVrUFqfzN7_dr-8GJB75pQRUysfuwA6QP1vv5-udpxvPsMqJuyiqPrUGFGhUzQi-OiNOa_d3AXMjJpkMVHxhm-iQGF5PwAZmRBWpVp8k-7iPslo8vqtQ2pwHTspJJ7DJEZZSv4-AOQnwcb8wEZNOYjzoZh7vcMo4OfuGc",
+            "link": ""
           }
         },
         "arr_2": {
@@ -275,7 +329,8 @@
             "title": "OmniPort Thunderbolt 4 Hub",
             "description": "Dual 8K 60Hz Display Output.",
             "price": "₹24,990",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDGEpa3ZF4BninbdX9C1aYzsJfPq-dlwl94aXFkALra-DA7lhmUbCOQa33-RvhJlXFNCTFmSPyPd0oB-50Q3XCHmo48s1bdGcCl8pe_LJiF3LlK4_lFHF7GwlwegZCsWj4oR3Qhijmt1tHLuPm9BfJrcyd7v19KObkMvkXwlJ4L_DzuEg4T2MC92_NjJLxNELJRFAVZe7E7XbCOqdZROEBtRRBopm-uhvd5g-9Wv1E"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDGEpa3ZF4BninbdX9C1aYzsJfPq-dlwl94aXFkALra-DA7lhmUbCOQa33-RvhJlXFNCTFmSPyPd0oB-50Q3XCHmo48s1bdGcCl8pe_LJiF3LlK4_lFHF7GwlwegZCsWj4oR3Qhijmt1tHLuPm9BfJrcyd7v19KObkMvkXwlJ4L_DzuEg4T2MC92_NjJLxNELJRFAVZe7E7XbCOqdZROEBtRRBopm-uhvd5g-9Wv1E",
+            "link": ""
           }
         },
         "arr_3": {
@@ -285,7 +340,8 @@
             "title": "AeroGlide 8K Wireless",
             "description": "38 Grams • 8000Hz Polling Rate.",
             "price": "₹11,999",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAL2Q_3w--an2Mucj27XrLeDbmfbuWNxs_ACgRajas94_rd12L1z9ZdHr70ygzU0oIuh4maWDULQTDe24-JLXqXJvb2u31Q2utj2xYRHiftW3TdYZBY83PSaBETi45ilW_AgFGBKVZyfXcjVWHtSRXkgopa6xI5_SCM975jBYSxzpcvtlV3yoj65SYF7Iee0ZxR9_T1CvoGtc_iKdR0H4viFZK2L507NdO-z0V6EL4"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAL2Q_3w--an2Mucj27XrLeDbmfbuWNxs_ACgRajas94_rd12L1z9ZdHr70ygzU0oIuh4maWDULQTDe24-JLXqXJvb2u31Q2utj2xYRHiftW3TdYZBY83PSaBETi45ilW_AgFGBKVZyfXcjVWHtSRXkgopa6xI5_SCM975jBYSxzpcvtlV3yoj65SYF7Iee0ZxR9_T1CvoGtc_iKdR0H4viFZK2L507NdO-z0V6EL4",
+            "link": ""
           }
         },
         "arr_4": {
@@ -295,11 +351,17 @@
             "title": "Iris Pro Webcam 4K HDR",
             "description": "Sony STARVIS 2 • AI Framing.",
             "price": "₹16,499",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s",
+            "link": ""
           }
         }
       },
-      "block_order": ["arr_1", "arr_2", "arr_3", "arr_4"],
+      "block_order": [
+        "arr_1",
+        "arr_2",
+        "arr_3",
+        "arr_4"
+      ],
       "settings": {
         "eyebrow": "First Edition Releases",
         "heading": "Fresh Tech Has Arrived"
@@ -312,6 +374,7 @@
         "title": "NEXORA Visionary Duo Bundle",
         "description": "Includes Horizon Pro 5G (512GB Titanium) + Chronos Ultra Gen 3 Smartwatch with Italian Leather and Alpine Straps.",
         "duration_hours": 48,
+        "target_end_date": "",
         "deal_price": "₹89,990",
         "original_price": "₹1,08,498",
         "savings_badge": "SAVE ₹18,508 (17% OFF)",
@@ -319,6 +382,7 @@
         "inventory_percent_int": 78,
         "inventory_remaining": "Only 14 bundles remaining",
         "cta_text": "Claim This Deal Now",
+        "cta_link": "",
         "guarantee_text": "Guaranteed Delivery in 24 Hours"
       }
     },
@@ -362,7 +426,12 @@
           }
         }
       },
-      "block_order": ["ben_1", "ben_2", "ben_3", "ben_4"],
+      "block_order": [
+        "ben_1",
+        "ben_2",
+        "ben_3",
+        "ben_4"
+      ],
       "settings": {
         "eyebrow": "The NEXORA Guarantee",
         "heading": "Engineered for Complete Confidence"
@@ -371,15 +440,72 @@
     "brand_partners": {
       "type": "brand-partners",
       "blocks": {
-        "bp_1": { "type": "brand", "settings": { "brand_name": " Apple Authorized", "tracking_class": "tracking-tighter" } },
-        "bp_2": { "type": "brand", "settings": { "brand_name": "SAMSUNG", "tracking_class": "tracking-tight" } },
-        "bp_3": { "type": "brand", "settings": { "brand_name": "SONY", "tracking_class": "tracking-widest" } },
-        "bp_4": { "type": "brand", "settings": { "brand_name": "JBL", "tracking_class": "tracking-wide" } },
-        "bp_5": { "type": "brand", "settings": { "brand_name": "NOTHING", "tracking_class": "tracking-widest" } },
-        "bp_6": { "type": "brand", "settings": { "brand_name": "BOSE", "tracking_class": "tracking-wider" } },
-        "bp_7": { "type": "brand", "settings": { "brand_name": "ONEPLUS", "tracking_class": "tracking-tight" } }
+        "bp_1": {
+          "type": "brand",
+          "settings": {
+            "brand_name": " Apple Authorized",
+            "tracking_class": "tracking-tighter",
+            "link": ""
+          }
+        },
+        "bp_2": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "SAMSUNG",
+            "tracking_class": "tracking-tight",
+            "link": ""
+          }
+        },
+        "bp_3": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "SONY",
+            "tracking_class": "tracking-widest",
+            "link": ""
+          }
+        },
+        "bp_4": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "JBL",
+            "tracking_class": "tracking-wide",
+            "link": ""
+          }
+        },
+        "bp_5": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "NOTHING",
+            "tracking_class": "tracking-widest",
+            "link": ""
+          }
+        },
+        "bp_6": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "BOSE",
+            "tracking_class": "tracking-wider",
+            "link": ""
+          }
+        },
+        "bp_7": {
+          "type": "brand",
+          "settings": {
+            "brand_name": "ONEPLUS",
+            "tracking_class": "tracking-tight",
+            "link": ""
+          }
+        }
       },
-      "block_order": ["bp_1", "bp_2", "bp_3", "bp_4", "bp_5", "bp_6", "bp_7"],
+      "block_order": [
+        "bp_1",
+        "bp_2",
+        "bp_3",
+        "bp_4",
+        "bp_5",
+        "bp_6",
+        "bp_7"
+      ],
       "settings": {
         "subheading": "Authorized Direct Distribution Partner for Industry Leaders"
       }
@@ -424,7 +550,11 @@
           }
         }
       },
-      "block_order": ["rev_1", "rev_2", "rev_3"],
+      "block_order": [
+        "rev_1",
+        "rev_2",
+        "rev_3"
+      ],
       "settings": {
         "eyebrow": "Owner Testimonials",
         "heading": "Loved by Tech Enthusiasts",
@@ -483,7 +613,13 @@
           }
         }
       },
-      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5"],
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ],
       "settings": {
         "eyebrow": "Clarity & Support",
         "heading": "Frequently Asked Questions",
@@ -497,39 +633,50 @@
           "type": "gallery_item",
           "settings": {
             "likes_count": "1,824 likes",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC27RHatjjQlI4FN83fJWiC3WhFUXYJQCNsG6LLYiK1tDLMbNjHqy0fX8KawNPZ_vGVv79T11rZeQQqKA2vHga1nKzuEVBuEaFlckfDNQwqhZ9CReoaaCuNlMzLUao8JVymfoh3bIltKm7_ltulbOrbKMgj9Z3TPZn6RfLzSdqnOfQUCWzXBUkxMgDYhd35G0B9pAyYFh7Z_pvBNY-94fuPZOwifYOEqo7evwFbNpI"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC27RHatjjQlI4FN83fJWiC3WhFUXYJQCNsG6LLYiK1tDLMbNjHqy0fX8KawNPZ_vGVv79T11rZeQQqKA2vHga1nKzuEVBuEaFlckfDNQwqhZ9CReoaaCuNlMzLUao8JVymfoh3bIltKm7_ltulbOrbKMgj9Z3TPZn6RfLzSdqnOfQUCWzXBUkxMgDYhd35G0B9pAyYFh7Z_pvBNY-94fuPZOwifYOEqo7evwFbNpI",
+            "link": ""
           }
         },
         "sg_2": {
           "type": "gallery_item",
           "settings": {
             "likes_count": "2,410 likes",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC3Ljvvn_U5jJxMQcYBKuIXxGinr7bawtYLagpby-R4_XnycN_WVIK6p9_fiBhmQwpU3xSJ642gRqF0np9LcnY6Lhzl0imBiK26yXNgfyO39NLvx4Um96HZ1y8VUos6HaUVU-pxLy8chNtTYj_W64POGIkmlp1OnRe9RzyI_Xe2F2q4VKW-O1mc1DWkCiZuY9qsBTivyD52jJtgjgd9xnbbu5yGRxv8JWGikuWZPA4"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuC3Ljvvn_U5jJxMQcYBKuIXxGinr7bawtYLagpby-R4_XnycN_WVIK6p9_fiBhmQwpU3xSJ642gRqF0np9LcnY6Lhzl0imBiK26yXNgfyO39NLvx4Um96HZ1y8VUos6HaUVU-pxLy8chNtTYj_W64POGIkmlp1OnRe9RzyI_Xe2F2q4VKW-O1mc1DWkCiZuY9qsBTivyD52jJtgjgd9xnbbu5yGRxv8JWGikuWZPA4",
+            "link": ""
           }
         },
         "sg_3": {
           "type": "gallery_item",
           "settings": {
             "likes_count": "3,120 likes",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBKkbP7pTqj3xivagRXNv0skP1pJ0ZxtUEQKn-Rw0K0w2K1SIZMsHHeeZDOmHBT2EwH-YnjUIN5UNUviL1vok6UjjcKM2Ykue5WYi6gqM1y-O1qQTJ_tpO-DR285X86LKf4nLXdiPmrB8Bew6-_dvXMhdhN9opg8U3SaB0LWe92do540WbF8EhuTAw_nKo1LydP9zhYvzl_71ZaaQtrTC3Lb5V5O98R5dEIroDW1pA"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuBKkbP7pTqj3xivagRXNv0skP1pJ0ZxtUEQKn-Rw0K0w2K1SIZMsHHeeZDOmHBT2EwH-YnjUIN5UNUviL1vok6UjjcKM2Ykue5WYi6gqM1y-O1qQTJ_tpO-DR285X86LKf4nLXdiPmrB8Bew6-_dvXMhdhN9opg8U3SaB0LWe92do540WbF8EhuTAw_nKo1LydP9zhYvzl_71ZaaQtrTC3Lb5V5O98R5dEIroDW1pA",
+            "link": ""
           }
         },
         "sg_4": {
           "type": "gallery_item",
           "settings": {
             "likes_count": "1,450 likes",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDo4BTEQ1tkXkypb8KGQ63ZGASVZsnV6QvrvXvkVqNXFG__5ddX2GymtPg4wutWqDbBq-j-GttmjhCxl6G6puvnxjtuKYimoWDjKu-PGzVAwZkoQ"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuDo4BTEQ1tkXkypb8KGQ63ZGASVZsnV6QvrvXvkVqNXFG__5ddX2GymtPg4wutWqDbBq-j-GttmjhCxl6G6puvnxjtuKYimoWDjKu-PGzVAwZkoQ",
+            "link": ""
           }
         },
         "sg_5": {
           "type": "gallery_item",
           "settings": {
             "likes_count": "4,290 likes",
-            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU"
+            "image_url": "https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU",
+            "link": ""
           }
         }
       },
-      "block_order": ["sg_1", "sg_2", "sg_3", "sg_4", "sg_5"],
+      "block_order": [
+        "sg_1",
+        "sg_2",
+        "sg_3",
+        "sg_4",
+        "sg_5"
+      ],
       "settings": {
         "eyebrow": "Aesthetic Ecosystem",
         "heading": "Follow the Future of Tech",
