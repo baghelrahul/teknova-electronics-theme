@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -15,9 +6,54 @@
     },
     "faq": {
       "type": "faq-accordion",
+      "blocks": {
+        "faq-1": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Are all products sold on NEXORA 100% genuine and original?",
+            "answer": "Yes, unconditionally. NEXORA is an officially contracted distributor and authorized tier-1 retailer for all featured brands. Every package includes verified manufacturer serial tags and authentic warranty documentation that can be registered online."
+          }
+        },
+        "faq-2": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What payment methods, EMIs, and Pay-Later options are accepted?",
+            "answer": "We support all major payment channels: UPI (Google Pay, PhonePe, Paytm), RuPay, Visa, Mastercard, American Express, Apple Pay, and Net Banking. We also offer No-Cost EMI options across leading banks for tenures up to 12 months."
+          }
+        },
+        "faq-3": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How fast is delivery and what logistics partners are used?",
+            "answer": "Orders placed before 2:00 PM are dispatched on the same day from our nearest climate-controlled metro fulfillment hub. Transit takes 24 to 48 hours for metro cities via BlueDart and Delhivery Express, with tamper-evident security sealing and live GPS tracking."
+          }
+        },
+        "faq-4": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What is your return and doorstep replacement policy?",
+            "answer": "We provide an unconditional 7-Day Doorstep Replacement Guarantee for any hardware defect, transit anomaly, or dead-on-arrival condition. Our courier will inspect and hand over a brand new sealed replacement right at your doorstep."
+          }
+        },
+        "faq-5": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How does the warranty work and how do I register my device?",
+            "answer": "All devices carry full 1 to 2-year official manufacturer warranty. Your digital tax invoice includes GST numbers and serial IDs, which can be uploaded directly to the manufacturer's global portal or our concierge desk for complimentary priority warranty coverage."
+          }
+        }
+      },
+      "block_order": [
+        "faq-1",
+        "faq-2",
+        "faq-3",
+        "faq-4",
+        "faq-5"
+      ],
       "settings": {
         "eyebrow": "Immediate Answers",
-        "heading": "Frequently Asked Support Questions"
+        "heading": "Frequently Asked Support Questions",
+        "open_first": true
       }
     }
   },

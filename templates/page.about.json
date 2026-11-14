@@ -1,12 +1,3 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
     "main": {
@@ -15,7 +6,55 @@
     },
     "reviews": {
       "type": "customer-reviews",
-      "settings": {}
+      "blocks": {
+        "review-1": {
+          "type": "review",
+          "settings": {
+            "author_name": "Vikram Malhotra",
+            "initials": "VM",
+            "avatar_bg": "bg-primary/10 text-primary",
+            "stars": 5,
+            "badge": "Verified Hardware Owner",
+            "product_purchased": "NEXORA Horizon Pro 5G",
+            "review_text": "The titanium chassis feels like aerospace grade machinery. Display calibration is pinpoint accurate for color grading. Delivered within 4 hours in Bangalore."
+          }
+        },
+        "review-2": {
+          "type": "review",
+          "settings": {
+            "author_name": "Priya Deshmukh",
+            "initials": "PD",
+            "avatar_bg": "bg-secondary/10 text-secondary",
+            "stars": 5,
+            "badge": "Studio Producer",
+            "product_purchased": "AuraWave Max ANC",
+            "review_text": "The planar magnetic clarity is sensational. Hybrid ANC effortlessly suppresses cabin noise, and 65 hours battery life means I charge once every two weeks."
+          }
+        },
+        "review-3": {
+          "type": "review",
+          "settings": {
+            "author_name": "Rohan Kulkarni",
+            "initials": "RK",
+            "avatar_bg": "bg-tertiary/10 text-tertiary",
+            "stars": 5,
+            "badge": "Ultra-Trail Athlete",
+            "product_purchased": "Chronos Ultra Gen 3",
+            "review_text": "Dual-band multi-satellite GPS locks instantaneously on mountain trails. Sapphire lens withstood direct rock scrapes without a hairline mark."
+          }
+        }
+      },
+      "block_order": [
+        "review-1",
+        "review-2",
+        "review-3"
+      ],
+      "settings": {
+        "eyebrow": "Owner Testimonials",
+        "heading": "Loved by Tech Enthusiasts",
+        "overall_rating": "4.9 Overall Rating",
+        "purchasers_count": "across 42,800+ verified purchasers"
+      }
     },
     "partners": {
       "type": "brand-partners",

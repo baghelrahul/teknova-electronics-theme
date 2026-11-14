@@ -60,6 +60,88 @@
             </div>
           </div>
         {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback Default Reviews for Instant Stunning Presentation -->
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-amber-500">
+                {%- for s in (1..5) -%}
+                  <span class="material-symbols-outlined text-[16px] fill-1">star</span>
+                {%- endfor -%}
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-surface-container text-label-sm font-label-sm text-primary font-semibold">
+                Verified Hardware Owner
+              </span>
+            </div>
+            <p class="text-body-md font-body-md text-on-surface mb-6 font-medium leading-relaxed">
+              "The titanium chassis feels like aerospace grade machinery. Display calibration is pinpoint accurate for color grading. Delivered within 4 hours in Bangalore."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/30">
+            <div class="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-sm">
+              VM
+            </div>
+            <div>
+              <h4 class="text-label-md font-label-md font-bold text-on-surface">Vikram Malhotra</h4>
+              <p class="text-body-sm font-body-sm text-on-surface-variant">Purchased: NEXORA Horizon Pro 5G</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-amber-500">
+                {%- for s in (1..5) -%}
+                  <span class="material-symbols-outlined text-[16px] fill-1">star</span>
+                {%- endfor -%}
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-surface-container text-label-sm font-label-sm text-primary font-semibold">
+                Studio Producer
+              </span>
+            </div>
+            <p class="text-body-md font-body-md text-on-surface mb-6 font-medium leading-relaxed">
+              "The planar magnetic clarity is sensational. Hybrid ANC effortlessly suppresses cabin noise, and 65 hours battery life means I charge once every two weeks."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/30">
+            <div class="w-10 h-10 rounded-full bg-secondary/10 text-secondary font-bold flex items-center justify-center text-sm">
+              PD
+            </div>
+            <div>
+              <h4 class="text-label-md font-label-md font-bold text-on-surface">Priya Deshmukh</h4>
+              <p class="text-body-sm font-body-sm text-on-surface-variant">Purchased: AuraWave Max ANC</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="flex text-amber-500">
+                {%- for s in (1..5) -%}
+                  <span class="material-symbols-outlined text-[16px] fill-1">star</span>
+                {%- endfor -%}
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-surface-container text-label-sm font-label-sm text-primary font-semibold">
+                Ultra-Trail Athlete
+              </span>
+            </div>
+            <p class="text-body-md font-body-md text-on-surface mb-6 font-medium leading-relaxed">
+              "Dual-band multi-satellite GPS locks instantaneously on mountain trails. Sapphire lens withstood direct rock scrapes without a hairline mark."
+            </p>
+          </div>
+          <div class="flex items-center gap-3 pt-4 border-t border-outline-variant/30">
+            <div class="w-10 h-10 rounded-full bg-tertiary/10 text-tertiary font-bold flex items-center justify-center text-sm">
+              RK
+            </div>
+            <div>
+              <h4 class="text-label-md font-label-md font-bold text-on-surface">Rohan Kulkarni</h4>
+              <p class="text-body-sm font-body-sm text-on-surface-variant">Purchased: Chronos Ultra Gen 3</p>
+            </div>
+          </div>
+        </div>
       {%- endif -%}
     </div>
   </div>
