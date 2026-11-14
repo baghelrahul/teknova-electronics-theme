@@ -114,6 +114,9 @@
     </script>
 
     {{ 'nexora-theme.css' | asset_url | stylesheet_tag }}
+    <style>
+      [data-wishlist-count]:empty { display: none !important; }
+    </style>
     {{ content_for_header }}
   </head>
 

@@ -120,7 +120,14 @@
         if (confirm('Clear all saved items from your wishlist?')) {
           localStorage.removeItem('nexora_wishlist_items');
           renderWishlistPage();
-          document.querySelectorAll('[data-wishlist-count]').forEach(el => el.textContent = '0');
+          if (window.Nexora && typeof window.Nexora.updateWishlistUI === 'function') {
+            window.Nexora.updateWishlistUI();
+          }
+          document.querySelectorAll('[data-wishlist-count]').forEach((el) => {
+            el.textContent = '0';
+            el.style.setProperty('display', 'none', 'important');
+            el.classList.add('hidden');
+          });
         }
       });
     }
@@ -142,6 +149,18 @@
     }
 
     if (counter) counter.textContent = items.length;
+
+    // Immediately synchronize header badges
+    document.querySelectorAll('[data-wishlist-count]').forEach((el) => {
+      el.textContent = items.length;
+      if (items.length > 0) {
+        el.style.setProperty('display', 'flex', 'important');
+        el.classList.remove('hidden');
+      } else {
+        el.style.setProperty('display', 'none', 'important');
+        el.classList.add('hidden');
+      }
+    });
 
     if (items.length === 0) {
       grid.innerHTML = '';

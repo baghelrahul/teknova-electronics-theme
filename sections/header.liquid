@@ -82,12 +82,29 @@
     <div class="flex items-center space-x-2 sm:space-x-4">
       <!-- Wishlist Action -->
       {%- if section.settings.show_wishlist -%}
-        <a href="{{ section.settings.wishlist_url | default: '/pages/wishlist' }}" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="Wishlist">
+        <a href="{{ section.settings.wishlist_url | default: '/pages/wishlist' }}" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="Wishlist" data-wishlist-header-link>
           <span class="material-symbols-outlined text-[22px]">favorite</span>
-          <span class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center" data-wishlist-count>
-            0
-          </span>
+          <span class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary text-[9px] font-bold items-center justify-center transition-all duration-200 hidden" data-wishlist-count style="display: none !important;">0</span>
         </a>
+        <script>
+          (function() {
+            try {
+              var items = JSON.parse(localStorage.getItem('nexora_wishlist_items') || '[]');
+              var count = Array.isArray(items) ? items.length : 0;
+              var badges = document.querySelectorAll('[data-wishlist-count]');
+              badges.forEach(function(b) {
+                b.textContent = count;
+                if (count > 0) {
+                  b.style.setProperty('display', 'flex', 'important');
+                  b.classList.remove('hidden');
+                } else {
+                  b.style.setProperty('display', 'none', 'important');
+                  b.classList.add('hidden');
+                }
+              });
+            } catch(e) {}
+          })();
+        </script>
       {%- endif -%}
 
       <!-- Search Icon (Mobile) -->
@@ -177,7 +194,7 @@
         <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="/pages/contact">Contact & Concierge</a>
         <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1 flex items-center justify-between" href="/pages/wishlist">
           <span>Wishlist</span>
-          <span class="px-2 py-0.5 rounded-full bg-primary text-on-primary text-[10px] font-bold" data-wishlist-count>0</span>
+          <span class="px-2 py-0.5 rounded-full bg-primary text-on-primary text-[10px] font-bold hidden" data-wishlist-count style="display: none !important;">0</span>
         </a>
         <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1 flex items-center justify-between" href="{{ routes.cart_url }}">
           <span>Cart</span>
