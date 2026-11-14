@@ -1,0 +1,215 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Main Wishlist Section
+  Local storage-powered wishlist page with reactive cards and Move to Cart
+{%- endcomment -%}
+
+<section class="py-12 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-8 pb-6 border-b border-outline-variant/30 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div>
+        <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-2">
+          <a href="{{ routes.root_url }}" class="hover:text-primary">Home</a>
+          <span>/</span>
+          <span class="text-on-surface font-semibold">Wishlist</span>
+        </nav>
+        <h1 class="text-3xl sm:text-headline-lg font-headline-lg font-bold text-on-surface">
+          Saved Hardware &amp; Wishlist
+        </h1>
+        <p class="text-body-md font-body-md text-on-surface-variant mt-1">
+          Review saved configurations, monitor stock availability, and move gear directly into your active cart.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-label-md font-label-md text-primary bg-primary/10 px-3.5 py-1.5 rounded-full font-bold">
+          <span id="wishlist-page-counter">0</span> Saved Items
+        </span>
+        <button 
+          type="button" 
+          id="clear-wishlist-btn"
+          class="text-label-md font-label-md text-on-surface-variant hover:text-rose-500 font-semibold transition-colors"
+          style="display: none;"
+        >
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Wishlist Grid -->
+    <div id="wishlist-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+
+    <!-- Empty State -->
+    <div id="wishlist-empty-state" class="text-center py-20 bg-surface-container-lowest rounded-3xl border border-outline-variant/30 p-8 max-w-xl mx-auto my-6 shadow-sm">
+      <div class="w-16 h-16 rounded-full bg-surface-container-low text-primary flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-[32px]">favorite</span>
+      </div>
+      <h2 class="text-headline-sm font-bold text-on-surface mb-2">Your Wishlist is Empty</h2>
+      <p class="text-body-md text-on-surface-variant mb-6">
+        Curate your personal tech arsenal by tapping the heart icon on any flagship smartphone, studio headphones, or workstation.
+      </p>
+      <a href="{{ routes.all_products_collection_url }}" class="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold transition-all shadow-md">
+        <span>Explore 2026 Fleet</span>
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Fallback / Recommended Section -->
+    <div class="mt-20 pt-12 border-t border-outline-variant/30">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-label-md font-label-md uppercase tracking-wider text-secondary font-semibold">Recommended Gear</span>
+          <h3 class="text-headline-md font-headline-md font-bold text-on-surface mt-1">Popular Among Tech Enthusiasts</h3>
+        </div>
+        <a href="{{ routes.all_products_collection_url }}" class="text-label-md font-bold text-primary hover:underline">
+          View All Hardware &rarr;
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {%- if collections['all'].products.size > 0 -%}
+          {%- for product in collections['all'].products limit: 4 -%}
+            {% render 'product-card', product: product %}
+          {%- endfor -%}
+        {%- else -%}
+          {% render 'product-card', 
+            title: 'NEXORA Horizon Pro 5G',
+            subtitle: 'Snapdragon 8 Gen 4 • 256GB',
+            price: '₹79,999',
+            compare_price: '₹89,999',
+            badge: 'POPULAR',
+            image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU'
+          %}
+          {% render 'product-card', 
+            title: 'AuraWave Max ANC',
+            subtitle: 'Spatial Audio • 65h Battery',
+            price: '₹24,999',
+            compare_price: '₹29,999',
+            badge: 'STUDIO GRADE',
+            image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA'
+          %}
+          {% render 'product-card', 
+            title: 'Chronos Ultra Gen 3',
+            subtitle: 'Sapphire • ECG & Dual-GPS',
+            price: '₹18,499',
+            compare_price: '₹22,999',
+            badge: 'TITANIUM',
+            image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ'
+          %}
+          {% render 'product-card', 
+            title: 'Vanguard AeroBook 16',
+            subtitle: '3.2K Mini-LED • 32GB RAM',
+            price: '₹1,24,999',
+            compare_price: '₹1,39,999',
+            badge: 'M4 SILICON',
+            image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70'
+          %}
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    renderWishlistPage();
+    document.addEventListener('nexora:wishlist:updated', renderWishlistPage);
+
+    const clearBtn = document.getElementById('clear-wishlist-btn');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (confirm('Clear all saved items from your wishlist?')) {
+          localStorage.removeItem('nexora_wishlist_items');
+          renderWishlistPage();
+          document.querySelectorAll('[data-wishlist-count]').forEach(el => el.textContent = '0');
+        }
+      });
+    }
+  });
+
+  function renderWishlistPage() {
+    const grid = document.getElementById('wishlist-grid');
+    const emptyState = document.getElementById('wishlist-empty-state');
+    const counter = document.getElementById('wishlist-page-counter');
+    const clearBtn = document.getElementById('clear-wishlist-btn');
+
+    if (!grid || !emptyState) return;
+
+    let items = [];
+    try {
+      items = JSON.parse(localStorage.getItem('nexora_wishlist_items')) || [];
+    } catch(e) {
+      items = [];
+    }
+
+    if (counter) counter.textContent = items.length;
+
+    if (items.length === 0) {
+      grid.innerHTML = '';
+      grid.style.display = 'none';
+      emptyState.style.display = 'block';
+      if (clearBtn) clearBtn.style.display = 'none';
+      return;
+    }
+
+    grid.style.display = 'grid';
+    emptyState.style.display = 'none';
+    if (clearBtn) clearBtn.style.display = 'inline-block';
+
+    let html = '';
+    items.forEach((item) => {
+      html += `
+        <div class="group relative rounded-2xl bg-surface-container-lowest border border-outline-variant/40 hover:border-outline-variant p-4 flex flex-col justify-between transition-all duration-300">
+          <div>
+            <div class="relative aspect-square rounded-xl bg-surface-container-low overflow-hidden mb-3">
+              <span class="absolute top-2.5 left-2.5 z-10 px-2 py-0.5 rounded-full bg-primary text-on-primary text-[10px] font-bold tracking-wider">SAVED</span>
+              <button 
+                type="button" 
+                class="absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-surface-container-lowest text-rose-500 hover:bg-rose-50 flex items-center justify-center transition-colors shadow-sm"
+                title="Remove from Wishlist"
+                onclick="window.Nexora.removeFromWishlist('${item.id}');"
+              >
+                <span class="material-symbols-outlined text-[17px] fill-1">delete</span>
+              </button>
+              <a href="${item.url || '#'}" class="block w-full h-full">
+                <img src="${item.image || 'https://via.placeholder.com/400'}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+              </a>
+            </div>
+            <h3 class="text-headline-sm font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-1">
+              <a href="${item.url || '#'}">${item.title}</a>
+            </h3>
+          </div>
+          <div class="mt-4 pt-3 border-t border-outline-variant/20 flex items-center justify-between gap-3">
+            <span class="text-headline-sm font-bold text-on-surface">${item.price || ''}</span>
+            <button 
+              type="button" 
+              class="h-9 px-3.5 rounded-lg bg-primary hover:bg-primary-container text-on-primary text-label-md font-semibold transition-all flex items-center gap-1.5"
+              onclick="moveWishlistToCart('${item.id}', '${item.title}');"
+            >
+              <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
+              <span>Move to Cart</span>
+            </button>
+          </div>
+        </div>
+      `;
+    });
+
+    grid.innerHTML = html;
+  }
+
+  function moveWishlistToCart(id, title) {
+    // Add to cart
+    if (typeof updateCartStateLocally === 'function') {
+      updateCartStateLocally(1);
+    }
+    if (typeof showToast === 'function') {
+      showToast(`Moved "${title}" to Cart!`, 'shopping_bag');
+    }
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Wishlist Page",
+  "settings": []
+}
+{% endschema %}

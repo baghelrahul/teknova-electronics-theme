@@ -1,6 +1,6 @@
 {%- comment -%}
   NEXORA / TEKNOVA - Section 2: Sticky Header & Navigation
-  Logo, search bar, navigation links, trailing action cluster & mobile drawer
+  Sticky header, predictive live search, navigation, reactive wishlist & Ajax cart badge
 {%- endcomment -%}
 
 <header class="sticky top-0 lg:top-9 z-40 w-full bg-surface/85 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-200">
@@ -31,9 +31,9 @@
         {%- endif -%}
       </a>
 
-      <!-- Search Bar -->
+      <!-- Search Bar with Live Predictive Search -->
       {%- if section.settings.show_search -%}
-        <div class="relative hidden lg:block w-72">
+        <div class="relative hidden lg:block w-72 xl:w-80" data-predictive-search-container>
           <form action="{{ routes.search_url }}" method="get" role="search">
             <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
               <span class="material-symbols-outlined text-[18px]">search</span>
@@ -43,9 +43,17 @@
               placeholder="{{ section.settings.search_placeholder | default: 'Search audio, flagships, OLED...' }}" 
               type="search"
               name="q"
+              autocomplete="off"
+              data-predictive-search-input
             />
             <kbd class="absolute right-2.5 top-2.5 px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant/70 bg-surface-container-low border border-outline-variant/50 rounded pointer-events-none">⌘K</kbd>
           </form>
+
+          <!-- Predictive Search Dropdown -->
+          <div 
+            class="absolute left-0 right-0 top-full mt-2 bg-surface-container-lowest border border-outline-variant/40 rounded-2xl shadow-2xl z-50 hidden max-h-96 overflow-y-auto custom-scrollbar"
+            data-predictive-search-results
+          ></div>
         </div>
       {%- endif -%}
     </div>
@@ -62,11 +70,11 @@
           </a>
         {%- endfor -%}
       {%- else -%}
-        <a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-md font-label-md transition-colors duration-200" href="#audio">Audio</a>
-        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#visual">Visual</a>
-        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#computing">Computing</a>
-        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#wearables">Wearables</a>
-        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="#accessories">Accessories</a>
+        <a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-md font-label-md transition-colors duration-200" href="{{ routes.collections_url }}">Categories</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="{{ routes.all_products_collection_url }}">All Hardware</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="/pages/about">About</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="/pages/contact">Contact</a>
+        <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="/pages/wishlist">Wishlist</a>
       {%- endif -%}
     </nav>
 
@@ -74,13 +82,18 @@
     <div class="flex items-center space-x-2 sm:space-x-4">
       <!-- Wishlist Action -->
       {%- if section.settings.show_wishlist -%}
-        <a href="{{ section.settings.wishlist_url | default: '#wishlist' }}" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="Wishlist">
+        <a href="{{ section.settings.wishlist_url | default: '/pages/wishlist' }}" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="Wishlist">
           <span class="material-symbols-outlined text-[22px]">favorite</span>
-          <span class="absolute top-1 right-1 w-4 h-4 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center">
-            {{ section.settings.wishlist_count | default: 3 }}
+          <span class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center" data-wishlist-count>
+            0
           </span>
         </a>
       {%- endif -%}
+
+      <!-- Search Icon (Mobile) -->
+      <a href="{{ routes.search_url }}" class="lg:hidden p-2 text-on-surface-variant hover:text-primary transition-colors" title="Search">
+        <span class="material-symbols-outlined text-[22px]">search</span>
+      </a>
 
       <!-- Global Region Action -->
       {%- if section.settings.show_region_button -%}
@@ -100,8 +113,8 @@
       <!-- Dynamic Cart Action -->
       <a href="{{ routes.cart_url }}" class="flex items-center gap-2 px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-200 text-label-md font-label-md shadow-sm shrink-0">
         <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
-        <span>Cart ({{ cart.item_count }})</span>
-        <span class="hidden xl:inline text-inverse-on-surface/60">• {{ cart.total_price | money }}</span>
+        <span data-header-cart-text>Cart (<span data-cart-count>{{ cart.item_count }}</span>)</span>
+        <span class="hidden xl:inline text-inverse-on-surface/60" data-cart-subtotal>&bull; {{ cart.total_price | money }}</span>
       </a>
     </div>
   </div>
@@ -127,19 +140,27 @@
     </div>
 
     <!-- Mobile Search Form -->
-    <form action="{{ routes.search_url }}" method="get" class="mb-6">
-      <div class="relative">
-        <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
-          <span class="material-symbols-outlined text-[18px]">search</span>
-        </span>
-        <input 
-          class="w-full h-10 pl-9 pr-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary" 
-          placeholder="Search catalog..." 
-          type="search"
-          name="q"
-        />
-      </div>
-    </form>
+    <div class="relative mb-6" data-predictive-search-container>
+      <form action="{{ routes.search_url }}" method="get">
+        <div class="relative">
+          <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]">search</span>
+          </span>
+          <input 
+            class="w-full h-10 pl-9 pr-3 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary" 
+            placeholder="Search catalog..." 
+            type="search"
+            name="q"
+            autocomplete="off"
+            data-predictive-search-input
+          />
+        </div>
+      </form>
+      <div 
+        class="absolute left-0 right-0 top-full mt-2 bg-surface-container-lowest border border-outline-variant/40 rounded-xl shadow-2xl z-50 hidden max-h-80 overflow-y-auto custom-scrollbar"
+        data-predictive-search-results
+      ></div>
+    </div>
 
     <!-- Mobile Nav Links -->
     <nav class="flex flex-col space-y-4">
@@ -150,11 +171,18 @@
           </a>
         {%- endfor -%}
       {%- else -%}
-        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#audio">Audio</a>
-        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#visual">Visual</a>
-        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#computing">Computing</a>
-        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#wearables">Wearables</a>
-        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="#accessories">Accessories</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="{{ routes.collections_url }}">Categories</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="{{ routes.all_products_collection_url }}">All Hardware</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="/pages/about">About NEXORA</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1" href="/pages/contact">Contact & Concierge</a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1 flex items-center justify-between" href="/pages/wishlist">
+          <span>Wishlist</span>
+          <span class="px-2 py-0.5 rounded-full bg-primary text-on-primary text-[10px] font-bold" data-wishlist-count>0</span>
+        </a>
+        <a class="text-body-lg font-medium text-on-surface hover:text-primary transition-colors py-1 flex items-center justify-between" href="{{ routes.cart_url }}">
+          <span>Cart</span>
+          <span class="px-2 py-0.5 rounded-full bg-inverse-surface text-inverse-on-surface text-[10px] font-bold" data-cart-count>{{ cart.item_count }}</span>
+        </a>
       {%- endif -%}
     </nav>
   </div>
@@ -214,15 +242,10 @@
       "default": true
     },
     {
-      "type": "text",
-      "id": "wishlist_count",
-      "label": "Wishlist Default Count",
-      "default": "3"
-    },
-    {
       "type": "url",
       "id": "wishlist_url",
-      "label": "Wishlist Link"
+      "label": "Wishlist Page URL",
+      "default": "/pages/wishlist"
     },
     {
       "type": "checkbox",

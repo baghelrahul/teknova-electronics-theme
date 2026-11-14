@@ -88,7 +88,7 @@
         </div>
 
         <!-- Form -->
-        {% form 'product', product, id: 'product-form' %}
+        {% form 'product', product, id: 'product-form', data-ajax-cart-form: '' %}
           {%- unless product.has_only_default_variant -%}
             <div class="space-y-4 mb-6">
               {%- for option in product.options_with_values -%}

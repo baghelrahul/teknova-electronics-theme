@@ -1,0 +1,108 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Related Products Section
+  Frequently paired products with identical home page product card grid UI
+{%- endcomment -%}
+
+<section class="py-20 bg-surface-container-lowest border-t border-outline-variant/30">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      <div>
+        <span class="text-label-md font-label-md uppercase tracking-wider text-primary font-semibold">
+          {{ section.settings.eyebrow | default: 'Aesthetic Synergy' }}
+        </span>
+        <h2 class="text-headline-lg font-headline-lg text-on-surface mt-1">
+          {{ section.settings.heading | default: 'Frequently Paired Architecture' }}
+        </h2>
+        <p class="text-body-md font-body-md text-on-surface-variant mt-1">
+          {{ section.settings.subheading | default: 'Hardware engineered to operate seamlessly together with zero latency.' }}
+        </p>
+      </div>
+
+      <a href="{{ routes.all_products_collection_url }}" class="mt-4 md:mt-0 text-label-md font-label-md font-semibold text-primary hover:underline flex items-center gap-1">
+        <span>Explore Full Fleet</span>
+        <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+      </a>
+    </div>
+
+    <!-- Related Products Grid (Same UI as Home Page) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {%- if collection and collection.products.size > 1 -%}
+        {%- assign counter = 0 -%}
+        {%- for prod in collection.products -%}
+          {%- unless prod.id == product.id or counter >= 4 -%}
+            {% render 'product-card', product: prod %}
+            {%- assign counter = counter | plus: 1 -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- elsif collections['all'].products.size > 1 -%}
+        {%- assign counter = 0 -%}
+        {%- for prod in collections['all'].products -%}
+          {%- unless prod.id == product.id or counter >= 4 -%}
+            {% render 'product-card', product: prod %}
+            {%- assign counter = counter | plus: 1 -%}
+          {%- endunless -%}
+        {%- endfor -%}
+      {%- else -%}
+        <!-- High-fidelity fallback cards matching home page -->
+        {% render 'product-card', 
+          title: 'AuraWave Max ANC',
+          subtitle: 'Spatial Audio • 65h Battery',
+          price: '₹24,999',
+          compare_price: '₹29,999',
+          badge: 'AUDIO COMPANION',
+          image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA'
+        %}
+        {% render 'product-card', 
+          title: 'AeroPad Duo MagPower',
+          subtitle: 'Qi2 Certified • 25W Fast Charge',
+          price: '₹5,499',
+          compare_price: '₹6,499',
+          badge: 'POWER DOCK',
+          image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg'
+        %}
+        {% render 'product-card', 
+          title: 'Chronos Ultra Gen 3',
+          subtitle: 'Sapphire • ECG & Dual-GPS',
+          price: '₹18,499',
+          compare_price: '₹22,999',
+          badge: 'BIOSENSING',
+          image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ'
+        %}
+        {% render 'product-card', 
+          title: 'VoltCore 140W Quad GaN',
+          subtitle: 'Powers 2 MacBooks simultaneously',
+          price: '₹7,499',
+          compare_price: '₹8,999',
+          badge: 'GaN TECH',
+          image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD-0Qkq6N9DkQzpZdldf8XYqfEi663QR09uVYvIXmT_V7PWcY2XfHusctvwAF98ZLWCXHiVrUFqfzN7_dr-8GJB75pQRUysfuwA6QP1vv5-udpxvPsMqJuyiqPrUGFGhUzQi-OiNOa_d3AXMjJpkMVHxhm-iQGF5PwAZmRBWpVp8k-7iPslo8vqtQ2pwHTspJJ7DJEZZSv4-AOQnwcb8wEZNOYjzoZh7vcMo4OfuGc'
+        %}
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Related Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Text",
+      "default": "Aesthetic Synergy"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Paired Architecture"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Hardware engineered to operate seamlessly together with zero latency."
+    }
+  ]
+}
+{% endschema %}

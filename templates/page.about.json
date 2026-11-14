@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-about",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "customer-reviews",
+      "settings": {}
+    },
+    "partners": {
+      "type": "brand-partners",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "reviews",
+    "partners"
+  ]
+}

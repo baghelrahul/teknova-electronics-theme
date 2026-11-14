@@ -1,8 +1,8 @@
 {%- comment -%}
   NEXORA / TEKNOVA - Product Card Snippet
-  Renders a Shopify product or mock fallback item
+  Reusable card with wishlist reactive toggle, swatches, badges, and Ajax Add-to-Cart
   Usage:
-  {% render 'product-card', product: product, badge: 'BESTSELLER', badge_class: 'bg-secondary' %}
+  {% render 'product-card', product: product, badge: 'BESTSELLER' %}
 {%- endcomment -%}
 
 {%- liquid
@@ -16,8 +16,10 @@
   assign card_badge_color = badge_color | default: 'bg-secondary text-on-secondary'
   assign card_image_url = image_url
   assign card_url = url | default: '#'
+  assign card_id = id
 
   if product != blank
+    assign card_id = product.id
     assign card_title = product.title
     assign card_price = product.price | money
     if product.compare_at_price > product.price
@@ -28,9 +30,21 @@
     assign card_image_url = product.featured_media | image_url: width: 600
     assign card_url = product.url
   endif
+
+  if card_id == blank
+    assign card_id = card_title | handleize
+  endif
 -%}
 
-<div class="group relative rounded-2xl bg-surface-container-lowest border border-outline-variant/40 hover:border-outline-variant p-4 flex flex-col justify-between transition-all duration-300">
+<div 
+  class="group relative rounded-2xl bg-surface-container-lowest border border-outline-variant/40 hover:border-outline-variant p-4 flex flex-col justify-between transition-all duration-300"
+  data-product-card
+  data-product-id="{{ card_id }}"
+  data-product-title="{{ card_title | escape }}"
+  data-product-price="{{ card_price }}"
+  data-product-image="{{ card_image_url }}"
+  data-product-url="{{ card_url }}"
+>
   <div>
     <!-- Media Frame & Badges -->
     <div class="relative aspect-square rounded-xl bg-surface-container-low overflow-hidden mb-3">
@@ -40,8 +54,19 @@
         </span>
       {%- endif -%}
 
-      <button type="button" class="absolute top-2.5 right-2.5 z-10 w-7 h-7 rounded-full bg-surface-container-lowest/80 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center transition-colors" title="Add to Wishlist">
-        <span class="material-symbols-outlined text-[16px]">favorite</span>
+      <!-- Wishlist Heart Toggle -->
+      <button 
+        type="button" 
+        class="absolute top-2.5 right-2.5 z-10 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface-variant hover:text-rose-500 hover:scale-110 active:scale-95 flex items-center justify-center transition-all shadow-sm" 
+        title="Add to Wishlist"
+        data-wishlist-toggle
+        data-product-id="{{ card_id }}"
+        data-product-title="{{ card_title | escape }}"
+        data-product-price="{{ card_price }}"
+        data-product-image="{{ card_image_url }}"
+        data-product-url="{{ card_url }}"
+      >
+        <span class="material-symbols-outlined text-[17px] transition-colors">favorite</span>
       </button>
 
       <a href="{{ card_url }}" class="block w-full h-full">
@@ -101,17 +126,25 @@
       {%- endif -%}
     </div>
 
-    <!-- Add To Cart Form / Button -->
+    <!-- Add To Cart Form / Button with Ajax Sync -->
     {%- if product != blank and product.available -%}
-      {% form 'product', product %}
+      {% form 'product', product, class: 'w-full', data-ajax-cart-form: '' %}
         <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-        <button type="submit" class="w-full h-9 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-colors text-label-md font-label-md font-semibold flex items-center justify-center gap-1.5">
+        <button 
+          type="submit" 
+          class="w-full h-9 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-label-md font-semibold flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
+        >
           <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
           <span>Add to Cart</span>
         </button>
       {% endform %}
     {%- else -%}
-      <button type="button" class="w-full h-9 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-colors text-label-md font-label-md font-semibold flex items-center justify-center gap-1.5">
+      <button 
+        type="button" 
+        class="w-full h-9 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-label-md font-semibold flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
+        data-quick-add-btn
+        data-title="{{ card_title | escape }}"
+      >
         <span class="material-symbols-outlined text-[16px]">add_shopping_cart</span>
         <span>Add to Cart</span>
       </button>

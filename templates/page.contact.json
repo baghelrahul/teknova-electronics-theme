@@ -1,0 +1,19 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-contact",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq-accordion",
+      "settings": {
+        "eyebrow": "Immediate Answers",
+        "heading": "Frequently Asked Support Questions"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq"
+  ]
+}

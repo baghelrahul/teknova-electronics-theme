@@ -1,0 +1,191 @@
+{%- comment -%}
+  NEXORA / TEKNOVA - Main Contact Section
+  Concierge support operations with interactive contact form and live channel cards
+{%- endcomment -%}
+
+<section class="py-16 lg:py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <!-- Breadcrumb -->
+    <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-8">
+      <a href="{{ routes.root_url }}" class="hover:text-primary">Home</a>
+      <span>/</span>
+      <span class="text-on-surface font-semibold">Contact Concierge</span>
+    </nav>
+
+    <div class="max-w-3xl mb-12">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 text-label-sm font-bold mb-4">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>DESK ACTIVE • AVG. RESPONSE &lt; 15 MINS</span>
+      </div>
+      <h1 class="text-4xl sm:text-headline-lg font-headline-lg font-bold text-on-surface mb-4">
+        Hardware Concierge &amp; Support
+      </h1>
+      <p class="text-body-lg text-on-surface-variant">
+        Have questions regarding firmware compatibility, warranty registration, or metro express dispatch? Our dedicated hardware team is available 24/7.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <!-- Contact Form -->
+      <div class="lg:col-span-7">
+        <div class="p-8 sm:p-10 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-xl">
+          <h2 class="text-headline-sm font-bold text-on-surface mb-6">Send an Inquiry</h2>
+
+          {%- form 'contact', id: 'ContactForm', class: 'space-y-5' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 text-body-md font-semibold mb-6 flex items-center gap-3">
+                <span class="material-symbols-outlined text-[24px]">verified</span>
+                <span>Inquiry received! Our concierge team will reply to your email within 15 minutes.</span>
+              </div>
+            {%- elsif form.errors -%}
+              <div class="p-4 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-700 text-body-sm mb-6">
+                {{ form.errors | default_errors }}
+              </div>
+            {%- endif -%}
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="ContactFormName">
+                  Full Name *
+                </label>
+                <input 
+                  type="text" 
+                  id="ContactFormName" 
+                  name="contact[name]" 
+                  value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                  placeholder="Rahul Singh"
+                  required
+                />
+              </div>
+
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="ContactFormEmail">
+                  Email Address *
+                </label>
+                <input 
+                  type="email" 
+                  id="ContactFormEmail" 
+                  name="contact[email]" 
+                  value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                  placeholder="rahul@example.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="ContactFormDepartment">
+                  Inquiry Department
+                </label>
+                <select 
+                  id="ContactFormDepartment" 
+                  name="contact[department]" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                >
+                  <option value="Order Assistance">Order Tracking &amp; Delivery</option>
+                  <option value="Technical Specs">Technical &amp; Hardware Specs</option>
+                  <option value="Warranty Claim">Warranty &amp; 7-Day Replacement</option>
+                  <option value="B2B Procurement">Corporate &amp; Bulk Procurement</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="ContactFormOrder">
+                  Order Number (Optional)
+                </label>
+                <input 
+                  type="text" 
+                  id="ContactFormOrder" 
+                  name="contact[order_number]" 
+                  class="w-full h-12 px-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                  placeholder="#NEX-48201"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-label-sm font-semibold uppercase text-on-surface-variant mb-1.5" for="ContactFormMessage">
+                Message &amp; Diagnostic Details *
+              </label>
+              <textarea 
+                rows="5" 
+                id="ContactFormMessage" 
+                name="contact[body]" 
+                class="w-full p-4 rounded-xl bg-surface-container-low border border-outline-variant/40 text-body-md text-on-surface focus:outline-none focus:border-primary"
+                placeholder="How can our technical team assist you today?"
+                required
+              >{% if form.body %}{{ form.body }}{% endif %}</textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="w-full h-12 px-8 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold transition-all shadow-md flex items-center justify-center gap-2"
+            >
+              <span class="material-symbols-outlined text-[18px]">send</span>
+              <span>Submit Message</span>
+            </button>
+          {%- endform -%}
+        </div>
+      </div>
+
+      <!-- Right Contact Info Cards -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="p-6 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">chat</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm font-bold text-on-surface mb-1">24/7 Digital Concierge</h3>
+            <p class="text-body-sm text-on-surface-variant mb-2">Live chat directly through the store app or message our priority WhatsApp dispatch desk.</p>
+            <a href="mailto:concierge@nexora.tech" class="text-label-md font-bold text-primary hover:underline">concierge@nexora.tech &rarr;</a>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">call</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm font-bold text-on-surface mb-1">Toll-Free Hardware Hotline</h3>
+            <p class="text-body-sm text-on-surface-variant mb-2">Speak directly with an accredited audio and hardware engineer in India.</p>
+            <a href="tel:18004206396" class="text-label-md font-bold text-secondary hover:underline">1800-420-NEXORA (Toll-Free) &rarr;</a>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-surface-container-lowest border border-outline-variant/40 shadow-sm flex items-start gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[24px]">storefront</span>
+          </div>
+          <div>
+            <h3 class="text-headline-sm font-bold text-on-surface mb-1">Flagship Experience Lab</h3>
+            <p class="text-body-sm text-on-surface-variant mb-2">
+              Indiranagar 100ft Road, Stage 2, Bengaluru, Karnataka 560038.<br/>
+              Open Mon-Sun: 10:00 AM - 9:30 PM IST.
+            </p>
+            <span class="text-label-sm font-bold text-emerald-600">Walk-ins &amp; Acoustic Testing Welcomed</span>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-3xl bg-inverse-surface text-inverse-on-surface border border-outline/30 shadow-lg">
+          <div class="flex items-center gap-2 mb-2 text-inverse-primary text-label-md font-bold">
+            <span class="material-symbols-outlined text-[18px]">verified_user</span>
+            <span>Tamper-Proof Delivery Guarantee</span>
+          </div>
+          <p class="text-body-sm text-inverse-on-surface/80">
+            Every shipment features verified holographic security seals. Report any transit anomaly within 24 hours for instant priority dispatch replacement.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Page",
+  "settings": []
+}
+{% endschema %}

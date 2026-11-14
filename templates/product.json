@@ -4,12 +4,17 @@
       "type": "main-product",
       "settings": {}
     },
-    "recommendations": {
-      "type": "best-sellers",
+    "related_products": {
+      "type": "related-products",
       "settings": {
-        "eyebrow": "Complementary Engineering",
-        "heading": "Frequently Paired With This Item"
+        "eyebrow": "Aesthetic Synergy",
+        "heading": "Frequently Paired Architecture",
+        "subheading": "Hardware engineered to operate seamlessly together with zero latency."
       }
+    },
+    "why_shop": {
+      "type": "why-shop-with-us",
+      "settings": {}
     },
     "reviews": {
       "type": "customer-reviews",
@@ -18,7 +23,8 @@
   },
   "order": [
     "main",
-    "recommendations",
+    "related_products",
+    "why_shop",
     "reviews"
   ]
 }

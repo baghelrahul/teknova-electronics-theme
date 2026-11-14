@@ -1,12 +1,12 @@
 {%- comment -%}
   NEXORA / TEKNOVA - Main Collection Section
-  Product listing grid with sorting, pagination & responsive layouts
+  Dynamic backend filters in left sidebar + product card grid + sorting & pagination
 {%- endcomment -%}
 
 <section class="py-12 bg-surface">
   <div class="max-w-7xl mx-auto px-6">
-    <!-- Header -->
-    <div class="mb-10 pb-6 border-b border-outline-variant/30 flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <!-- Header Bar -->
+    <div class="mb-8 pb-6 border-b border-outline-variant/30 flex flex-col md:flex-row md:items-end justify-between gap-4">
       <div>
         <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-2">
           <a href="{{ routes.root_url }}" class="hover:text-primary">Home</a>
@@ -23,42 +23,282 @@
         {%- endif -%}
       </div>
 
-      <span class="text-label-md font-label-md text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full shrink-0">
-        {{ collection.products_count }} Products
-      </span>
+      <!-- Sorting & Mobile Filter Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- Mobile Filter Button -->
+        <button 
+          type="button" 
+          class="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 text-label-md font-semibold text-on-surface"
+          onclick="document.getElementById('mobile-filter-drawer').classList.remove('translate-x-full'); document.getElementById('mobile-filter-backdrop').classList.remove('hidden');"
+        >
+          <span class="material-symbols-outlined text-[18px]">filter_list</span>
+          <span>Filters</span>
+        </button>
+
+        <!-- Sort By Dropdown -->
+        <div class="relative">
+          <select 
+            id="SortBy" 
+            name="sort_by" 
+            class="h-10 pl-3 pr-8 rounded-xl bg-surface-container-lowest border border-outline-variant/40 text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary cursor-pointer"
+            onchange="location.href = window.location.pathname + '?' + new URLSearchParams(Object.assign(Object.fromEntries(new URLSearchParams(window.location.search)), {sort_by: this.value})).toString();"
+          >
+            {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+            <option value="manual" {% if sort_by == 'manual' %}selected{% endif %}>Featured Hardware</option>
+            <option value="best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+            <option value="price-ascending" {% if sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+            <option value="price-descending" {% if sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+            <option value="created-descending" {% if sort_by == 'created-descending' %}selected{% endif %}>Newest Releases</option>
+          </select>
+        </div>
+
+        <span class="text-label-md font-label-md text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full shrink-0">
+          {{ collection.products_count }} Products
+        </span>
+      </div>
     </div>
 
-    <!-- Product Grid -->
-    {%- paginate collection.products by 12 -%}
-      {%- if collection.products.size > 0 -%}
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {%- for product in collection.products -%}
-            {% render 'product-card', product: product %}
+    <!-- Active Filter Tags Row -->
+    {%- assign has_active_filter = false -%}
+    {%- for filter in collection.filters -%}
+      {%- if filter.active_values.size > 0 or filter.min_value.value != nil or filter.max_value.value != nil -%}
+        {%- assign has_active_filter = true -%}
+      {%- endif -%}
+    {%- endfor -%}
+
+    {%- if has_active_filter -%}
+      <div class="flex flex-wrap items-center gap-2 mb-6">
+        <span class="text-label-sm font-semibold text-on-surface-variant mr-1">Active Filters:</span>
+        {%- for filter in collection.filters -%}
+          {%- for value in filter.active_values -%}
+            <a href="{{ value.url_to_remove }}" class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-label-sm font-semibold hover:bg-primary/20 transition-colors">
+              <span>{{ filter.label }}: {{ value.label }}</span>
+              <span class="material-symbols-outlined text-[14px]">close</span>
+            </a>
           {%- endfor -%}
+        {%- endfor -%}
+        <a href="{{ collection.url }}" class="text-label-sm font-bold text-rose-500 hover:underline ml-2">
+          Clear All
+        </a>
+      </div>
+    {%- endif -%}
+
+    <!-- Main Grid with Sidebar -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left Desktop Sidebar Filters -->
+      <aside class="hidden lg:block lg:col-span-3 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 p-6 sticky top-28 space-y-6 shadow-sm">
+        <div class="flex items-center justify-between pb-4 border-b border-outline-variant/30">
+          <h3 class="text-headline-sm font-bold text-on-surface text-[17px] flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px] text-primary">tune</span>
+            <span>Filter Hardware</span>
+          </h3>
+          {%- if has_active_filter -%}
+            <a href="{{ collection.url }}" class="text-label-sm text-primary hover:underline font-semibold">Reset</a>
+          {%- endif -%}
         </div>
 
-        {%- if paginate.pages > 1 -%}
-          <div class="mt-12 flex justify-center items-center gap-2">
-            {{ paginate | default_pagination: next: '→', previous: '←' }}
-          </div>
-        {%- endif -%}
-      {%- else -%}
-        <div class="text-center py-20 bg-surface-container-lowest rounded-2xl border border-outline-variant/30">
-          <span class="material-symbols-outlined text-[48px] text-on-surface-variant/40 mb-3">inventory_2</span>
-          <p class="text-headline-sm font-semibold text-on-surface mb-2">No products found</p>
-          <p class="text-body-sm text-on-surface-variant mb-6">Explore other engineered categories or check back soon.</p>
-          <a href="{{ routes.all_products_collection_url }}" class="inline-flex px-6 py-2.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md font-semibold">
-            Browse All Hardware
-          </a>
-        </div>
-      {%- endif -%}
-    {%- endpaginate -%}
+        <form id="CollectionFiltersForm" class="space-y-6">
+          {%- for filter in collection.filters -%}
+            <div class="pb-5 border-b border-outline-variant/20 last:border-b-0 last:pb-0">
+              <h4 class="text-label-md font-label-md font-bold uppercase text-on-surface mb-3 flex items-center justify-between">
+                <span>{{ filter.label }}</span>
+                {%- if filter.active_values.size > 0 -%}
+                  <span class="text-[11px] text-primary font-bold">({{ filter.active_values.size }})</span>
+                {%- endif -%}
+              </h4>
+
+              {%- case filter.type -%}
+                {%- when 'list' -%}
+                  <div class="space-y-2.5 max-h-56 overflow-y-auto custom-scrollbar pr-1">
+                    {%- for value in filter.values -%}
+                      <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group">
+                        <div class="flex items-center gap-2.5">
+                          <input 
+                            type="checkbox" 
+                            name="{{ value.param_name }}" 
+                            value="{{ value.value }}"
+                            {% if value.active %}checked{% endif %}
+                            class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                            onchange="this.form.submit();"
+                          >
+                          <span class="group-hover:text-primary {% if value.active %}font-bold text-primary{% endif %}">{{ value.label }}</span>
+                        </div>
+                        <span class="text-xs text-on-surface-variant/70">({{ value.count }})</span>
+                      </label>
+                    {%- endfor -%}
+                  </div>
+
+                {%- when 'price_range' -%}
+                  <div class="space-y-3">
+                    <div class="flex items-center gap-2 text-body-sm text-on-surface">
+                      <div class="flex-1">
+                        <label class="text-[10px] text-on-surface-variant uppercase font-semibold">Min (₹)</label>
+                        <input 
+                          type="number" 
+                          name="{{ filter.min_value.param_name }}" 
+                          value="{{ filter.min_value.value | money_without_currency | replace: ',', '' }}"
+                          placeholder="0"
+                          min="0"
+                          class="w-full h-9 px-2.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-body-sm"
+                        >
+                      </div>
+                      <span class="text-on-surface-variant mt-3">-</span>
+                      <div class="flex-1">
+                        <label class="text-[10px] text-on-surface-variant uppercase font-semibold">Max (₹)</label>
+                        <input 
+                          type="number" 
+                          name="{{ filter.max_value.param_name }}" 
+                          value="{{ filter.max_value.value | money_without_currency | replace: ',', '' }}"
+                          placeholder="{{ filter.range_max | money_without_currency | replace: ',', '' }}"
+                          min="0"
+                          class="w-full h-9 px-2.5 rounded-lg bg-surface-container-low border border-outline-variant/40 text-body-sm"
+                        >
+                      </div>
+                    </div>
+                    <button type="submit" class="w-full h-8 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary text-label-sm font-semibold transition-colors">
+                      Apply Price
+                    </button>
+                  </div>
+              {%- endcase -%}
+            </div>
+          {%- else -%}
+            <!-- Fallback Mock Filter Categories if collection filters aren't enabled in Shopify Admin yet -->
+            <div class="space-y-4 text-body-sm">
+              <div>
+                <h4 class="text-label-md font-bold uppercase text-on-surface mb-2">Category</h4>
+                <div class="space-y-2">
+                  <label class="flex items-center gap-2 text-on-surface"><input type="checkbox" checked class="rounded text-primary"> All Categories</label>
+                  <label class="flex items-center gap-2 text-on-surface-variant"><input type="checkbox" class="rounded text-primary"> Smartphones (24)</label>
+                  <label class="flex items-center gap-2 text-on-surface-variant"><input type="checkbox" class="rounded text-primary"> Audio Architecture (32)</label>
+                  <label class="flex items-center gap-2 text-on-surface-variant"><input type="checkbox" class="rounded text-primary"> Computing &amp; Workstations (18)</label>
+                  <label class="flex items-center gap-2 text-on-surface-variant"><input type="checkbox" class="rounded text-primary"> Wearables &amp; GPS (15)</label>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-outline-variant/20">
+                <h4 class="text-label-md font-bold uppercase text-on-surface mb-2">Availability</h4>
+                <div class="space-y-2">
+                  <label class="flex items-center gap-2 text-on-surface"><input type="checkbox" checked class="rounded text-primary"> In Stock (Direct Hub)</label>
+                  <label class="flex items-center gap-2 text-on-surface-variant"><input type="checkbox" class="rounded text-primary"> Pre-Order Next Drop</label>
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </form>
+      </aside>
+
+      <!-- Right Product Listing Grid -->
+      <div class="lg:col-span-9">
+        {%- paginate collection.products by 12 -%}
+          {%- if collection.products.size > 0 -%}
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {%- for product in collection.products -%}
+                {% render 'product-card', product: product %}
+              {%- endfor -%}
+            </div>
+
+            {%- if paginate.pages > 1 -%}
+              <div class="mt-12 flex justify-center items-center gap-2">
+                {{ paginate | default_pagination: next: '→', previous: '←' }}
+              </div>
+            {%- endif -%}
+          {%- else -%}
+            <!-- Fallback Preview Cards so collection always renders stunning UI -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {% render 'product-card', 
+                title: 'NEXORA Horizon Pro 5G',
+                subtitle: 'Snapdragon 8 Gen 4 • 256GB',
+                price: '₹79,999',
+                compare_price: '₹89,999',
+                badge: 'BESTSELLER',
+                image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU'
+              %}
+              {% render 'product-card', 
+                title: 'AuraWave Max ANC',
+                subtitle: 'Spatial Audio • 65h Battery',
+                price: '₹24,999',
+                compare_price: '₹29,999',
+                badge: 'NEW ARRIVAL',
+                image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA'
+              %}
+              {% render 'product-card', 
+                title: 'Chronos Ultra Gen 3',
+                subtitle: 'Sapphire • ECG & Dual-GPS',
+                price: '₹18,499',
+                compare_price: '₹22,999',
+                badge: '15% OFF',
+                image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ'
+              %}
+              {% render 'product-card', 
+                title: 'Vanguard AeroBook 16',
+                subtitle: '3.2K Mini-LED • 32GB RAM',
+                price: '₹1,24,999',
+                compare_price: '₹1,39,999',
+                badge: 'CREATOR PICK',
+                image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70'
+              %}
+              {% render 'product-card', 
+                title: 'PulseBuds Pro 2 Spatial',
+                subtitle: 'Planar Drivers • Qi Wireless',
+                price: '₹9,999',
+                compare_price: '₹12,999',
+                badge: 'TRENDING',
+                image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s'
+              %}
+              {% render 'product-card', 
+                title: 'VividView 34" Curved OLED',
+                subtitle: '240Hz 0.03ms • 99% DCI-P3',
+                price: '₹64,990',
+                badge: 'OLED',
+                image_url: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM'
+              %}
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    </div>
   </div>
 </section>
 
+<!-- Mobile Filter Drawer Backdrop -->
+<div id="mobile-filter-backdrop" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300" onclick="this.classList.add('hidden'); document.getElementById('mobile-filter-drawer').classList.add('translate-x-full');"></div>
+
+<!-- Mobile Filter Drawer -->
+<div id="mobile-filter-drawer" class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-surface z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col justify-between p-6">
+  <div>
+    <div class="flex items-center justify-between pb-4 border-b border-outline-variant/30 mb-6">
+      <h3 class="text-headline-sm font-bold text-on-surface">Filters</h3>
+      <button type="button" class="p-2 text-on-surface-variant hover:text-primary" onclick="document.getElementById('mobile-filter-drawer').classList.add('translate-x-full'); document.getElementById('mobile-filter-backdrop').classList.add('hidden');">
+        <span class="material-symbols-outlined text-[22px]">close</span>
+      </button>
+    </div>
+
+    <div class="space-y-6 overflow-y-auto max-h-[75vh]">
+      {%- for filter in collection.filters -%}
+        <div>
+          <h4 class="text-label-md font-bold uppercase text-on-surface mb-2">{{ filter.label }}</h4>
+          <div class="space-y-2">
+            {%- for value in filter.values -%}
+              <label class="flex items-center gap-2 text-body-sm text-on-surface">
+                <input type="checkbox" name="{{ value.param_name }}" value="{{ value.value }}" {% if value.active %}checked{% endif %} class="rounded text-primary">
+                <span>{{ value.label }} ({{ value.count }})</span>
+              </label>
+            {%- endfor -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  <div class="pt-4 border-t border-outline-variant/30">
+    <button type="button" class="w-full h-11 rounded-xl bg-primary text-on-primary font-bold text-label-md" onclick="document.getElementById('CollectionFiltersForm').submit();">
+      Apply Filters
+    </button>
+  </div>
+</div>
+
 {% schema %}
 {
-  "name": "Collection Grid",
+  "name": "Collection Grid & Filters",
   "settings": []
 }
 {% endschema %}
