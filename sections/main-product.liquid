@@ -20,6 +20,21 @@
       <!-- Media Gallery -->
       <div class="lg:col-span-7 space-y-4">
         <div class="aspect-square rounded-2xl bg-surface-container-lowest border border-outline-variant/40 overflow-hidden relative shadow-sm">
+          <!-- Floating Wishlist Heart on Media Frame -->
+          <button 
+            type="button" 
+            class="absolute top-4 right-4 z-10 w-11 h-11 rounded-full bg-surface-container-lowest/90 backdrop-blur-md border border-outline-variant/30 text-on-surface-variant hover:text-rose-500 hover:scale-110 active:scale-95 flex items-center justify-center transition-all shadow-md group cursor-pointer"
+            title="Toggle Wishlist"
+            data-wishlist-toggle
+            data-product-id="{{ product.id | default: product.title | handleize }}"
+            data-product-title="{{ product.title | escape }}"
+            data-product-price="{{ product.price | money }}"
+            data-product-image="{{ product.featured_image | image_url: width: 600 }}"
+            data-product-url="{{ product.url }}"
+          >
+            <span class="material-symbols-outlined text-[22px] transition-transform group-hover:scale-110">favorite</span>
+          </button>
+
           {%- if product.featured_image != blank -%}
             <img 
               id="MainProductImage"
@@ -125,6 +140,21 @@
             >
               <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
               <span>{% if product.available %}Add to Cart{% else %}Sold Out{% endif %}</span>
+            </button>
+
+            <!-- Product Detail Page Wishlist Toggle Button -->
+            <button 
+              type="button" 
+              class="w-12 h-12 rounded-lg bg-surface-container-low border border-outline-variant/60 text-on-surface-variant hover:text-rose-500 hover:border-rose-400 flex items-center justify-center transition-all shadow-sm shrink-0 group cursor-pointer"
+              title="Add to Wishlist"
+              data-wishlist-toggle
+              data-product-id="{{ product.id | default: product.title | handleize }}"
+              data-product-title="{{ product.title | escape }}"
+              data-product-price="{{ product.price | money }}"
+              data-product-image="{{ product.featured_image | image_url: width: 600 }}"
+              data-product-url="{{ product.url }}"
+            >
+              <span class="material-symbols-outlined text-[24px] transition-transform group-hover:scale-110">favorite</span>
             </button>
           </div>
         {% endform %}

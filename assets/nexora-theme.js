@@ -64,14 +64,15 @@ function showToast(message, icon = 'check_circle') {
 }
 
 /**
- * 2. Wishlist System (Local Storage + Reactive Badge)
+ * 2. Wishlist System (Local Storage + Reactive Badge + Global Delegation)
  */
 function initWishlistSystem() {
   const STORAGE_KEY = 'nexora_wishlist_items';
 
   function getWishlist() {
     try {
-      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      const stored = localStorage.getItem(STORAGE_KEY);
+      return stored ? JSON.parse(stored) : [];
     } catch (e) {
       return [];
     }
@@ -79,80 +80,98 @@ function initWishlistSystem() {
 
   function setWishlist(items) {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-    updateWishlistBadges(items.length);
+    updateWishlistUI();
     document.dispatchEvent(new CustomEvent('nexora:wishlist:updated', { detail: { items } }));
   }
 
-  function updateWishlistBadges(count) {
+  function updateWishlistUI() {
+    const list = getWishlist();
+    const count = list.length;
+
+    // Update all badge counters across the site
     document.querySelectorAll('[data-wishlist-count]').forEach((el) => {
       el.textContent = count;
-      el.style.display = count > 0 ? 'flex' : 'none';
+      if (count > 0) {
+        el.style.display = 'flex';
+        el.classList.remove('hidden');
+      } else {
+        el.style.display = 'none';
+        el.classList.add('hidden');
+      }
+    });
+
+    // Update all heart icons across the site (cards, product detail, carousels)
+    document.querySelectorAll('[data-wishlist-toggle]').forEach((btn) => {
+      const card = btn.closest('[data-product-card]') || btn;
+      const rawId = btn.dataset.productId || card.dataset.productId || btn.dataset.productTitle || '';
+      const productId = String(rawId).trim().toLowerCase();
+      const isSaved = list.some(item => String(item.id).trim().toLowerCase() === productId);
+
+      const icon = btn.querySelector('.material-symbols-outlined');
+      if (icon) {
+        if (isSaved) {
+          icon.classList.add('fill-1', 'text-rose-500');
+          btn.classList.add('text-rose-500');
+        } else {
+          icon.classList.remove('fill-1', 'text-rose-500');
+          btn.classList.remove('text-rose-500');
+        }
+      }
     });
   }
 
-  // Initial sync
-  const currentWishlist = getWishlist();
-  updateWishlistBadges(currentWishlist.length);
+  // Initial UI sync
+  updateWishlistUI();
 
-  // Update card heart buttons to active state if in wishlist
-  document.querySelectorAll('[data-wishlist-toggle]').forEach((btn) => {
-    const card = btn.closest('[data-product-card]') || btn;
-    const productId = btn.dataset.productId || card.dataset.productId;
-    const isSaved = currentWishlist.some(item => String(item.id) === String(productId));
-
-    const icon = btn.querySelector('.material-symbols-outlined');
-    if (icon) {
-      if (isSaved) {
-        icon.classList.add('fill-1', 'text-rose-500');
-        btn.classList.add('text-rose-500');
-      } else {
-        icon.classList.remove('fill-1', 'text-rose-500');
-        btn.classList.remove('text-rose-500');
-      }
-    }
-
-    // Attach click listener only once
-    if (!btn._wishlistBound) {
-      btn._wishlistBound = true;
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const id = btn.dataset.productId || card.dataset.productId || Date.now().toString();
-        const title = btn.dataset.productTitle || card.dataset.productTitle || card.querySelector('h3 a, h3, h4')?.textContent?.trim() || 'Product';
-        const price = btn.dataset.productPrice || card.dataset.productPrice || card.querySelector('.font-bold')?.textContent?.trim() || '';
-        const image = btn.dataset.productImage || card.dataset.productImage || card.querySelector('img')?.src || '';
-        const url = btn.dataset.productUrl || card.dataset.productUrl || card.querySelector('a')?.href || '#';
-
-        let wishlist = getWishlist();
-        const existingIndex = wishlist.findIndex(item => String(item.id) === String(id));
-
-        if (existingIndex > -1) {
-          wishlist.splice(existingIndex, 1);
-          setWishlist(wishlist);
-          if (icon) {
-            icon.classList.remove('fill-1', 'text-rose-500');
-            btn.classList.remove('text-rose-500');
-          }
-          showToast(`Removed "${title}" from Wishlist`, 'heart_minus');
-        } else {
-          wishlist.push({ id, title, price, image, url });
-          setWishlist(wishlist);
-          if (icon) {
-            icon.classList.add('fill-1', 'text-rose-500');
-            btn.classList.add('text-rose-500');
-          }
-          showToast(`Added "${title}" to Wishlist!`, 'favorite');
-        }
-      });
-    }
+  // Listen for storage events across browser tabs
+  window.addEventListener('storage', (e) => {
+    if (e.key === STORAGE_KEY) updateWishlistUI();
   });
 
-  // Expose global methods for Wishlist Page rendering
+  // Global event delegation for all wishlist buttons
+  if (!window._nexoraWishlistDelegated) {
+    window._nexoraWishlistDelegated = true;
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-wishlist-toggle]');
+      if (!btn) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const card = btn.closest('[data-product-card]') || btn;
+      const rawId = btn.dataset.productId || card.dataset.productId || btn.dataset.productTitle || ('prod_' + Date.now());
+      const id = String(rawId).trim().toLowerCase();
+      const title = btn.dataset.productTitle || card.dataset.productTitle || card.querySelector('h1, h2, h3, h4, a')?.textContent?.trim() || 'Product';
+      const price = btn.dataset.productPrice || card.dataset.productPrice || card.querySelector('.font-bold, .text-headline-sm')?.textContent?.trim() || '';
+      const image = btn.dataset.productImage || card.dataset.productImage || card.querySelector('img')?.src || '';
+      const url = btn.dataset.productUrl || card.dataset.productUrl || card.querySelector('a')?.href || window.location.pathname;
+
+      let wishlist = getWishlist();
+      const existingIndex = wishlist.findIndex(item => String(item.id).trim().toLowerCase() === id);
+
+      if (existingIndex > -1) {
+        wishlist.splice(existingIndex, 1);
+        setWishlist(wishlist);
+        showToast(`Removed "${title}" from Wishlist`, 'heart_minus');
+      } else {
+        wishlist.push({ id, title, price, image, url });
+        setWishlist(wishlist);
+        showToast(`Added "${title}" to Wishlist!`, 'favorite');
+      }
+    });
+  }
+
+  // Expose global methods
   window.Nexora.getWishlist = getWishlist;
+  window.Nexora.setWishlist = setWishlist;
+  window.Nexora.updateWishlistUI = updateWishlistUI;
   window.Nexora.removeFromWishlist = function(id) {
-    let list = getWishlist().filter(item => String(item.id) !== String(id));
+    let list = getWishlist().filter(item => String(item.id).trim().toLowerCase() !== String(id).trim().toLowerCase());
     setWishlist(list);
+  };
+  window.Nexora.clearWishlist = function() {
+    setWishlist([]);
   };
 }
 
