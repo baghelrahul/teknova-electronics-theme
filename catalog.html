@@ -311,318 +311,1160 @@
 <!-- ========================================================================= -->
 
 <!-- ========================================================================= -->
-<!-- HARDWARE FLEET CATALOG -->
+<!-- CATALOG PAGE WITH LEFT SIDEBAR FILTERS (EXACT SHOPIFY DESIGN) -->
 <!-- ========================================================================= -->
-<section class="py-16 bg-surface">
-  <div class="max-w-7xl mx-auto px-6">
-    <!-- Breadcrumb -->
-    <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-8">
-      <a href="index.html" class="hover:text-primary transition-colors">Home</a>
-      <span>/</span>
-      <span class="text-on-surface font-semibold">Catalog</span>
-    </nav>
-
-    <!-- Header bar -->
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10 pb-6 border-b border-outline-variant/30">
+<section class="py-12 bg-surface" id="MainCatalogSection">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <!-- Header Bar -->
+    <div class="mb-8 pb-6 border-b border-outline-variant/30 flex flex-col md:flex-row md:items-end justify-between gap-4">
       <div>
-        <h1 class="text-4xl sm:text-headline-lg font-headline-lg font-bold text-on-surface">
+        <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-2">
+          <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+          <span>/</span>
+          <span class="text-on-surface font-semibold">Catalog</span>
+        </nav>
+        <h1 class="text-3xl sm:text-headline-lg font-headline-lg font-bold text-on-surface">
           All Hardware &amp; Devices
         </h1>
-        <p class="text-body-md text-on-surface-variant mt-1">
-          Explore our complete 2026 fleet of calibrated smartphones, studio acoustics, and precision peripherals.
+        <p class="text-body-md font-body-md text-on-surface-variant mt-2 max-w-2xl">
+          Calibrated engineering fleet with digital serial certification, official brand warranties, and priority insured dispatch.
         </p>
       </div>
 
+      <!-- Sorting & Mobile Filter Toggle -->
       <div class="flex items-center gap-3">
-        <span class="text-label-md font-bold px-3 py-1.5 rounded-full bg-primary/10 text-primary">
-          8 Models Available
+        <!-- Mobile Filter Button -->
+        <button 
+          type="button" 
+          class="lg:hidden flex items-center gap-2 px-4 py-2.5 rounded-xl bg-surface-container-lowest border border-outline-variant/40 text-label-md font-semibold text-on-surface shadow-sm active:scale-95 transition-all"
+          onclick="document.getElementById('mobile-filter-drawer').classList.remove('translate-x-full'); document.getElementById('mobile-filter-backdrop').classList.remove('hidden');"
+        >
+          <span class="material-symbols-outlined text-[18px]">filter_list</span>
+          <span>Filters</span>
+          <span id="mobile-filter-count-badge" class="hidden px-1.5 py-0.2 rounded-full bg-primary text-on-primary text-[10px] font-bold"></span>
+        </button>
+
+        <!-- Sort By Dropdown -->
+        <div class="relative">
+          <select 
+            id="SortBy" 
+            class="h-10 pl-3 pr-8 rounded-xl bg-surface-container-lowest border border-outline-variant/40 text-label-md font-label-md text-on-surface focus:outline-none focus:border-primary cursor-pointer shadow-sm"
+            onchange="applyDemoFilters();"
+          >
+            <option value="featured">Featured Hardware</option>
+            <option value="best-selling">Best Selling</option>
+            <option value="price-ascending">Price: Low to High</option>
+            <option value="price-descending">Price: High to Low</option>
+            <option value="name-ascending">Alphabetical: A-Z</option>
+          </select>
+        </div>
+
+        <span class="text-label-md font-label-md text-on-surface-variant bg-surface-container px-3 py-1.5 rounded-full shrink-0 font-semibold">
+          <span id="visible-count">9</span> Products
         </span>
       </div>
     </div>
 
-    <!-- Filter Buttons & Search -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-      <div class="flex flex-wrap items-center gap-2" id="catalog-category-filters">
-        <button class="px-4 py-2 rounded-xl bg-inverse-surface text-inverse-on-surface font-semibold text-label-md transition-all shadow-sm" onclick="filterCatalog('all', this)">All</button>
-        <button class="px-4 py-2 rounded-xl bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-medium text-label-md border border-outline-variant/40 transition-all" onclick="filterCatalog('Smartphones', this)">Smartphones</button>
-        <button class="px-4 py-2 rounded-xl bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-medium text-label-md border border-outline-variant/40 transition-all" onclick="filterCatalog('Audio', this)">Audio</button>
-        <button class="px-4 py-2 rounded-xl bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-medium text-label-md border border-outline-variant/40 transition-all" onclick="filterCatalog('Computing', this)">Computing</button>
-        <button class="px-4 py-2 rounded-xl bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-medium text-label-md border border-outline-variant/40 transition-all" onclick="filterCatalog('Wearables', this)">Wearables</button>
-      </div>
-
-      <div class="relative w-full md:w-64">
-        <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
-          <span class="material-symbols-outlined text-[18px]">search</span>
-        </span>
-        <input 
-          type="text" 
-          id="catalog-search"
-          placeholder="Filter catalog..." 
-          class="w-full h-10 pl-9 pr-3 rounded-xl bg-surface-container-lowest border border-outline-variant/40 text-body-sm text-on-surface focus:outline-none focus:border-primary"
-          oninput="searchCatalog(this.value)"
-        />
-      </div>
+    <!-- Active Filter Chips Bar -->
+    <div id="active-filters-bar" class="hidden flex-wrap items-center gap-2 mb-6 p-3 rounded-xl bg-surface-container-low/60 border border-outline-variant/30">
+      <span class="text-label-sm font-bold text-on-surface-variant mr-1 flex items-center gap-1">
+        <span class="material-symbols-outlined text-[15px] text-primary">filter_alt</span>
+        Active Filters:
+      </span>
+      <div id="active-chips-container" class="flex flex-wrap items-center gap-2"></div>
+      <button 
+        type="button" 
+        onclick="clearAllFilters();" 
+        class="text-label-sm font-bold text-rose-500 hover:text-rose-600 hover:underline ml-2 transition-colors cursor-pointer"
+      >
+        Clear All
+      </button>
     </div>
 
-    <!-- Products Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="catalog-grid">
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Smartphones" data-title="nexora horizon pro 5g">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary z-10 shadow-sm">FLAGSHIP</span>
+    <!-- Main Grid with Left Sidebar -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left Desktop Sidebar Filters -->
+      <aside class="hidden lg:block lg:col-span-3 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 p-6 sticky top-28 space-y-6 shadow-sm">
+        <div class="flex items-center justify-between pb-4 border-b border-outline-variant/30">
+          <h3 class="text-headline-sm font-bold text-on-surface text-[17px] flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px] text-primary">tune</span>
+            <span>Filter Hardware</span>
+          </h3>
+          <button 
+            type="button" 
+            onclick="clearAllFilters();" 
+            class="text-label-sm text-primary hover:underline font-semibold cursor-pointer"
+          >
+            Reset
+          </button>
+        </div>
+
+        <form id="CollectionFiltersForm" class="space-y-6" onsubmit="event.preventDefault(); applyDemoFilters();">
+          <!-- 1. DYNAMIC PRICE FILTER -->
+          <div class="pb-6 border-b border-outline-variant/20">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-label-md font-label-md font-bold uppercase text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-primary">payments</span>
+                <span>Price (₹)</span>
+              </h4>
+              <span id="price-range-indicator" class="text-[11px] font-mono font-semibold text-primary"></span>
+            </div>
+
+            <div class="space-y-3">
+              <div class="flex items-center gap-2">
+                <div class="flex-1">
+                  <label class="block text-[10px] text-on-surface-variant uppercase font-semibold mb-1">Min (₹)</label>
+                  <input 
+                    type="number" 
+                    id="filter-price-min" 
+                    placeholder="0"
+                    min="0"
+                    step="1000"
+                    class="w-full h-9 px-3 rounded-lg bg-surface-container-low border border-outline-variant/40 text-body-sm text-on-surface focus:outline-none focus:border-primary font-mono"
+                    oninput="applyDemoFilters();"
+                  />
+                </div>
+                <span class="text-on-surface-variant font-bold mt-5">-</span>
+                <div class="flex-1">
+                  <label class="block text-[10px] text-on-surface-variant uppercase font-semibold mb-1">Max (₹)</label>
+                  <input 
+                    type="number" 
+                    id="filter-price-max" 
+                    placeholder="150000"
+                    min="0"
+                    step="1000"
+                    class="w-full h-9 px-3 rounded-lg bg-surface-container-low border border-outline-variant/40 text-body-sm text-on-surface focus:outline-none focus:border-primary font-mono"
+                    oninput="applyDemoFilters();"
+                  />
+                </div>
+              </div>
+
+              <!-- Quick Price Bracket Presets -->
+              <div class="pt-1 flex flex-wrap gap-1.5">
+                <button type="button" onclick="setPricePreset(0, 15000);" class="px-2 py-1 rounded-md text-[11px] bg-surface-container text-on-surface hover:bg-primary/20 hover:text-primary transition-all">
+                  &lt; ₹15K
+                </button>
+                <button type="button" onclick="setPricePreset(15000, 35000);" class="px-2 py-1 rounded-md text-[11px] bg-surface-container text-on-surface hover:bg-primary/20 hover:text-primary transition-all">
+                  ₹15K - ₹35K
+                </button>
+                <button type="button" onclick="setPricePreset(35000, 75000);" class="px-2 py-1 rounded-md text-[11px] bg-surface-container text-on-surface hover:bg-primary/20 hover:text-primary transition-all">
+                  ₹35K - ₹75K
+                </button>
+                <button type="button" onclick="setPricePreset(75000, 200000);" class="px-2 py-1 rounded-md text-[11px] bg-surface-container text-on-surface hover:bg-primary/20 hover:text-primary transition-all">
+                  &gt; ₹75K
+                </button>
+              </div>
+
               <button 
                 type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
+                onclick="applyDemoFilters();" 
+                class="w-full h-8 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary text-label-sm font-semibold transition-colors flex items-center justify-center gap-1 shadow-sm"
               >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
+                <span>Apply Price</span>
               </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD93922aE8-h4nL_y8yH_yU2i-s1k6182hX3hP5W2e8t_rG8x9-X7K0qP1f" alt="NEXORA Horizon Pro 5G" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
             </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Smartphones</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">NEXORA Horizon Pro 5G</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Titanium Grey • 512GB • Snapdragon 8 Gen 4</p>
           </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹79,990</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹89,990</span>
+
+          <!-- 2. CATEGORY / PRODUCT TYPE FILTER -->
+          <div class="pb-6 border-b border-outline-variant/20">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-label-md font-label-md font-bold uppercase text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-primary">category</span>
+                <span>Category</span>
+              </h4>
+              <span class="text-[11px] text-on-surface-variant font-mono">(5)</span>
             </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
+
+            <div class="space-y-2">
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Smartphones" 
+                      data-filter-category
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Smartphones</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Audio" 
+                      data-filter-category
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Audio</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Computing" 
+                      data-filter-category
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Computing</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Wearables" 
+                      data-filter-category
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Wearables</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Visual" 
+                      data-filter-category
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Visual</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Accessories" 
+                      data-filter-category
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Accessories</span>
+                  </div>
+                </label>
+              
+            </div>
           </div>
+
+          <!-- 3. TAGS & TECHNICAL SPECS FILTER -->
+          <div class="pb-6 border-b border-outline-variant/20">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-label-md font-label-md font-bold uppercase text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-primary">sell</span>
+                <span>Tags &amp; Specs</span>
+              </h4>
+              <span class="text-[11px] text-on-surface-variant font-mono">(8)</span>
+            </div>
+
+            <div class="space-y-2 max-h-52 overflow-y-auto custom-scrollbar pr-1">
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="titanium" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">titanium</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="planar magnetic" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">planar magnetic</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="oled" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">oled</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="5g" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">5g</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="snapdragon" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">snapdragon</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="anc" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">anc</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="wireless 8k" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">wireless 8k</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="gasket mount" 
+                      data-filter-tag
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px] capitalize">gasket mount</span>
+                  </div>
+                </label>
+              
+            </div>
+          </div>
+
+          <!-- 4. BRAND FILTER -->
+          <div class="pb-6 border-b border-outline-variant/20">
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="text-label-md font-label-md font-bold uppercase text-on-surface flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[16px] text-primary">verified</span>
+                <span>Brand</span>
+              </h4>
+              <span class="text-[11px] text-on-surface-variant font-mono">(4)</span>
+            </div>
+
+            <div class="space-y-2">
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="NEXORA" 
+                      data-filter-brand
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">NEXORA</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Sony" 
+                      data-filter-brand
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Sony</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="ApexTech" 
+                      data-filter-brand
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">ApexTech</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Samsung Display" 
+                      data-filter-brand
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Samsung Display</span>
+                  </div>
+                </label>
+              
+                <label class="flex items-center justify-between text-body-sm text-on-surface cursor-pointer hover:text-primary group select-none">
+                  <div class="flex items-center gap-2.5">
+                    <input 
+                      type="checkbox" 
+                      value="Sennheiser" 
+                      data-filter-brand
+                      class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                      onchange="applyDemoFilters();"
+                    />
+                    <span class="group-hover:text-primary transition-colors text-[13px]">Sennheiser</span>
+                  </div>
+                </label>
+              
+            </div>
+          </div>
+
+          <!-- 5. AVAILABILITY FILTER -->
+          <div class="pt-1">
+            <h4 class="text-label-md font-label-md font-bold uppercase text-on-surface mb-3 flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-[16px] text-primary">inventory_2</span>
+              <span>Availability</span>
+            </h4>
+            <div class="space-y-2">
+              <label class="flex items-center gap-2.5 text-body-sm text-on-surface cursor-pointer select-none">
+                <input 
+                  type="checkbox" 
+                  value="true" 
+                  data-filter-instock
+                  checked
+                  class="rounded border-outline-variant text-primary focus:ring-primary w-4 h-4 cursor-pointer"
+                  onchange="applyDemoFilters();"
+                />
+                <span class="text-[13px]">In Stock Only</span>
+              </label>
+            </div>
+          </div>
+        </form>
+      </aside>
+
+      <!-- Right Product Listing Grid -->
+      <div class="lg:col-span-9">
+        <div id="CollectionProductGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-opacity duration-200">
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-1"
+              data-category="Smartphones"
+              data-brand="NEXORA"
+              data-tags="titanium,5g,snapdragon,oled"
+              data-price="79990"
+              data-instock="true"
+              data-title="nexora horizon pro 5g"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary z-10 shadow-sm">FLAGSHIP</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD93922aE8-h4nL_y8yH_yU2i-s1k6182hX3hP5W2e8t_rG8x9-X7K0qP1f" alt="NEXORA Horizon Pro 5G" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">NEXORA • Smartphones</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">NEXORA Horizon Pro 5G</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Titanium Grey • 512GB • Snapdragon 8 Gen 4</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-stone-700 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-stone-300 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹79,990</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹89,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-2"
+              data-category="Audio"
+              data-brand="Sony"
+              data-tags="planar magnetic,anc,hi-res,wireless 8k"
+              data-price="24990"
+              data-instock="true"
+              data-title="aurawave max wireless anc"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary text-on-secondary z-10 shadow-sm">BESTSELLER</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU" alt="AuraWave Max Wireless ANC" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Sony • Audio</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">AuraWave Max Wireless ANC</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Planar Magnetic • 65H Battery • Spatial 3D</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-neutral-900 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹24,990</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹29,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-3"
+              data-category="Wearables"
+              data-brand="NEXORA"
+              data-tags="titanium,sapphire,gps"
+              data-price="34990"
+              data-instock="true"
+              data-title="chronos ultra gen 3"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white z-10 shadow-sm">NEW ARRIVAL</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ" alt="Chronos Ultra Gen 3" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">NEXORA • Wearables</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">Chronos Ultra Gen 3</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Titanium Grade 5 • Sapphire • Dual-Band GPS</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-neutral-800 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-amber-700 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹34,990</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹39,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-4"
+              data-category="Computing"
+              data-brand="ApexTech"
+              data-tags="gasket mount,oled,mechanical"
+              data-price="17990"
+              data-instock="true"
+              data-title="apex65 cnc mechanical keyboard"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-600 text-white z-10 shadow-sm">HOT DEAL</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s" alt="Apex65 CNC Mechanical Keyboard" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">ApexTech • Computing</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">Apex65 CNC Mechanical Keyboard</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Gasket Mount • Linear Amber Switches • OLED Display</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-zinc-800 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-zinc-100 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹17,990</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹21,490</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-5"
+              data-category="Computing"
+              data-brand="ApexTech"
+              data-tags="wireless 8k,carbon,esports"
+              data-price="9490"
+              data-instock="true"
+              data-title="aeroglide 8k wireless esports mouse"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white z-10 shadow-sm">PRO GEAR</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70" alt="AeroGlide 8K Wireless Esports Mouse" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">ApexTech • Computing</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">AeroGlide 8K Wireless Esports Mouse</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">39g Carbon Composite • 30K Focus Pro Sensor</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-neutral-900 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-100 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹9,490</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹11,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-6"
+              data-category="Visual"
+              data-brand="Samsung Display"
+              data-tags="oled,240hz,curved"
+              data-price="74990"
+              data-instock="true"
+              data-title="vividview 34" curved oled monitor"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-violet-600 text-white z-10 shadow-sm">OLED MASTER</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM" alt="VividView 34" Curved OLED Monitor" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Samsung Display • Visual</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">VividView 34" Curved OLED Monitor</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">240Hz 0.03ms • 99% DCI-P3 Color Mastery</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-stone-900 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-400 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹74,990</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹84,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-7"
+              data-category="Audio"
+              data-brand="Sennheiser"
+              data-tags="hi-res,ldac,anc"
+              data-price="14990"
+              data-instock="true"
+              data-title="echopod studio earbuds"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary z-10 shadow-sm">HI-RES AUDIO</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA" alt="EchoPod Studio Earbuds" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Sennheiser • Audio</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">EchoPod Studio Earbuds</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Dual Drivers • Hi-Res LDAC • 40H Playback</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-neutral-800 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-neutral-100 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹14,990</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹18,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-8"
+              data-category="Accessories"
+              data-brand="NEXORA"
+              data-tags="gan,fast charge,oled"
+              data-price="7490"
+              data-instock="true"
+              data-title="titanpower 140w gan station"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-600 text-white z-10 shadow-sm">FAST CHARGE</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg" alt="TitanPower 140W GaN Station" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">NEXORA • Accessories</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">TitanPower 140W GaN Station</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Quad USB-C PD 3.1 • OLED Power Meter</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-stone-800 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-300 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹7,490</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹9,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
+            <div 
+              class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative"
+              data-product-card
+              data-id="prod-9"
+              data-category="Computing"
+              data-brand="NEXORA"
+              data-tags="creator,mini-led,workstation"
+              data-price="134990"
+              data-instock="true"
+              data-title="vanguard aerobook 16 studio"
+            >
+              <div>
+                <!-- Top image frame with badges -->
+                <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+                  <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-600 text-white z-10 shadow-sm">CREATOR PICK</span>
+                  <button 
+                    type="button" 
+                    class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
+                    title="Add to Wishlist"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">favorite</span>
+                  </button>
+                  <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70" alt="Vanguard AeroBook 16 Studio" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                </div>
+
+                <!-- Brand and Title -->
+                <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">NEXORA • Computing</div>
+                <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">Vanguard AeroBook 16 Studio</h3>
+                <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">3.2K Mini-LED • 32GB Unified RAM • M3 Max tier</p>
+
+                <!-- Color Swatches -->
+                <div class="flex items-center gap-1.5 mt-3">
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-700 border border-outline-variant/40 ring-1 ring-primary ring-offset-1"></span>
+                  
+                    <span class="w-3.5 h-3.5 rounded-full bg-slate-200 border border-outline-variant/40 "></span>
+                  
+                </div>
+              </div>
+
+              <!-- Price & CTA -->
+              <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
+                <div>
+                  <span class="text-headline-sm font-bold text-on-surface">₹1,34,990</span>
+                  <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹1,49,990</span>
+                </div>
+                <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          
         </div>
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Audio" data-title="aurawave max wireless anc">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary text-on-secondary z-10 shadow-sm">BESTSELLER</span>
-              <button 
-                type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
-              >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
-              </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU" alt="AuraWave Max Wireless ANC" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Audio</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">AuraWave Max Wireless ANC</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Planar Magnetic • 65H Battery • Spatial 3D</p>
+
+        <!-- Empty State for Filters -->
+        <div id="filter-empty-state" class="hidden text-center py-16 px-6 rounded-2xl bg-surface-container-lowest border border-outline-variant/40 mt-4">
+          <div class="w-16 h-16 rounded-full bg-surface-container flex items-center justify-center mx-auto mb-4 text-on-surface-variant">
+            <span class="material-symbols-outlined text-[32px]">filter_alt_off</span>
           </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹24,990</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹29,990</span>
-            </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
-          </div>
+          <h3 class="text-headline-sm font-bold text-on-surface mb-2">No matching hardware found</h3>
+          <p class="text-body-md text-on-surface-variant max-w-md mx-auto mb-6">
+            Try widening your price range or unselecting some tags to view more products.
+          </p>
+          <button 
+            type="button" 
+            onclick="clearAllFilters();" 
+            class="px-6 py-2.5 rounded-xl bg-primary text-on-primary font-bold text-label-md hover:opacity-90 transition-opacity"
+          >
+            Clear All Filters
+          </button>
         </div>
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Wearables" data-title="chronos ultra gen 3">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white z-10 shadow-sm">NEW</span>
-              <button 
-                type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
-              >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
-              </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ" alt="Chronos Ultra Gen 3" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Wearables</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">Chronos Ultra Gen 3</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Titanium Grade 5 • Sapphire • Dual-Band GPS</p>
-          </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹34,990</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹39,990</span>
-            </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Computing" data-title="apex65 cnc mechanical keyboard">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-rose-600 text-white z-10 shadow-sm">HOT</span>
-              <button 
-                type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
-              >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
-              </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s" alt="Apex65 CNC Mechanical Keyboard" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Computing</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">Apex65 CNC Mechanical Keyboard</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Gasket Mount • Linear Amber Switches • OLED Display</p>
-          </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹17,990</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹21,490</span>
-            </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Computing" data-title="aeroglide 8k wireless esports mouse">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-indigo-600 text-white z-10 shadow-sm">PRO GEAR</span>
-              <button 
-                type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
-              >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
-              </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70" alt="AeroGlide 8K Wireless Esports Mouse" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Computing</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">AeroGlide 8K Wireless Esports Mouse</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">39g Carbon Composite • 30K Focus Pro Sensor</p>
-          </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹9,490</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹11,990</span>
-            </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Visual" data-title="vividview 34" curved oled monitor">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-violet-600 text-white z-10 shadow-sm">OLED</span>
-              <button 
-                type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
-              >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
-              </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM" alt="VividView 34" Curved OLED Monitor" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Visual</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">VividView 34" Curved OLED Monitor</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">240Hz 0.03ms • 99% DCI-P3 Color Mastery</p>
-          </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹74,990</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹84,990</span>
-            </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Audio" data-title="echopod studio earbuds">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary z-10 shadow-sm">HI-RES</span>
-              <button 
-                type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
-              >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
-              </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHb7Bl2Z5IHFL3OkzOWQX4iUBjLq_3P6nGxVOOmkw31wMkUJzhn4NdB8R5xOj2CyeYyKQAfKGsCEg-tzbSwz197BIj0WDA3O84BtW71kG_W5DIg12WD4Mf1MAiM9E3OoDj66l9P3rpe-3viO6NQoXHesgg4m3FaZ_OFjMeggJ0m7K7lL_EjpsNLhpMRE60n9_lMNZ8BRpTDhmTlbIXy2vKAmvkQfYBeffWYni7QcA" alt="EchoPod Studio Earbuds" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Audio</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">EchoPod Studio Earbuds</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Dual Drivers • Hi-Res LDAC • 40H Playback</p>
-          </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹14,990</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹18,990</span>
-            </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      
-        <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm" data-category="Accessories" data-title="titanpower 140w gan station">
-          <div>
-            <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
-              <span class="absolute top-3 left-3 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-600 text-white z-10 shadow-sm">FAST CHARGE</span>
-              <button 
-                type="button" 
-                class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-on-surface-variant hover:text-rose-500 flex items-center justify-center transition-all z-10 shadow-sm"
-                title="Add to Wishlist"
-              >
-                <span class="material-symbols-outlined text-[18px]">favorite</span>
-              </button>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg" alt="TitanPower 140W GaN Station" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
-            </div>
-            <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Accessories</div>
-            <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">TitanPower 140W GaN Station</h3>
-            <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Quad USB-C PD 3.1 • OLED Power Meter</p>
-          </div>
-          <div class="flex items-center justify-between mt-5 pt-3 border-t border-outline-variant/30">
-            <div>
-              <span class="text-headline-sm font-bold text-on-surface">₹7,490</span>
-              <span class="text-body-sm text-on-surface-variant line-through ml-1.5">₹9,990</span>
-            </div>
-            <button type="button" class="h-9 px-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all text-label-md font-bold shadow-sm">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-      
+      </div>
     </div>
   </div>
 </section>
 
-<script>
-  function filterCatalog(cat, btn) {
-    const buttons = document.querySelectorAll('#catalog-category-filters button');
-    buttons.forEach(b => {
-      b.className = 'px-4 py-2 rounded-xl bg-surface-container-lowest text-on-surface-variant hover:text-on-surface font-medium text-label-md border border-outline-variant/40 transition-all';
-    });
-    btn.className = 'px-4 py-2 rounded-xl bg-inverse-surface text-inverse-on-surface font-semibold text-label-md transition-all shadow-sm';
+<!-- Mobile Filter Drawer Backdrop -->
+<div 
+  id="mobile-filter-backdrop" 
+  class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity duration-300" 
+  onclick="this.classList.add('hidden'); document.getElementById('mobile-filter-drawer').classList.add('translate-x-full');"
+></div>
 
-    const cards = document.querySelectorAll('#catalog-grid > div');
-    cards.forEach(c => {
-      if (cat === 'all' || c.dataset.category === cat) {
-        c.style.display = 'flex';
-      } else {
-        c.style.display = 'none';
-      }
+<!-- Mobile Filter Drawer -->
+<div 
+  id="mobile-filter-drawer" 
+  class="fixed top-0 right-0 w-80 max-w-[85vw] h-full bg-surface z-50 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col justify-between p-6"
+>
+  <div>
+    <div class="flex items-center justify-between pb-4 border-b border-outline-variant/30 mb-6">
+      <h3 class="text-headline-sm font-bold text-on-surface">Filters</h3>
+      <button 
+        type="button" 
+        class="p-2 text-on-surface-variant hover:text-primary" 
+        onclick="document.getElementById('mobile-filter-drawer').classList.add('translate-x-full'); document.getElementById('mobile-filter-backdrop').classList.add('hidden');"
+      >
+        <span class="material-symbols-outlined text-[22px]">close</span>
+      </button>
+    </div>
+
+    <!-- Mobile Filter Content -->
+    <div class="space-y-6 overflow-y-auto max-h-[75vh] pr-1">
+      <div>
+        <h4 class="text-label-md font-bold uppercase text-on-surface mb-2">Categories</h4>
+        <div class="space-y-2">
+          
+            <label class="flex items-center gap-2 text-body-sm text-on-surface">
+              <input type="checkbox" value="Smartphones" class="mobile-cat-check rounded border-outline-variant text-primary" onchange="syncMobileToDesktop(); applyDemoFilters();" />
+              <span>Smartphones</span>
+            </label>
+          
+            <label class="flex items-center gap-2 text-body-sm text-on-surface">
+              <input type="checkbox" value="Audio" class="mobile-cat-check rounded border-outline-variant text-primary" onchange="syncMobileToDesktop(); applyDemoFilters();" />
+              <span>Audio</span>
+            </label>
+          
+            <label class="flex items-center gap-2 text-body-sm text-on-surface">
+              <input type="checkbox" value="Computing" class="mobile-cat-check rounded border-outline-variant text-primary" onchange="syncMobileToDesktop(); applyDemoFilters();" />
+              <span>Computing</span>
+            </label>
+          
+            <label class="flex items-center gap-2 text-body-sm text-on-surface">
+              <input type="checkbox" value="Wearables" class="mobile-cat-check rounded border-outline-variant text-primary" onchange="syncMobileToDesktop(); applyDemoFilters();" />
+              <span>Wearables</span>
+            </label>
+          
+            <label class="flex items-center gap-2 text-body-sm text-on-surface">
+              <input type="checkbox" value="Visual" class="mobile-cat-check rounded border-outline-variant text-primary" onchange="syncMobileToDesktop(); applyDemoFilters();" />
+              <span>Visual</span>
+            </label>
+          
+            <label class="flex items-center gap-2 text-body-sm text-on-surface">
+              <input type="checkbox" value="Accessories" class="mobile-cat-check rounded border-outline-variant text-primary" onchange="syncMobileToDesktop(); applyDemoFilters();" />
+              <span>Accessories</span>
+            </label>
+          
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-outline-variant/30">
+        <button 
+          type="button" 
+          onclick="document.getElementById('mobile-filter-drawer').classList.add('translate-x-full'); document.getElementById('mobile-filter-backdrop').classList.add('hidden');" 
+          class="w-full py-3 rounded-xl bg-primary text-on-primary font-bold text-label-md"
+        >
+          View Results
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setPricePreset(min, max) {
+    document.getElementById('filter-price-min').value = min;
+    document.getElementById('filter-price-max').value = max;
+    applyDemoFilters();
+  }
+
+  function clearAllFilters() {
+    document.querySelectorAll('[data-filter-category], [data-filter-tag], [data-filter-brand]').forEach(el => el.checked = false);
+    document.querySelectorAll('.mobile-cat-check').forEach(el => el.checked = false);
+    document.getElementById('filter-price-min').value = '';
+    document.getElementById('filter-price-max').value = '';
+    applyDemoFilters();
+  }
+
+  function syncMobileToDesktop() {
+    const mobileChecks = Array.from(document.querySelectorAll('.mobile-cat-check:checked')).map(c => c.value);
+    document.querySelectorAll('[data-filter-category]').forEach(c => {
+      c.checked = mobileChecks.includes(c.value);
     });
   }
 
-  function searchCatalog(query) {
-    const q = query.trim().toLowerCase();
-    const cards = document.querySelectorAll('#catalog-grid > div');
-    cards.forEach(c => {
-      if (!q || c.dataset.title.includes(q) || c.dataset.category.toLowerCase().includes(q)) {
-        c.style.display = 'flex';
+  function applyDemoFilters() {
+    const selectedCats = Array.from(document.querySelectorAll('[data-filter-category]:checked')).map(c => c.value);
+    const selectedTags = Array.from(document.querySelectorAll('[data-filter-tag]:checked')).map(c => c.value.toLowerCase());
+    const selectedBrands = Array.from(document.querySelectorAll('[data-filter-brand]:checked')).map(c => c.value);
+    const minPrice = parseFloat(document.getElementById('filter-price-min').value) || 0;
+    const maxPrice = parseFloat(document.getElementById('filter-price-max').value) || 9999999;
+    const sortBy = document.getElementById('SortBy')?.value || 'featured';
+
+    const cards = Array.from(document.querySelectorAll('#CollectionProductGrid > [data-product-card]'));
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+      const cardCat = card.dataset.category;
+      const cardBrand = card.dataset.brand;
+      const cardTags = (card.dataset.tags || '').split(',');
+      const cardPrice = parseFloat(card.dataset.price) || 0;
+
+      const matchCat = selectedCats.length === 0 || selectedCats.includes(cardCat);
+      const matchBrand = selectedBrands.length === 0 || selectedBrands.includes(cardBrand);
+      const matchTag = selectedTags.length === 0 || selectedTags.some(t => cardTags.includes(t));
+      const matchPrice = cardPrice >= minPrice && cardPrice <= maxPrice;
+
+      if (matchCat && matchBrand && matchTag && matchPrice) {
+        card.style.display = 'flex';
+        visibleCount++;
       } else {
-        c.style.display = 'none';
+        card.style.display = 'none';
       }
     });
+
+    // Update count badge
+    const visibleCountEl = document.getElementById('visible-count');
+    if (visibleCountEl) visibleCountEl.textContent = visibleCount;
+
+    // Show/hide empty state
+    const emptyState = document.getElementById('filter-empty-state');
+    if (emptyState) {
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+
+    // Update active filter chips
+    renderActiveFilterChips(selectedCats, selectedTags, selectedBrands, minPrice, maxPrice);
+  }
+
+  function renderActiveFilterChips(cats, tags, brands, minPrice, maxPrice) {
+    const bar = document.getElementById('active-filters-bar');
+    const container = document.getElementById('active-chips-container');
+    if (!bar || !container) return;
+
+    let chips = [];
+    cats.forEach(c => chips.push({ label: c, type: 'cat', val: c }));
+    tags.forEach(t => chips.push({ label: t, type: 'tag', val: t }));
+    brands.forEach(b => chips.push({ label: b, type: 'brand', val: b }));
+
+    if (minPrice > 0 || maxPrice < 9999999) {
+      chips.push({ label: '₹' + minPrice.toLocaleString() + ' - ₹' + (maxPrice < 9999999 ? maxPrice.toLocaleString() : 'Any'), type: 'price' });
+    }
+
+    if (chips.length === 0) {
+      bar.classList.add('hidden');
+      bar.classList.remove('flex');
+      container.innerHTML = '';
+      return;
+    }
+
+    bar.classList.remove('hidden');
+    bar.classList.add('flex');
+
+    container.innerHTML = chips.map(c => `
+      <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-surface-container text-on-surface text-[12px] font-semibold border border-outline-variant/40">
+        <span>${c.label}</span>
+        <button type="button" onclick="removeSingleFilter('${c.type}', '${c.val}')" class="text-on-surface-variant hover:text-rose-500 font-bold">&times;</button>
+      </span>
+    `).join('');
+  }
+
+  function removeSingleFilter(type, val) {
+    if (type === 'cat') {
+      const el = document.querySelector(`[data-filter-category][value="${val}"]`);
+      if (el) el.checked = false;
+    } else if (type === 'tag') {
+      const el = document.querySelector(`[data-filter-tag][value="${val}"]`);
+      if (el) el.checked = false;
+    } else if (type === 'brand') {
+      const el = document.querySelector(`[data-filter-brand][value="${val}"]`);
+      if (el) el.checked = false;
+    } else if (type === 'price') {
+      document.getElementById('filter-price-min').value = '';
+      document.getElementById('filter-price-max').value = '';
+    }
+    applyDemoFilters();
   }
 </script>
 <footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm">
