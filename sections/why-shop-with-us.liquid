@@ -21,14 +21,63 @@
             <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center {{ block.settings.icon_color | default: 'text-primary' }} shadow-sm mb-4">
               <span class="material-symbols-outlined text-[26px]">{{ block.settings.icon }}</span>
             </div>
-            <h3 class="text-headline-sm font-headline-sm text-[18px] text-on-surface mb-2">
+            <h3 class="text-headline-sm font-headline-sm text-[18px] text-on-surface mb-2 font-bold">
               {{ block.settings.title }}
             </h3>
-            <p class="text-body-sm font-body-sm text-on-surface-variant">
+            <p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
               {{ block.settings.description }}
             </p>
           </div>
         {%- endfor -%}
+      {%- else -%}
+        <!-- Fallback Default Guarantee Cards -->
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 hover:border-primary/40 transition-colors shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm mb-4">
+            <span class="material-symbols-outlined text-[26px]">verified</span>
+          </div>
+          <h3 class="text-headline-sm font-headline-sm text-[18px] text-on-surface mb-2 font-bold">
+            100% Genuine Products
+          </h3>
+          <p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+            Directly sourced from authorized global brands with verified digital serial authentication on delivery.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 hover:border-primary/40 transition-colors shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm mb-4">
+            <span class="material-symbols-outlined text-[26px]">lock</span>
+          </div>
+          <h3 class="text-headline-sm font-headline-sm text-[18px] text-on-surface mb-2 font-bold">
+            Bank-Grade Secure Checkout
+          </h3>
+          <p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+            256-bit encrypted transactions supporting No-Cost EMI, UPI Instant, Major Cards, and Net Banking.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 hover:border-primary/40 transition-colors shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-primary shadow-sm mb-4">
+            <span class="material-symbols-outlined text-[26px]">electric_bolt</span>
+          </div>
+          <h3 class="text-headline-sm font-headline-sm text-[18px] text-on-surface mb-2 font-bold">
+            Fast &amp; Insured Delivery
+          </h3>
+          <p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+            Priority dispatch within 6 hours with tamper-proof security seals and comprehensive in-transit insurance.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-surface-container-low border border-outline-variant/40 hover:border-primary/40 transition-colors shadow-sm">
+          <div class="w-12 h-12 rounded-xl bg-surface-container-lowest flex items-center justify-center text-secondary shadow-sm mb-4">
+            <span class="material-symbols-outlined text-[26px]">sync</span>
+          </div>
+          <h3 class="text-headline-sm font-headline-sm text-[18px] text-on-surface mb-2 font-bold">
+            7-Day Easy Replacement
+          </h3>
+          <p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+            Zero-friction doorstep inspection and 1-Year official brand manufacturer replacement warranty assistance.
+          </p>
+        </div>
       {%- endif -%}
     </div>
   </div>
