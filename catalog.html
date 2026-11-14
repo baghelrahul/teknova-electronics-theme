@@ -222,91 +222,106 @@
 </head>
 <body class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary">
 <!-- ========================================================================= -->
-<!-- 1. TOP ANNOUNCEMENT BAR (Multi-message ticker + Selectors) -->
+<!-- 1. TOP ANNOUNCEMENT BAR -->
 <!-- ========================================================================= -->
-<aside class="bg-inverse-surface text-inverse-on-surface text-label-sm font-label-sm border-b border-outline/20 sticky top-0 z-50">
-<div class="max-w-7xl mx-auto px-6 h-9 flex items-center justify-between">
-<!-- Left & Center Ticker -->
-<div class="flex items-center space-x-6 overflow-hidden">
-<span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/20 text-inverse-primary border border-primary/30 uppercase tracking-widest text-[9px] font-bold">
-          LIVE DIRECT
-        </span>
-<div class="transition-opacity duration-300 flex items-center gap-2" id="announcement-track">
-<span class="material-symbols-outlined text-[14px] text-secondary-fixed">local_shipping</span>
-<span class="tracking-wide" id="announcement-text">Free Express Shipping on orders above ₹999</span>
-</div>
-</div>
-<!-- Right Utility Actions -->
-<div class="flex items-center space-x-5 text-inverse-on-surface/80">
-<div class="flex items-center space-x-1 hover:text-inverse-on-surface cursor-pointer transition-colors">
-<span class="material-symbols-outlined text-[15px]">currency_rupee</span>
-<span>INR (₹)</span>
-<span class="material-symbols-outlined text-[14px]">expand_more</span>
-</div>
-<span class="text-outline/40">|</span>
-<a class="flex items-center space-x-1 hover:text-inverse-on-surface transition-colors" href="#store-locator">
-<span class="material-symbols-outlined text-[15px]">storefront</span>
-<span class="hidden sm:inline">Store Locator</span>
-</a>
-<span class="text-outline/40">|</span>
-<a class="flex items-center space-x-1 hover:text-inverse-on-surface transition-colors" href="#support">
-<span class="material-symbols-outlined text-[15px]">headset_mic</span>
-<span class="hidden sm:inline">24/7 Support</span>
-</a>
-</div>
-</div>
+<aside class="w-full bg-inverse-surface text-inverse-on-surface py-2 px-4 sm:px-8 text-label-sm font-label-sm border-b border-outline-variant/20 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/20 text-inverse-primary border border-primary/30 uppercase tracking-widest text-[9px] font-bold shrink-0">Live Direct</span>
+      <div class="overflow-hidden h-4 flex items-center">
+        <div class="flex items-center gap-2 transition-opacity duration-300" id="announcement-wrapper">
+          <span class="material-symbols-outlined text-[14px] text-primary shrink-0">local_shipping</span>
+          <span class="truncate font-medium text-inverse-on-surface/90" id="announcement-text">Free Express Insured Shipping on orders above ₹999</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 sm:space-x-5 text-inverse-on-surface/80 shrink-0 text-xs sm:text-label-sm">
+      <div class="flex items-center space-x-1 cursor-pointer hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-[14px]">payments</span>
+        <span class="font-medium font-mono">INR (₹)</span>
+      </div>
+      <span class="text-inverse-on-surface/30">|</span>
+      <a class="flex items-center space-x-1 hover:text-white transition-colors" href="contact.html">
+        <span class="material-symbols-outlined text-[14px]">storefront</span>
+        <span class="hidden md:inline font-medium">Store Locator</span>
+      </a>
+      <span class="text-inverse-on-surface/30">|</span>
+      <a class="flex items-center space-x-1 hover:text-white transition-colors" href="contact.html">
+        <span class="material-symbols-outlined text-[14px]">support_agent</span>
+        <span class="hidden md:inline font-medium">24/7 Support</span>
+      </a>
+    </div>
+  </div>
 </aside>
+
 <!-- ========================================================================= -->
-<!-- 2. STICKY HEADER & NAVIGATION (Shared Component: TopNavBar Anchor) -->
+<!-- 2. STICKY HEADER & NAVIGATION -->
 <!-- ========================================================================= -->
 <header class="sticky top-9 z-40 w-full bg-surface/85 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-200">
-<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
-<!-- Brand Logo + Casing & Dot Anchor -->
-<div class="flex items-center space-x-8">
-<a class="text-headline-sm font-headline-sm font-bold tracking-tight text-on-surface uppercase flex items-center gap-1" href="index.html">
-<span>NEXORA</span>
-<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
-</a>
-<!-- Search Bar Integrated On-Left as dictated by JSON -->
-<div class="relative hidden lg:block w-72">
-<span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
-<span class="material-symbols-outlined text-[18px]">search</span>
-</span>
-<input class="w-full h-10 pl-9 pr-12 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Search audio, flagships, OLED..." type="text"/>
-<kbd class="absolute right-2.5 top-2.5 px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant/70 bg-surface-container-low border border-outline-variant/50 rounded">⌘K</kbd>
-</div>
-</div>
-<!-- Navigation Links from Shared Components JSON with Semantic Active State mapping -->
-<nav class="hidden md:flex items-center space-x-7">
-  <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="index.html">Home</a>
-  <a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-md font-label-md transition-colors duration-200" href="catalog.html">Catalog</a>
-  <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="about.html">About</a>
-  <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="contact.html">Contact</a>
-</nav>
-<!-- Trailing Action Cluster: Actions & Icons from JSON -->
-<div class="flex items-center space-x-4">
-<!-- JSON Trailing Icon Action: favorite -->
-<button class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="Wishlist">
-<span class="material-symbols-outlined text-[22px]">favorite</span>
-<span id="demo-wishlist-badge" class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center transition-all duration-200" style="display: none;">0</span>
-</button>
-<!-- JSON Trailing Icon Action: public -->
-<button class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Global Region">
-<span class="material-symbols-outlined text-[22px]">public</span>
-</button>
-<!-- JSON Trailing Secondary Action: Account -->
-<a class="hidden sm:flex items-center gap-1.5 text-label-md font-label-md font-medium text-on-surface-variant hover:text-primary transition-colors" href="#account">
-<span class="material-symbols-outlined text-[20px]">account_circle</span>
-<span>Account</span>
-</a>
-<!-- JSON Trailing Primary Action: Cart (0) / Dynamic Cart Badge -->
-<button class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-200 text-label-md font-label-md shadow-sm">
-<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
-<span id="demo-cart-text">Cart (0)</span>
-<span id="demo-cart-subtotal" class="hidden xl:inline text-inverse-on-surface/60">• ₹0</span>
-</button>
-</div>
-</div>
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+    <!-- Brand Logo -->
+    <div class="flex items-center space-x-8">
+      <a class="text-headline-sm font-headline-sm font-bold tracking-tight text-on-surface uppercase flex items-center gap-1" href="index.html">
+        <span>NEXORA</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+      </a>
+      <!-- Search Bar linked to search.html -->
+      <div class="relative hidden lg:block w-72">
+        <form action="search.html" method="get">
+          <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]">search</span>
+          </span>
+          <input 
+            name="q"
+            class="w-full h-10 pl-9 pr-12 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
+            placeholder="Search audio, flagships, OLED..." 
+            type="search"
+          />
+          <kbd class="absolute right-2.5 top-2.5 px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant/70 bg-surface-container-low border border-outline-variant/50 rounded pointer-events-none">⌘K</kbd>
+        </form>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex items-center space-x-7">
+      <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="index.html">Home</a>
+      <a class="text-primary border-b-2 border-primary pb-1 font-semibold text-label-md font-label-md transition-colors duration-200" href="catalog.html">Catalog</a>
+      <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="about.html">About</a>
+      <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Trailing Action Cluster -->
+    <div class="flex items-center space-x-4">
+      <!-- Search Icon (Mobile) -->
+      <a href="search.html" class="lg:hidden p-2 text-on-surface-variant hover:text-primary transition-colors" title="Search">
+        <span class="material-symbols-outlined text-[22px]">search</span>
+      </a>
+
+      <!-- Wishlist Action with link to wishlist.html -->
+      <a href="wishlist.html" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="View Wishlist">
+        <span class="material-symbols-outlined text-[22px]">favorite</span>
+        <span id="demo-wishlist-badge" class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center transition-all duration-200" style="display: none;">0</span>
+      </a>
+
+      <!-- Region Action -->
+      <button class="hidden sm:block p-2 text-on-surface-variant hover:text-primary transition-colors" title="Global Region">
+        <span class="material-symbols-outlined text-[22px]">public</span>
+      </button>
+
+      <!-- Account Action -->
+      <a class="hidden sm:flex items-center gap-1.5 text-label-md font-label-md font-medium text-on-surface-variant hover:text-primary transition-colors" href="#account">
+        <span class="material-symbols-outlined text-[20px]">account_circle</span>
+        <span>Account</span>
+      </a>
+
+      <!-- Cart Action with link to cart.html -->
+      <a href="cart.html" class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-200 text-label-md font-label-md shadow-sm">
+        <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+        <span id="demo-cart-text">Cart (0)</span>
+        <span id="demo-cart-subtotal" class="hidden xl:inline text-inverse-on-surface/60">• ₹0</span>
+      </a>
+    </div>
+  </div>
 </header>
 <!-- ========================================================================= -->
 

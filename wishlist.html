@@ -1,0 +1,799 @@
+﻿<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEXORA — Ultra-Premium Electronics &amp; Hardware Flagship</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Manrope & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with forms and container-queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Theme Configuration verbatim as specified -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#fefcff",
+            "primary": "#630ed4",
+            "tertiary-fixed": "#dfe2f1",
+            "secondary-fixed-dim": "#b4c5ff",
+            "tertiary-container": "#636673",
+            "inverse-primary": "#d2bbff",
+            "on-background": "#111c2d",
+            "surface-container-highest": "#d8e3fb",
+            "on-tertiary-fixed": "#171b26",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "primary-container": "#7c3aed",
+            "on-primary-container": "#ede0ff",
+            "primary-fixed-dim": "#d2bbff",
+            "outline-variant": "#ccc3d8",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#ecf1ff",
+            "surface-variant": "#d8e3fb",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#dbe1ff",
+            "tertiary-fixed-dim": "#c3c6d4",
+            "on-secondary-fixed": "#00174b",
+            "surface-bright": "#f9f9ff",
+            "surface-container-low": "#f0f3ff",
+            "on-error-container": "#93000a",
+            "surface-tint": "#732ee4",
+            "tertiary": "#4b4e5a",
+            "surface-container": "#e7eeff",
+            "on-tertiary-fixed-variant": "#434652",
+            "error": "#ba1a1a",
+            "outline": "#7b7487",
+            "surface": "#f9f9ff",
+            "secondary-container": "#316bf3",
+            "background": "#f9f9ff",
+            "on-tertiary": "#ffffff",
+            "on-primary-fixed": "#25005a",
+            "surface-container-high": "#dee8ff",
+            "on-surface": "#111c2d",
+            "on-secondary-fixed-variant": "#003ea8",
+            "inverse-surface": "#263143",
+            "on-tertiary-container": "#e2e5f4",
+            "secondary": "#0051d5",
+            "on-surface-variant": "#4a4455",
+            "surface-dim": "#cfdaf2",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#5a00c6",
+            "primary-fixed": "#eaddff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "1.5rem",
+            "margin": "3rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "margin-mobile": "1.25rem",
+            "gutter-mobile": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-xl": "2.5rem"
+          },
+          "fontFamily": {
+            "body-lg": [
+              "Hanken Grotesk"
+            ],
+            "headline-lg-mobile": [
+              "Manrope"
+            ],
+            "body-md": [
+              "Hanken Grotesk"
+            ],
+            "headline-md": [
+              "Manrope"
+            ],
+            "headline-sm": [
+              "Manrope"
+            ],
+            "label-sm": [
+              "Hanken Grotesk"
+            ],
+            "label-md": [
+              "Hanken Grotesk"
+            ],
+            "display": [
+              "Manrope"
+            ],
+            "headline-lg": [
+              "Manrope"
+            ],
+            "body-sm": [
+              "Hanken Grotesk"
+            ]
+          },
+          "fontSize": {
+            "body-lg": [
+              "1.125rem",
+              {
+                "lineHeight": "1.6",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg-mobile": [
+              "2.25rem",
+              {
+                "lineHeight": "1.15",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-md": [
+              "0.9375rem",
+              {
+                "lineHeight": "1.5",
+                "letterSpacing": "-0.005em",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-md": [
+              "2rem",
+              {
+                "lineHeight": "1.2",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-sm": [
+              "1.375rem",
+              {
+                "lineHeight": "1.3",
+                "letterSpacing": "-0.015em",
+                "fontWeight": "600"
+              }
+            ],
+            "label-sm": [
+              "0.6875rem",
+              {
+                "lineHeight": "1",
+                "letterSpacing": "0.08em",
+                "fontWeight": "500"
+              }
+            ],
+            "label-md": [
+              "0.75rem",
+              {
+                "lineHeight": "1",
+                "letterSpacing": "0.06em",
+                "fontWeight": "600"
+              }
+            ],
+            "display": [
+              "4.5rem",
+              {
+                "lineHeight": "1.05",
+                "letterSpacing": "-0.035em",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-lg": [
+              "3rem",
+              {
+                "lineHeight": "1.1",
+                "letterSpacing": "-0.025em",
+                "fontWeight": "700"
+              }
+            ],
+            "body-sm": [
+              "0.8125rem",
+              {
+                "lineHeight": "1.45",
+                "letterSpacing": "0em",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 4px;
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #ccc3d8;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md antialiased selection:bg-primary selection:text-on-primary">
+<!-- ========================================================================= -->
+<!-- 1. TOP ANNOUNCEMENT BAR -->
+<!-- ========================================================================= -->
+<aside class="w-full bg-inverse-surface text-inverse-on-surface py-2 px-4 sm:px-8 text-label-sm font-label-sm border-b border-outline-variant/20 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-primary/20 text-inverse-primary border border-primary/30 uppercase tracking-widest text-[9px] font-bold shrink-0">Live Direct</span>
+      <div class="overflow-hidden h-4 flex items-center">
+        <div class="flex items-center gap-2 transition-opacity duration-300" id="announcement-wrapper">
+          <span class="material-symbols-outlined text-[14px] text-primary shrink-0">local_shipping</span>
+          <span class="truncate font-medium text-inverse-on-surface/90" id="announcement-text">Free Express Insured Shipping on orders above ₹999</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center space-x-3 sm:space-x-5 text-inverse-on-surface/80 shrink-0 text-xs sm:text-label-sm">
+      <div class="flex items-center space-x-1 cursor-pointer hover:text-white transition-colors">
+        <span class="material-symbols-outlined text-[14px]">payments</span>
+        <span class="font-medium font-mono">INR (₹)</span>
+      </div>
+      <span class="text-inverse-on-surface/30">|</span>
+      <a class="flex items-center space-x-1 hover:text-white transition-colors" href="contact.html">
+        <span class="material-symbols-outlined text-[14px]">storefront</span>
+        <span class="hidden md:inline font-medium">Store Locator</span>
+      </a>
+      <span class="text-inverse-on-surface/30">|</span>
+      <a class="flex items-center space-x-1 hover:text-white transition-colors" href="contact.html">
+        <span class="material-symbols-outlined text-[14px]">support_agent</span>
+        <span class="hidden md:inline font-medium">24/7 Support</span>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<!-- ========================================================================= -->
+<!-- 2. STICKY HEADER & NAVIGATION -->
+<!-- ========================================================================= -->
+<header class="sticky top-9 z-40 w-full bg-surface/85 backdrop-blur-md border-b border-outline-variant/30 shadow-sm transition-all duration-200">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+    <!-- Brand Logo -->
+    <div class="flex items-center space-x-8">
+      <a class="text-headline-sm font-headline-sm font-bold tracking-tight text-on-surface uppercase flex items-center gap-1" href="index.html">
+        <span>NEXORA</span>
+        <span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+      </a>
+      <!-- Search Bar linked to search.html -->
+      <div class="relative hidden lg:block w-72">
+        <form action="search.html" method="get">
+          <span class="absolute inset-y-0 left-3 flex items-center pointer-events-none text-on-surface-variant">
+            <span class="material-symbols-outlined text-[18px]">search</span>
+          </span>
+          <input 
+            name="q"
+            class="w-full h-10 pl-9 pr-12 rounded-lg bg-surface-container-lowest border border-outline-variant/40 text-body-sm font-body-sm text-on-surface placeholder:text-on-surface-variant/60 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" 
+            placeholder="Search audio, flagships, OLED..." 
+            type="search"
+          />
+          <kbd class="absolute right-2.5 top-2.5 px-1.5 py-0.5 text-[10px] font-semibold text-on-surface-variant/70 bg-surface-container-low border border-outline-variant/50 rounded pointer-events-none">⌘K</kbd>
+        </form>
+      </div>
+    </div>
+
+    <!-- Navigation Links -->
+    <nav class="hidden md:flex items-center space-x-7">
+      <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="index.html">Home</a>
+      <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="catalog.html">Catalog</a>
+      <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="about.html">About</a>
+      <a class="text-on-surface-variant hover:text-on-surface font-medium text-label-md font-label-md transition-colors duration-200" href="contact.html">Contact</a>
+    </nav>
+
+    <!-- Trailing Action Cluster -->
+    <div class="flex items-center space-x-4">
+      <!-- Search Icon (Mobile) -->
+      <a href="search.html" class="lg:hidden p-2 text-on-surface-variant hover:text-primary transition-colors" title="Search">
+        <span class="material-symbols-outlined text-[22px]">search</span>
+      </a>
+
+      <!-- Wishlist Action with link to wishlist.html -->
+      <a href="wishlist.html" class="relative p-2 text-on-surface-variant hover:text-primary transition-colors" title="View Wishlist">
+        <span class="material-symbols-outlined text-[22px]">favorite</span>
+        <span id="demo-wishlist-badge" class="absolute top-1 right-1 min-w-[16px] h-4 px-1 rounded-full bg-primary text-on-primary text-[9px] font-bold flex items-center justify-center transition-all duration-200" style="display: flex;">3</span>
+      </a>
+
+      <!-- Region Action -->
+      <button class="hidden sm:block p-2 text-on-surface-variant hover:text-primary transition-colors" title="Global Region">
+        <span class="material-symbols-outlined text-[22px]">public</span>
+      </button>
+
+      <!-- Account Action -->
+      <a class="hidden sm:flex items-center gap-1.5 text-label-md font-label-md font-medium text-on-surface-variant hover:text-primary transition-colors" href="#account">
+        <span class="material-symbols-outlined text-[20px]">account_circle</span>
+        <span>Account</span>
+      </a>
+
+      <!-- Cart Action with link to cart.html -->
+      <a href="cart.html" class="flex items-center gap-2 px-4 py-2.5 rounded-lg bg-inverse-surface text-inverse-on-surface hover:bg-primary transition-all duration-200 text-label-md font-label-md shadow-sm">
+        <span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+        <span id="demo-cart-text">Cart (0)</span>
+        <span id="demo-cart-subtotal" class="hidden xl:inline text-inverse-on-surface/60">• ₹0</span>
+      </a>
+    </div>
+  </div>
+</header>
+<!-- ========================================================================= -->
+<!-- MAIN WISHLIST SECTION (EXACT SHOPIFY DESIGN WITH PRE-POPULATED DUMMY ITEMS) -->
+<!-- ========================================================================= -->
+<section class="py-12 bg-surface">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-8 pb-6 border-b border-outline-variant/30 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+      <div>
+        <nav class="flex items-center space-x-2 text-label-sm font-label-sm text-on-surface-variant mb-2">
+          <a href="index.html" class="hover:text-primary transition-colors">Home</a>
+          <span>/</span>
+          <span class="text-on-surface font-semibold">Wishlist</span>
+        </nav>
+        <h1 class="text-3xl sm:text-headline-lg font-headline-lg font-bold text-on-surface">
+          Saved Hardware &amp; Wishlist
+        </h1>
+        <p class="text-body-md font-body-md text-on-surface-variant mt-1">
+          Review saved configurations, monitor stock availability, and move gear directly into your active cart.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <span class="text-label-md font-label-md text-primary bg-primary/10 px-3.5 py-1.5 rounded-full font-bold">
+          <span id="wishlist-page-counter">3</span> Saved Items
+        </span>
+        <button 
+          type="button" 
+          id="clear-wishlist-btn"
+          onclick="clearDemoWishlist();"
+          class="text-label-md font-label-md text-on-surface-variant hover:text-rose-500 font-semibold transition-colors cursor-pointer"
+        >
+          Clear All
+        </button>
+      </div>
+    </div>
+
+    <!-- Active Wishlist Grid -->
+    <div id="wishlist-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Item 1 -->
+      <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative" id="wl-item-1">
+        <div>
+          <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-primary text-on-primary z-10 shadow-sm">FLAGSHIP</span>
+            <button 
+              type="button" 
+              class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-rose-500 hover:scale-110 flex items-center justify-center transition-all z-10 shadow-sm"
+              title="Remove from Wishlist"
+              onclick="removeWishlistItem('wl-item-1', 'NEXORA Horizon Pro 5G')"
+            >
+              <span class="material-symbols-outlined text-[18px] fill-1">favorite</span>
+            </button>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD93922aE8-h4nL_y8yH_yU2i-s1k6182hX3hP5W2e8t_rG8x9-X7K0qP1f" alt="NEXORA Horizon Pro 5G" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="text-[11px] font-bold uppercase tracking-wider text-primary mb-1">Smartphones</div>
+          <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">NEXORA Horizon Pro 5G</h3>
+          <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Titanium Grey • 512GB • Snapdragon 8 Gen 4</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span class="text-[11px] font-semibold text-emerald-600">In Stock • Dispatches in 4 hrs</span>
+          </div>
+        </div>
+        <div class="mt-5 pt-3 border-t border-outline-variant/30 flex items-center justify-between">
+          <span class="text-headline-sm font-bold text-on-surface">₹79,990</span>
+          <button type="button" onclick="moveDemoToCart('wl-item-1', 'NEXORA Horizon Pro 5G', 79990);" class="h-9 px-3.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary transition-all text-label-md font-bold shadow-sm flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+            <span>Move to Cart</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative" id="wl-item-2">
+        <div>
+          <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary text-on-secondary z-10 shadow-sm">BESTSELLER</span>
+            <button 
+              type="button" 
+              class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-rose-500 hover:scale-110 flex items-center justify-center transition-all z-10 shadow-sm"
+              title="Remove from Wishlist"
+              onclick="removeWishlistItem('wl-item-2', 'AuraWave Max ANC')"
+            >
+              <span class="material-symbols-outlined text-[18px] fill-1">favorite</span>
+            </button>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHd2i7JFJU5gOjCxLAuDh9SxZq0GnvRtX-5Nq_0vBMBlAaGHqLElxih1xyE35e9woQAoRHapcUAj35nlm6XdPSP7G7gyE5wMbtaxSwaIQcZYP6jLwpbk4NKHgKTY9-gI8WNRMz1yc7ULZvXOr4ye7dlV7iG2JHpxhTfiy9_YSJHsBV9dE5R-nGMf-qtx7YQAU6wzn-C-z6o4g08sCzZViJeiYfGRNMFaz4Yp2M-CU" alt="AuraWave Max ANC" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="text-[11px] font-bold uppercase tracking-wider text-secondary mb-1">Studio Audio</div>
+          <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">AuraWave Max Wireless ANC</h3>
+          <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Planar Magnetic • 65H Battery • Spatial 3D</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span class="text-[11px] font-semibold text-emerald-600">In Stock • Metro Ready</span>
+          </div>
+        </div>
+        <div class="mt-5 pt-3 border-t border-outline-variant/30 flex items-center justify-between">
+          <span class="text-headline-sm font-bold text-on-surface">₹24,990</span>
+          <button type="button" onclick="moveDemoToCart('wl-item-2', 'AuraWave Max ANC', 24990);" class="h-9 px-3.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary transition-all text-label-md font-bold shadow-sm flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+            <span>Move to Cart</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="group rounded-3xl border border-outline-variant/40 p-5 bg-surface-container-lowest hover:border-primary/50 transition-all duration-300 flex flex-col justify-between shadow-sm relative" id="wl-item-3">
+        <div>
+          <div class="relative w-full aspect-square rounded-2xl bg-surface-container-low overflow-hidden mb-4 flex items-center justify-center p-4">
+            <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white z-10 shadow-sm">NEW</span>
+            <button 
+              type="button" 
+              class="absolute top-3 right-3 w-8 h-8 rounded-full bg-surface/80 backdrop-blur-md text-rose-500 hover:scale-110 flex items-center justify-center transition-all z-10 shadow-sm"
+              title="Remove from Wishlist"
+              onclick="removeWishlistItem('wl-item-3', 'Chronos Ultra Gen 3')"
+            >
+              <span class="material-symbols-outlined text-[18px] fill-1">favorite</span>
+            </button>
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfSdKvtWdH7s8crJfrzA0TQi7kZWEraNdF8nBpKWbe2GjnRk-YF1Os4MSaMLdB5Mgmig8PUmEZ1OcKamRaVNtl6wqYTiO3n5K_7dcsshVavo7-1s6LaIaQNXwnFOwMNqXjwfncrLu_optMMxqDHNey966SewbyBmjQaFSztVwZejoL2bdrn9hgUBYu2CwppjobbQwKgbYQtsGb2zr4J-Ma2q4BUeE_TwNIdIYbMPQ" alt="Chronos Ultra Gen 3" class="max-h-full max-w-full object-contain group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="text-[11px] font-bold uppercase tracking-wider text-emerald-600 mb-1">Wearables</div>
+          <h3 class="text-headline-sm font-bold text-on-surface line-clamp-1">Chronos Ultra Gen 3</h3>
+          <p class="text-body-sm text-on-surface-variant mt-1 line-clamp-1">Titanium Grade 5 • Sapphire • Dual-Band GPS</p>
+          <div class="flex items-center gap-1.5 mt-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span class="text-[11px] font-semibold text-emerald-600">In Stock • 3 Units Left</span>
+          </div>
+        </div>
+        <div class="mt-5 pt-3 border-t border-outline-variant/30 flex items-center justify-between">
+          <span class="text-headline-sm font-bold text-on-surface">₹34,990</span>
+          <button type="button" onclick="moveDemoToCart('wl-item-3', 'Chronos Ultra Gen 3', 34990);" class="h-9 px-3.5 rounded-xl bg-primary hover:bg-primary-container text-on-primary transition-all text-label-md font-bold shadow-sm flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">shopping_bag</span>
+            <span>Move to Cart</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div id="wishlist-empty-state" class="hidden text-center py-20 bg-surface-container-lowest rounded-3xl border border-outline-variant/30 p-8 max-w-xl mx-auto my-6 shadow-sm">
+      <div class="w-16 h-16 rounded-full bg-surface-container-low text-primary flex items-center justify-center mx-auto mb-4">
+        <span class="material-symbols-outlined text-[32px]">favorite</span>
+      </div>
+      <h2 class="text-headline-sm font-bold text-on-surface mb-2">Your Wishlist is Empty</h2>
+      <p class="text-body-md text-on-surface-variant mb-6">
+        Curate your personal tech arsenal by tapping the heart icon on any flagship smartphone, studio headphones, or workstation.
+      </p>
+      <a href="catalog.html" class="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-md text-label-md font-bold transition-all shadow-md">
+        <span>Explore 2026 Fleet</span>
+        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Recommended Gear -->
+    <div class="mt-20 pt-12 border-t border-outline-variant/30">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <span class="text-label-md font-label-md uppercase tracking-wider text-secondary font-semibold">Recommended Gear</span>
+          <h3 class="text-headline-md font-headline-md font-bold text-on-surface mt-1">Popular Among Tech Enthusiasts</h3>
+        </div>
+        <a href="catalog.html" class="text-label-md font-bold text-primary hover:underline">
+          View All Hardware &rarr;
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/40">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-IRl4Zh00GtRavPgSOTQZd6MjTIf8LmqOxb96GdExHlTavKBfe659frc7Cord7QOZ9CIhqsBjJRwu2BkJ1vOoo2GWGtO_J044FoCIgtSyFbsRCRxZsF9jgbf9LH2sTkbVLRTAV5LqF4GhuDhCDyecV0btbS7EyNyFSXfGM1n_bLlfpXn5y6fP92nQM4TvrBL51DiPHNm3WS_TAwSAj_HY_a7pmNHUcI4Ydo8YO7s" class="h-32 mx-auto object-contain mb-3" />
+          <h4 class="font-bold text-on-surface">Apex65 Mechanical Keyboard</h4>
+          <span class="font-bold text-primary">₹17,990</span>
+        </div>
+        <div class="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/40">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBRjRtulXjIJD4c4cnXAnBZ5-cUYeOwNXD5iTHpFbyYgF1dQWj0OCz08YJiV1W_NOECunsGCQy7BS_h7lX4QBrG4SUL7aTTTISgeIDjL-hTcYB7ZE8ET1ginuCc5dg0EE6a-R3Ly1KOKnHNgcuPfTMyDYVlw8E3_zVl4ni7wMqCn8bbq5_P6_F41wltVfFRNKTWdmsUUs_DY6yMd01jGnTOxpzUwyzFK6f6zC7-70" class="h-32 mx-auto object-contain mb-3" />
+          <h4 class="font-bold text-on-surface">AeroGlide 8K Mouse</h4>
+          <span class="font-bold text-primary">₹9,490</span>
+        </div>
+        <div class="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/40">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl5ySv51hpH5e1Q8FPt1ca9lsDfjmcN8Ju4SX29gTsg-Lyqg75qkQwcWin3occxQMVxFCyVdSvd8hbqlOqQJH9j8WAn_zbEwLBovhQg58mlM6AvyuVnaHAMEX7NGCYHdDa6BLOzvPAOeZRvtWGqQ0frXbIu-cHhdOApwXDQ4b08nHFl188xe7wpzeJTmxDbBj5FZBv9tXz_AZk7HEknyxQcME0zDiU7wssR2eNOWM" class="h-32 mx-auto object-contain mb-3" />
+          <h4 class="font-bold text-on-surface">VividView 34" OLED</h4>
+          <span class="font-bold text-primary">₹74,990</span>
+        </div>
+        <div class="p-5 rounded-2xl bg-surface-container-lowest border border-outline-variant/40">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZnPpA9tRlNVX-byJ7XgsO5fBFfyZLZUfybvsrHuNTS8_B2C8N11CZ8-mg-iwCce3qjhmC2k8SAeRbKq-VEqkB3y3QfC-ov21Ax2jQ8f0aMdVMtc8f4FsxP8huSJE2SWuGYfD-ffGHP90xxxO52tOrR3HllQxzyEUev0f1C9_2dXtDuaEydw8WxCYNKiiOTikTtZEn2M5daWJN3fSq0fq1aXsuNZSW4iOrhv1hXCg" class="h-32 mx-auto object-contain mb-3" />
+          <h4 class="font-bold text-on-surface">TitanPower 140W GaN</h4>
+          <span class="font-bold text-primary">₹7,490</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let wlCount = 3;
+
+  function removeWishlistItem(id, title) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.remove();
+      wlCount--;
+      updateWishlistCounters();
+      showDemoToast('Removed "' + title + '" from Wishlist', 'heart_minus');
+    }
+  }
+
+  function moveDemoToCart(id, title, price) {
+    removeWishlistItem(id, title);
+    showDemoToast('Moved "' + title + '" directly to your Cart!', 'shopping_bag');
+    // Bump header cart
+    const cartText = document.getElementById('demo-cart-text');
+    if (cartText) cartText.textContent = 'Cart (1+)';
+  }
+
+  function clearDemoWishlist() {
+    document.getElementById('wishlist-grid').innerHTML = '';
+    document.getElementById('wishlist-empty-state').classList.remove('hidden');
+    document.getElementById('clear-wishlist-btn').style.display = 'none';
+    wlCount = 0;
+    updateWishlistCounters();
+    showDemoToast('Wishlist cleared', 'delete');
+  }
+
+  function updateWishlistCounters() {
+    const counter = document.getElementById('wishlist-page-counter');
+    if (counter) counter.textContent = wlCount;
+    const badge = document.getElementById('demo-wishlist-badge');
+    if (badge) {
+      badge.textContent = wlCount;
+      badge.style.display = wlCount > 0 ? 'flex' : 'none';
+    }
+    if (wlCount === 0) {
+      document.getElementById('wishlist-grid').classList.add('hidden');
+      document.getElementById('wishlist-empty-state').classList.remove('hidden');
+    }
+  }
+</script>
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/30 text-on-surface-variant font-body-sm text-body-sm">
+<div class="max-w-7xl mx-auto px-6 py-16 flex flex-col gap-12">
+<!-- Top Grid: Brand Statement & Columns -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-10">
+<!-- Brand Info (2 columns) -->
+<div class="lg:col-span-2">
+<a class="text-headline-md font-headline-md font-bold tracking-tight text-on-surface uppercase flex items-center gap-1 mb-4" href="#">
+<span>NEXORA</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+</a>
+<p class="text-body-md font-body-md text-on-surface-variant max-w-sm mb-6">
+            Pioneering precision electronics, spatial acoustic architecture, and tactile luxury hardware. Calibrated for creators, engineers, and discerning audiophiles worldwide.
+          </p>
+<div class="flex items-center space-x-3 text-on-surface-variant">
+<a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">public</span>
+</a>
+<a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">share</span>
+</a>
+<a class="w-9 h-9 rounded-lg bg-surface-container-low flex items-center justify-center hover:text-primary hover:bg-surface-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">rss_feed</span>
+</a>
+</div>
+</div>
+<!-- Col 1: Shop & Collections -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Shop &amp; Collections</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#smartphones">Smartphones</a></li>
+<li><a class="hover:text-primary transition-colors" href="#computing">Laptops &amp; Computing</a></li>
+<li><a class="hover:text-primary transition-colors" href="#audio">Audio Architecture</a></li>
+<li><a class="hover:text-primary transition-colors" href="#wearables">Wearables</a></li>
+<li><a class="hover:text-primary transition-colors" href="#accessories">Accessories</a></li>
+<li><a class="hover:text-primary transition-colors" href="#refurbished">Refurbished Certified</a></li>
+</ul>
+</div>
+<!-- Col 2: Customer Care -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Customer Care</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#track-order">Track Order Status</a></li>
+<li><a class="hover:text-primary transition-colors" href="#shipping">Global Shipping</a></li>
+<li><a class="hover:text-primary transition-colors" href="#returns">Returns &amp; Exchanges</a></li>
+<li><a class="hover:text-primary transition-colors" href="#warranty">Warranty &amp; Care</a></li>
+<li><a class="hover:text-primary transition-colors" href="#authenticity">Authenticity Guarantee</a></li>
+<li><a class="hover:text-primary transition-colors" href="#contact">Contact Concierge</a></li>
+</ul>
+</div>
+<!-- Col 3: Company -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Company</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#about">About NEXORA</a></li>
+<li><a class="hover:text-primary transition-colors" href="#stores">Store Locator</a></li>
+<li><a class="hover:text-primary transition-colors" href="#press">Press &amp; Media</a></li>
+<li><a class="hover:text-primary transition-colors" href="#careers">Careers (We're Hiring)</a></li>
+<li><a class="hover:text-primary transition-colors" href="#sustainability">Eco &amp; Circularity</a></li>
+</ul>
+</div>
+<!-- Col 4: Legal & Architecture -->
+<div>
+<h4 class="text-headline-sm font-headline-sm text-[16px] text-on-surface font-semibold mb-4">Legal &amp; Policy</h4>
+<ul class="space-y-2.5">
+<li><a class="hover:text-primary transition-colors" href="#privacy">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#terms">Terms of Service</a></li>
+<li><a class="hover:text-primary transition-colors" href="#cookies">Cookie Preferences</a></li>
+<li><a class="hover:text-primary transition-colors" href="#compliance">Compliance &amp; GST</a></li>
+<li><a class="hover:text-primary transition-colors" href="#security">Security Disclosure</a></li>
+</ul>
+</div>
+</div>
+<!-- Payment Icons Row -->
+<div class="pt-8 border-t border-outline-variant/30 flex flex-wrap items-center justify-between gap-4">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm uppercase font-semibold text-on-surface-variant/80">Secured Payments By:</span>
+<div class="flex items-center gap-2">
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">VISA</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Mastercard</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">RuPay</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">UPI</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Apple Pay</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">Razorpay</span>
+<span class="px-2 py-1 rounded bg-surface-container text-[11px] font-bold text-on-surface">COD</span>
+</div>
+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant/80">
+          Crafted for peak acoustic &amp; visual mastery.
+        </div>
+</div>
+<!-- Bottom Copyright & Architecture Notice -->
+<div class="pt-4 border-t border-outline-variant/20 flex flex-col sm:flex-row items-center justify-between gap-4 text-label-sm font-label-sm text-on-surface-variant/70">
+<div>
+          © 2026 NEXORA Technologies Inc. All rights reserved.
+        </div>
+<div>
+          Powered by Shopify OS 2.0 architecture • Fast Edge Delivery
+        </div>
+</div>
+</div>
+</footer>
+<!-- Light interactive script for Announcement marquee & Countdown timer -->
+<script>
+    // 1. Cycling Top Announcement Ticker
+    const announcements = [
+      { text: "Free Express Shipping on orders above ₹999", icon: "local_shipping" },
+      { text: "Limited-Time Festive Offer: Get 10% instant cashback with premium cards", icon: "bolt" },
+      { text: "Hassle-free 7-Day Replacement & 1-Year Official Warranty", icon: "verified_user" }
+    ];
+    let currentAnnounce = 0;
+    const announceEl = document.getElementById('announcement-text');
+    
+    if (announceEl) {
+      setInterval(() => {
+        currentAnnounce = (currentAnnounce + 1) % announcements.length;
+        announceEl.parentElement.style.opacity = '0';
+        setTimeout(() => {
+          announceEl.textContent = announcements[currentAnnounce].text;
+          announceEl.parentElement.style.opacity = '1';
+        }, 200);
+      }, 4000);
+    }
+
+    // 2. Countdown Timer simulation
+    let seconds = 45;
+    let minutes = 38;
+    const secEl = document.getElementById('countdown-secs');
+    const minEl = document.getElementById('countdown-mins');
+
+    if (secEl && minEl) {
+      setInterval(() => {
+        if (seconds > 0) {
+          seconds--;
+        } else {
+          seconds = 59;
+          if (minutes > 0) minutes--;
+        }
+        secEl.textContent = seconds < 10 ? '0' + seconds : seconds;
+        minEl.textContent = minutes < 10 ? '0' + minutes : minutes;
+      }, 1000);
+    }
+  </script>
+
+  <!-- Interactive Demo Script for Netlify Live Preview -->
+  <div id="demo-toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-3 px-5 py-3.5 rounded-xl bg-inverse-surface text-inverse-on-surface shadow-2xl border border-outline-variant/30 text-label-md font-label-md pointer-events-none transform translate-y-6 opacity-0 transition-all duration-300">
+    <span class="material-symbols-outlined text-[20px] text-primary shrink-0" id="demo-toast-icon">check_circle</span>
+    <span class="font-medium" id="demo-toast-msg">Action confirmed</span>
+  </div>
+
+  <script>
+    // Toast Notification System
+    function showDemoToast(msg, icon) {
+      icon = icon || 'check_circle';
+      const toast = document.getElementById('demo-toast');
+      const msgEl = document.getElementById('demo-toast-msg');
+      const iconEl = document.getElementById('demo-toast-icon');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      if (iconEl) iconEl.textContent = icon;
+      toast.classList.remove('translate-y-6', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      clearTimeout(window._toastTimeout);
+      window._toastTimeout = setTimeout(function() {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-6', 'opacity-0');
+      }, 2600);
+    }
+
+    // Reactive Wishlist State
+    var wishlistItems = new Set();
+    var wishlistBadge = document.getElementById('demo-wishlist-badge');
+
+    function updateWishlistBadge() {
+      if (!wishlistBadge) return;
+      var count = wishlistItems.size;
+      wishlistBadge.textContent = count;
+      wishlistBadge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    // Delegate all heart / wishlist buttons
+    document.querySelectorAll('button, a').forEach(function(el) {
+      var icon = el.querySelector('.material-symbols-outlined');
+      if (icon && icon.textContent.trim() === 'favorite' && !el.closest('footer') && !(el.getAttribute('title') || '').includes('Wishlist')) {
+        el.setAttribute('data-wishlist-toggle', 'true');
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          var card = el.closest('div');
+          var title = card ? (card.querySelector('h3, h4')?.textContent?.trim() || 'Item') : 'Product';
+          var id = title.toLowerCase().replace(/\s+/g, '-');
+          if (wishlistItems.has(id)) {
+            wishlistItems.delete(id);
+            icon.classList.remove('text-rose-500', 'fill-1');
+            el.classList.remove('text-rose-500');
+            showDemoToast('Removed "' + title + '" from Wishlist', 'heart_minus');
+          } else {
+            wishlistItems.add(id);
+            icon.classList.add('text-rose-500', 'fill-1');
+            el.classList.add('text-rose-500');
+            showDemoToast('Added "' + title + '" to Wishlist!', 'favorite');
+          }
+          updateWishlistBadge();
+        });
+      }
+    });
+
+    // Reactive Cart State
+    var cartCount = 0;
+    var cartTotal = 0;
+    var cartText = document.getElementById('demo-cart-text');
+    var cartSubtotal = document.getElementById('demo-cart-subtotal');
+
+    document.querySelectorAll('button').forEach(function(btn) {
+      var txt = btn.textContent.toLowerCase();
+      if ((txt.includes('add to cart') || txt.includes('pre-order') || txt.includes('order now') || txt.includes('buy now')) && !btn.closest('footer')) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          cartCount++;
+          var card = btn.closest('div');
+          var title = card ? (card.querySelector('h3, h4')?.textContent?.trim() || 'Hardware') : 'Flagship Device';
+          var priceStr = card ? (card.querySelector('.font-bold, .text-headline-sm')?.textContent || '₹4,990') : '₹4,990';
+          var priceNum = parseInt(priceStr.replace(/[^0-9]/g, '')) || 4990;
+          cartTotal += priceNum;
+
+          if (cartText) cartText.textContent = 'Cart (' + cartCount + ')';
+          if (cartSubtotal) cartSubtotal.textContent = '• ₹' + cartTotal.toLocaleString('en-IN');
+          showDemoToast('Added "' + title + '" to active cart!', 'shopping_bag');
+        });
+      }
+    });
+
+    // Smooth navigation anchor scroll
+    document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+      anchor.addEventListener('click', function(e) {
+        var targetId = this.getAttribute('href').slice(1);
+        var targetEl = document.getElementById(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          targetEl.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+
+</body></html>
