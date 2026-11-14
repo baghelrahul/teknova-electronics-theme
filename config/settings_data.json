@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_primary": "#630ed4",
@@ -6,6 +15,60 @@
     "color_secondary_container": "#316bf3",
     "color_surface": "#f9f9ff",
     "color_dark_surface": "#263143",
-    "social_instagram_link": "https://instagram.com"
+    "social_instagram_link": "https://instagram.com",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement_bar": true,
+          "badge_text": "LIVE DIRECT",
+          "cycle_interval": 4000,
+          "show_currency": true,
+          "currency_label": "INR (₹)",
+          "currency_icon": "currency_rupee",
+          "store_locator_label": "Store Locator",
+          "store_locator_url": "",
+          "support_label": "24/7 Support",
+          "support_url": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "brand_text": "NEXORA",
+          "menu": "main-menu",
+          "show_search": true,
+          "search_placeholder": "Search audio, flagships, OLED...",
+          "show_wishlist": true,
+          "wishlist_count": "3",
+          "wishlist_url": "",
+          "show_region_button": true,
+          "force_show_account": true,
+          "account_label": "Account"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "brand_text": "NEXORA",
+          "brand_bio": "Curating the apex tier of personal hardware, studio acoustics, and ambient computing for high-output individuals.",
+          "col_1_title": "Shop & Collections",
+          "menu_1": "",
+          "col_2_title": "Customer Care",
+          "menu_2": "",
+          "col_3_title": "Company",
+          "menu_3": "",
+          "col_4_title": "Legal & Policy",
+          "menu_4": "",
+          "show_social_icons": true,
+          "social_link_1": "",
+          "social_link_2": "",
+          "social_link_3": "",
+          "craft_tagline": "Crafted for peak acoustic & visual mastery.",
+          "copyright_text": "NEXORA Technologies Inc. All rights reserved."
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
